@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="k-dev t-tech">
+<html lang="en" class="k-dev t-tech dna h-split bg-grid c-soft hd-center">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;800&display=swap" rel="stylesheet">
 <style>
 :root {
   --accent: #1e40af; --accent-soft: #e2e7f9; --accent-ink: #10266f;
@@ -239,6 +240,7 @@ footer a:hover { color: var(--ink); text-decoration: underline; }
 .hood-card h3 { margin: 0 0 14px; font-size: 21px; }
 .sg { display: flex; gap: 14px; align-items: baseline; padding: 11px 0; border-top: 1px dashed var(--line); }
 .hood-card h3 + .sg { border-top: 0; }
+.hood-note { margin: 12px 0 0; font-size: 14.5px; line-height: 1.55; color: var(--muted); }
 .sg > span { width: 96px; flex: none; font: 600 11.5px "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip { font-size: 14px; font-weight: 600; padding: 4px 12px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-ink); }
@@ -426,6 +428,90 @@ html.t-arcade .band { box-shadow: 0 0 80px -10px color-mix(in srgb, var(--accent
   .view-switch a { padding: 6px 9px; }
 }
 
+
+.art { display: block; width: var(--art-size, 120px); height: var(--art-size, 120px); margin: 0 auto 18px; }
+.art svg { width: 100%; height: 100%; overflow: visible; }
+.art .o { fill: none; stroke: var(--ink); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.art .ao { fill: none; stroke: var(--accent); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.art .a { fill: var(--accent); }
+.art .s { fill: var(--accent-soft); }
+.art .p { fill: var(--card); }
+@media (prefers-reduced-motion: no-preference) {
+  .art svg { animation: art-in .9s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes art-in { from { opacity: 0; transform: translateY(10px) rotate(-4deg) scale(.94); } to { opacity: 1; transform: none; } }
+}
+
+
+/* ---- per-project design DNA (fonts, backgrounds, cards, headings, hero layouts) ---- */
+h1, h2, h3, .brand, .stat b, .lead { font-weight: var(--fdw, 800); }
+
+/* backgrounds */
+html.bg-dots body { background-image: radial-gradient(color-mix(in srgb, var(--ink) 13%, transparent) 1.2px, transparent 1.3px); background-size: 20px 20px; }
+html.bg-grid body { background-image: linear-gradient(color-mix(in srgb, var(--ink) 7%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--ink) 7%, transparent) 1px, transparent 1px); background-size: 40px 40px; }
+html.bg-fine body { background-image: linear-gradient(color-mix(in srgb, var(--accent) 14%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--accent) 14%, transparent) 1px, transparent 1px), linear-gradient(color-mix(in srgb, var(--accent) 6%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--accent) 6%, transparent) 1px, transparent 1px); background-size: 96px 96px, 96px 96px, 16px 16px, 16px 16px; }
+html.bg-lines body { background-image: linear-gradient(color-mix(in srgb, var(--ink) 8%, transparent) 1px, transparent 1px); background-size: 100% 34px; }
+html.bg-diag body { background-image: repeating-linear-gradient(-45deg, color-mix(in srgb, var(--accent) 9%, transparent) 0 2px, transparent 2px 22px); background-size: auto; }
+html.bg-plus body { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34'%3E%3Cpath d='M17 11v12M11 17h12' stroke='%23888' stroke-opacity='.28' stroke-width='1.5'/%3E%3C/svg%3E"); background-size: 34px 34px; }
+html.bg-waves body { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='40'%3E%3Cpath d='M0 20 Q15 8 30 20 T60 20 T90 20 T120 20' fill='none' stroke='%23888' stroke-opacity='.22' stroke-width='1.5'/%3E%3C/svg%3E"); background-size: 120px 40px; }
+html.bg-topo body { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cg fill='none' stroke='%23888' stroke-opacity='.2' stroke-width='1.3'%3E%3Cpath d='M-20 60 C60 20 120 110 200 60 S300 40 330 80'/%3E%3Cpath d='M-20 100 C70 60 120 150 210 100 S300 80 330 120'/%3E%3Cpath d='M-20 170 C50 130 130 220 200 170 S290 150 330 190'/%3E%3Cpath d='M-20 230 C80 190 120 280 210 230 S300 210 330 250'/%3E%3Cellipse cx='240' cy='150' rx='26' ry='14'/%3E%3Cellipse cx='240' cy='150' rx='12' ry='6'/%3E%3C/g%3E%3C/svg%3E"); background-size: 300px 300px; }
+html.bg-rings body { background-image: radial-gradient(circle at 85% 0%, transparent 0 120px, color-mix(in srgb, var(--accent) 12%, transparent) 121px 122px, transparent 123px 200px, color-mix(in srgb, var(--accent) 10%, transparent) 201px 202px, transparent 203px 290px, color-mix(in srgb, var(--accent) 8%, transparent) 291px 292px, transparent 293px), radial-gradient(color-mix(in srgb, var(--ink) 9%, transparent) 1px, transparent 1.2px); background-size: auto, 26px 26px; background-repeat: no-repeat, repeat; background-attachment: fixed, scroll; }
+html.bg-stars body { background-image: radial-gradient(1.4px 1.4px at 20px 30px, color-mix(in srgb, var(--ink) 40%, transparent), transparent), radial-gradient(1px 1px at 90px 120px, color-mix(in srgb, var(--ink) 30%, transparent), transparent), radial-gradient(1.8px 1.8px at 160px 60px, color-mix(in srgb, var(--accent) 60%, transparent), transparent), radial-gradient(1px 1px at 130px 170px, color-mix(in srgb, var(--ink) 30%, transparent), transparent); background-size: 200px 200px; }
+html.bg-checker body { background-image: conic-gradient(color-mix(in srgb, var(--ink) 5%, transparent) 25%, transparent 0 50%, color-mix(in srgb, var(--ink) 5%, transparent) 0 75%, transparent 0); background-size: 48px 48px; }
+html.bg-paper body { background-image: radial-gradient(70rem 30rem at 50% -8%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 70%); background-repeat: no-repeat; }
+
+/* cards */
+html.c-soft :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border: 1px solid color-mix(in srgb, var(--line) 70%, transparent); border-radius: 24px; box-shadow: 0 18px 40px -26px rgba(15, 20, 40, .35); }
+html.c-outline :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border: 1.5px solid color-mix(in srgb, var(--ink) 55%, transparent); border-radius: 10px; box-shadow: none; }
+html.c-brutal :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border: 2.5px solid var(--ink); border-radius: 6px; box-shadow: 5px 5px 0 var(--accent); }
+html.c-flat :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border-color: transparent; border-radius: 16px; box-shadow: none; background: color-mix(in srgb, var(--accent-soft) 55%, var(--card)); }
+html.c-ticket :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border: 2px dashed color-mix(in srgb, var(--ink) 30%, transparent); border-radius: 6px; box-shadow: none; }
+html.c-pill :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border: 1.5px solid var(--line); border-radius: 30px; box-shadow: 0 3px 0 var(--line); }
+html.c-brutal .frame { border-radius: 6px; box-shadow: 10px 10px 0 var(--accent); }
+html.c-soft .frame { border-width: 1px; border-color: color-mix(in srgb, var(--line) 80%, transparent); border-radius: 22px; box-shadow: 0 40px 80px -40px rgba(15, 20, 40, .45); }
+html.c-outline .frame { box-shadow: none; border-radius: 10px; }
+html.c-flat .frame { border-color: transparent; box-shadow: 0 0 0 10px color-mix(in srgb, var(--accent-soft) 70%, transparent); }
+html.c-ticket .frame { box-shadow: 0 0 0 8px var(--paper), 0 0 0 10px color-mix(in srgb, var(--ink) 25%, transparent); }
+html.c-pill .frame { border-radius: 28px; }
+
+/* section headings */
+html.hd-marker section.block > h2::after { content: ""; display: block; width: 64px; height: 7px; margin: 16px auto 0; border-radius: 7px; background: var(--accent); }
+html.hd-left section.block > :is(h2, .kicker) { text-align: left; margin-left: 0; }
+html.hd-left section.block > h2 { max-width: 760px; }
+html.hd-upper section.block > h2 { text-transform: uppercase; letter-spacing: .01em; font-size: clamp(28px, 4vw, 46px); }
+html.hd-upper .kicker { letter-spacing: .22em; }
+html.hd-italic section.block > h2 { font-style: italic; }
+html.hd-outline .hero h1 .hl { color: transparent; -webkit-text-stroke: 2px var(--accent); }
+html.hd-outline section.block > h2 { position: relative; }
+
+/* hero layouts */
+.hero.split.rev .hero-copy { order: 2; }
+.hero.split.rev .frame { order: 1; }
+.hero.split.rev .stats { order: 3; }
+.hero.split .art { margin: 0 0 14px; --art-size: 96px; }
+.hero.poster { text-align: left; max-width: 1240px; padding-top: 64px; }
+.hero.poster .hero-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 40px; align-items: center; }
+.hero.poster .art { --art-size: clamp(150px, 20vw, 250px); margin: 0; order: 2; }
+.hero.poster h1 { font-size: clamp(46px, 8.6vw, 116px); margin: 20px 0 40px; max-width: none; line-height: .96; }
+.hero.poster p.sub { margin-left: 0; }
+.hero.poster .cta { justify-content: flex-start; }
+.hero.poster .frame { transform: rotate(-1.2deg); margin-top: 60px; max-width: none; }
+.hero.poster .stats { justify-content: flex-start; max-width: none; }
+.hero.editorial { text-align: left; max-width: 1180px; padding-top: 64px; }
+.hero.editorial .hero-top { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 48px; align-items: center; border-bottom: 2px solid var(--ink); padding-bottom: 36px; }
+.hero.editorial .art { --art-size: clamp(170px, 22vw, 280px); margin: 0 auto; }
+.hero.editorial h1 { font-size: clamp(42px, 6.4vw, 84px); margin: 18px 0 20px; max-width: none; }
+.hero.editorial p.sub { margin-left: 0; }
+.hero.editorial .cta { justify-content: flex-start; }
+.hero.editorial .stats { justify-content: flex-start; max-width: none; }
+.hero:is(.poster, .editorial) .sticker { display: none; }
+@media (max-width: 860px) {
+  .hero.poster .hero-top, .hero.editorial .hero-top { grid-template-columns: 1fr; gap: 10px; }
+  .hero.poster .art, .hero.editorial .art { --art-size: 120px; order: -1; margin: 0; }
+  .hero.split.rev .hero-copy { order: 0; }
+  .hero.poster .frame { transform: none; }
+}
+
+html.dna.dna.dna { --fd: "Sora", var(--fd-fallback); --fdw: 800; --fd-fallback: system-ui, sans-serif; }
 </style>
 <script>document.documentElement.classList.add("js")</script>
 </head>
@@ -447,12 +533,13 @@ html.t-arcade .band { box-shadow: 0 0 80px -10px color-mix(in srgb, var(--accent
   <section class="hero wrap split" id="top">
     <span class="sticker s1" aria-hidden="true">TypeScript</span><span class="sticker s2" aria-hidden="true">free &amp; open source</span><span class="sticker s3" aria-hidden="true">2 ways to use it ✦</span>
     <div class="hero-copy">
-      <span class="pill"><span class="dot"></span>TypeScript · Drop-in<span class="status">in progress</span></span>
+      <span class="art" aria-hidden="true"><svg viewBox="0 0 200 200" role="presentation" focusable="false"><path class="s o" d="M100 22 L160 46 V98 C160 140 132 166 100 180 C68 166 40 140 40 98 V46 Z"/><path class="ao" d="M72 102 L93 123 L132 80" style="stroke-width:10"/></svg></span><span class="pill"><span class="dot"></span>TypeScript · Drop-in<span class="status">in progress</span></span>
       <h1>Keep embedded <span class="hl">AI on-mission<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 14 C 40 4, 80 4, 110 11 S 170 18, 198 7" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg></span>.</h1>
       <p class="sub">A drop-in governance layer that detects off-task use, deflects curious drift and blocks hostile injection.</p>
       <div class="cta"><a class="btn primary" href="https://github.com/juw12/steward#readme">Read the README</a><a class="btn " href="https://github.com/juw12/steward">View source</a></div>
       <div class="meta">TypeScript · Drop-in · open source (MIT) · free</div>
     </div>
+    
     
     <figure class="frame reveal" id="showcase">
       <div class="bar"><i></i><i></i><i></i><span>steward · preview</span><em>screenshot</em></div>
@@ -463,13 +550,13 @@ html.t-arcade .band { box-shadow: 0 0 80px -10px color-mix(in srgb, var(--accent
 
   <section class="block wrap why reveal" id="why">
     <div class="why-grid">
-      <div><div class="kicker">Why it exists</div><h2>The problem Steward solves.</h2></div>
+      <div><div class="kicker">Why it exists</div><h2>Keep the assistant on the job.</h2></div>
       <div><p class="lead">Steward sits between your app and the model: it lets on-mission questions through, politely redirects curious drift, blocks prompt injection, logs the cost of every request per feature and gives the business a dashboard.</p></div>
     </div>
   </section>
   <section class="block alt wrap reveal" id="ideas">
     <div class="kicker">In short</div>
-    <h2>Steward in three ideas.</h2>
+    <h2>Detect, deflect, block.</h2>
     <div class="grid3"><article class="idea dark"><span class="tag">01</span><h3>Detects off-task use</h3><p>Spots requests that fall outside your assistant&#x27;s job.</p></article><article class="idea"><span class="tag">02</span><h3>Deflects drift</h3><p>Steers curious, related questions back on track.</p></article><article class="idea"><span class="tag">03</span><h3>Blocks injection</h3><p>Stops hostile prompt injection before it reaches your model.</p></article></div>
   </section>
   <section class="block wrap reveal" id="run">
@@ -492,7 +579,7 @@ uvicorn app.main:app --port 8080"><svg viewBox="0 0 24 24" aria-hidden="true"><r
   </section>
   <section class="block alt wrap reveal" id="features">
     <div class="kicker">What's inside</div>
-    <h2>Small details, real features.</h2>
+    <h2>The governance layer.</h2>
     <div class="bento"><article class="cell wide dark"><h3>Browser playground</h3><p>Chat as different users, simulate traffic, watch the dashboard, correct the classifier and measure accuracy against a labelled evaluation set.</p></article><article class="cell"><h3>Allow, redirect or block</h3><p>Every request is classified on-mission, curious drift or hostile injection, and handled accordingly.</p></article><article class="cell"><h3>Daily off-topic allowance</h3><p>A THROTTLE outcome gives users a small off-topic budget per day instead of a hard no.</p></article><article class="cell accent"><h3>Unmet-demand report</h3><p>See what people keep asking for that your assistant doesn&#x27;t cover yet.</p></article><article class="cell"><h3>OpenAI-compatible proxy</h3><p>A FastAPI proxy with an audit log and stats: point your client at it, nothing else changes.</p></article><article class="cell"><h3>SDKs for Python and TypeScript</h3><p>The same guard in both languages, 11/11 tests passing in each.</p></article><article class="cell"><h3>Measured, not guessed</h3><p>On the CAD-copilot policy the local classifier scores 85% on a final held-out set; an optional LLM judge is there for production.</p></article></div>
   </section>
   <section class="block wrap reveal" id="today">
@@ -528,7 +615,7 @@ uvicorn app.main:app --port 8080"><svg viewBox="0 0 24 24" aria-hidden="true"><r
 
   <div class="wrap">
     <section class="band reveal" aria-label="Get Steward">
-      <h2>Explore Steward.</h2>
+      <h2>Read the README.</h2>
       <p>Keep embedded AI on-mission.</p>
       <div class="cta"><a class="btn primary" href="https://github.com/juw12/steward#readme">Read the README</a><a class="btn ghost" href="https://github.com/juw12/steward">View source</a></div>
     </section>

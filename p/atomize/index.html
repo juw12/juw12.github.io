@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="k-app t-playful">
+<html lang="en" class="k-app t-playful dna h-poster bg-rings c-brutal hd-outline">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
 <style>
 :root {
   --accent: #9333ea; --accent-soft: #eee0fa; --accent-ink: #5c0da4;
@@ -239,6 +240,7 @@ footer a:hover { color: var(--ink); text-decoration: underline; }
 .hood-card h3 { margin: 0 0 14px; font-size: 21px; }
 .sg { display: flex; gap: 14px; align-items: baseline; padding: 11px 0; border-top: 1px dashed var(--line); }
 .hood-card h3 + .sg { border-top: 0; }
+.hood-note { margin: 12px 0 0; font-size: 14.5px; line-height: 1.55; color: var(--muted); }
 .sg > span { width: 96px; flex: none; font: 600 11.5px "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip { font-size: 14px; font-weight: 600; padding: 4px 12px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-ink); }
@@ -426,6 +428,90 @@ html.t-arcade .band { box-shadow: 0 0 80px -10px color-mix(in srgb, var(--accent
   .view-switch a { padding: 6px 9px; }
 }
 
+
+.art { display: block; width: var(--art-size, 120px); height: var(--art-size, 120px); margin: 0 auto 18px; }
+.art svg { width: 100%; height: 100%; overflow: visible; }
+.art .o { fill: none; stroke: var(--ink); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.art .ao { fill: none; stroke: var(--accent); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.art .a { fill: var(--accent); }
+.art .s { fill: var(--accent-soft); }
+.art .p { fill: var(--card); }
+@media (prefers-reduced-motion: no-preference) {
+  .art svg { animation: art-in .9s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes art-in { from { opacity: 0; transform: translateY(10px) rotate(-4deg) scale(.94); } to { opacity: 1; transform: none; } }
+}
+
+
+/* ---- per-project design DNA (fonts, backgrounds, cards, headings, hero layouts) ---- */
+h1, h2, h3, .brand, .stat b, .lead { font-weight: var(--fdw, 800); }
+
+/* backgrounds */
+html.bg-dots body { background-image: radial-gradient(color-mix(in srgb, var(--ink) 13%, transparent) 1.2px, transparent 1.3px); background-size: 20px 20px; }
+html.bg-grid body { background-image: linear-gradient(color-mix(in srgb, var(--ink) 7%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--ink) 7%, transparent) 1px, transparent 1px); background-size: 40px 40px; }
+html.bg-fine body { background-image: linear-gradient(color-mix(in srgb, var(--accent) 14%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--accent) 14%, transparent) 1px, transparent 1px), linear-gradient(color-mix(in srgb, var(--accent) 6%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--accent) 6%, transparent) 1px, transparent 1px); background-size: 96px 96px, 96px 96px, 16px 16px, 16px 16px; }
+html.bg-lines body { background-image: linear-gradient(color-mix(in srgb, var(--ink) 8%, transparent) 1px, transparent 1px); background-size: 100% 34px; }
+html.bg-diag body { background-image: repeating-linear-gradient(-45deg, color-mix(in srgb, var(--accent) 9%, transparent) 0 2px, transparent 2px 22px); background-size: auto; }
+html.bg-plus body { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34'%3E%3Cpath d='M17 11v12M11 17h12' stroke='%23888' stroke-opacity='.28' stroke-width='1.5'/%3E%3C/svg%3E"); background-size: 34px 34px; }
+html.bg-waves body { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='40'%3E%3Cpath d='M0 20 Q15 8 30 20 T60 20 T90 20 T120 20' fill='none' stroke='%23888' stroke-opacity='.22' stroke-width='1.5'/%3E%3C/svg%3E"); background-size: 120px 40px; }
+html.bg-topo body { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cg fill='none' stroke='%23888' stroke-opacity='.2' stroke-width='1.3'%3E%3Cpath d='M-20 60 C60 20 120 110 200 60 S300 40 330 80'/%3E%3Cpath d='M-20 100 C70 60 120 150 210 100 S300 80 330 120'/%3E%3Cpath d='M-20 170 C50 130 130 220 200 170 S290 150 330 190'/%3E%3Cpath d='M-20 230 C80 190 120 280 210 230 S300 210 330 250'/%3E%3Cellipse cx='240' cy='150' rx='26' ry='14'/%3E%3Cellipse cx='240' cy='150' rx='12' ry='6'/%3E%3C/g%3E%3C/svg%3E"); background-size: 300px 300px; }
+html.bg-rings body { background-image: radial-gradient(circle at 85% 0%, transparent 0 120px, color-mix(in srgb, var(--accent) 12%, transparent) 121px 122px, transparent 123px 200px, color-mix(in srgb, var(--accent) 10%, transparent) 201px 202px, transparent 203px 290px, color-mix(in srgb, var(--accent) 8%, transparent) 291px 292px, transparent 293px), radial-gradient(color-mix(in srgb, var(--ink) 9%, transparent) 1px, transparent 1.2px); background-size: auto, 26px 26px; background-repeat: no-repeat, repeat; background-attachment: fixed, scroll; }
+html.bg-stars body { background-image: radial-gradient(1.4px 1.4px at 20px 30px, color-mix(in srgb, var(--ink) 40%, transparent), transparent), radial-gradient(1px 1px at 90px 120px, color-mix(in srgb, var(--ink) 30%, transparent), transparent), radial-gradient(1.8px 1.8px at 160px 60px, color-mix(in srgb, var(--accent) 60%, transparent), transparent), radial-gradient(1px 1px at 130px 170px, color-mix(in srgb, var(--ink) 30%, transparent), transparent); background-size: 200px 200px; }
+html.bg-checker body { background-image: conic-gradient(color-mix(in srgb, var(--ink) 5%, transparent) 25%, transparent 0 50%, color-mix(in srgb, var(--ink) 5%, transparent) 0 75%, transparent 0); background-size: 48px 48px; }
+html.bg-paper body { background-image: radial-gradient(70rem 30rem at 50% -8%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 70%); background-repeat: no-repeat; }
+
+/* cards */
+html.c-soft :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border: 1px solid color-mix(in srgb, var(--line) 70%, transparent); border-radius: 24px; box-shadow: 0 18px 40px -26px rgba(15, 20, 40, .35); }
+html.c-outline :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border: 1.5px solid color-mix(in srgb, var(--ink) 55%, transparent); border-radius: 10px; box-shadow: none; }
+html.c-brutal :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border: 2.5px solid var(--ink); border-radius: 6px; box-shadow: 5px 5px 0 var(--accent); }
+html.c-flat :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border-color: transparent; border-radius: 16px; box-shadow: none; background: color-mix(in srgb, var(--accent-soft) 55%, var(--card)); }
+html.c-ticket :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border: 2px dashed color-mix(in srgb, var(--ink) 30%, transparent); border-radius: 6px; box-shadow: none; }
+html.c-pill :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border: 1.5px solid var(--line); border-radius: 30px; box-shadow: 0 3px 0 var(--line); }
+html.c-brutal .frame { border-radius: 6px; box-shadow: 10px 10px 0 var(--accent); }
+html.c-soft .frame { border-width: 1px; border-color: color-mix(in srgb, var(--line) 80%, transparent); border-radius: 22px; box-shadow: 0 40px 80px -40px rgba(15, 20, 40, .45); }
+html.c-outline .frame { box-shadow: none; border-radius: 10px; }
+html.c-flat .frame { border-color: transparent; box-shadow: 0 0 0 10px color-mix(in srgb, var(--accent-soft) 70%, transparent); }
+html.c-ticket .frame { box-shadow: 0 0 0 8px var(--paper), 0 0 0 10px color-mix(in srgb, var(--ink) 25%, transparent); }
+html.c-pill .frame { border-radius: 28px; }
+
+/* section headings */
+html.hd-marker section.block > h2::after { content: ""; display: block; width: 64px; height: 7px; margin: 16px auto 0; border-radius: 7px; background: var(--accent); }
+html.hd-left section.block > :is(h2, .kicker) { text-align: left; margin-left: 0; }
+html.hd-left section.block > h2 { max-width: 760px; }
+html.hd-upper section.block > h2 { text-transform: uppercase; letter-spacing: .01em; font-size: clamp(28px, 4vw, 46px); }
+html.hd-upper .kicker { letter-spacing: .22em; }
+html.hd-italic section.block > h2 { font-style: italic; }
+html.hd-outline .hero h1 .hl { color: transparent; -webkit-text-stroke: 2px var(--accent); }
+html.hd-outline section.block > h2 { position: relative; }
+
+/* hero layouts */
+.hero.split.rev .hero-copy { order: 2; }
+.hero.split.rev .frame { order: 1; }
+.hero.split.rev .stats { order: 3; }
+.hero.split .art { margin: 0 0 14px; --art-size: 96px; }
+.hero.poster { text-align: left; max-width: 1240px; padding-top: 64px; }
+.hero.poster .hero-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 40px; align-items: center; }
+.hero.poster .art { --art-size: clamp(150px, 20vw, 250px); margin: 0; order: 2; }
+.hero.poster h1 { font-size: clamp(46px, 8.6vw, 116px); margin: 20px 0 40px; max-width: none; line-height: .96; }
+.hero.poster p.sub { margin-left: 0; }
+.hero.poster .cta { justify-content: flex-start; }
+.hero.poster .frame { transform: rotate(-1.2deg); margin-top: 60px; max-width: none; }
+.hero.poster .stats { justify-content: flex-start; max-width: none; }
+.hero.editorial { text-align: left; max-width: 1180px; padding-top: 64px; }
+.hero.editorial .hero-top { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 48px; align-items: center; border-bottom: 2px solid var(--ink); padding-bottom: 36px; }
+.hero.editorial .art { --art-size: clamp(170px, 22vw, 280px); margin: 0 auto; }
+.hero.editorial h1 { font-size: clamp(42px, 6.4vw, 84px); margin: 18px 0 20px; max-width: none; }
+.hero.editorial p.sub { margin-left: 0; }
+.hero.editorial .cta { justify-content: flex-start; }
+.hero.editorial .stats { justify-content: flex-start; max-width: none; }
+.hero:is(.poster, .editorial) .sticker { display: none; }
+@media (max-width: 860px) {
+  .hero.poster .hero-top, .hero.editorial .hero-top { grid-template-columns: 1fr; gap: 10px; }
+  .hero.poster .art, .hero.editorial .art { --art-size: 120px; order: -1; margin: 0; }
+  .hero.split.rev .hero-copy { order: 0; }
+  .hero.poster .frame { transform: none; }
+}
+
+html.dna.dna.dna { --fd: "Unbounded", var(--fd-fallback); --fdw: 700; --fd-fallback: system-ui, sans-serif; }
 </style>
 <script>document.documentElement.classList.add("js")</script>
 </head>
@@ -434,7 +520,7 @@ html.t-arcade .band { box-shadow: 0 0 80px -10px color-mix(in srgb, var(--accent
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#top"><span class="logo" aria-hidden="true">A</span>Atomize</a>
-    <nav class="links" aria-label="On this page"><a href="#features">Features</a><a href="#run">Run it</a><a href="#faq">FAQ</a></nav>
+    <nav class="links" aria-label="On this page"><a href="#features">Features</a><a href="#run">Run it</a><a href="#hood">Built with</a><a href="#faq">FAQ</a></nav>
     <div class="view-switch" title="Pick how you want to read about Atomize">
       <a class="on" href="https://juw12.github.io/p/atomize/" aria-current="page">Landing page</a>
       <a href="https://github.com/juw12/atomize#readme">README</a>
@@ -444,15 +530,16 @@ html.t-arcade .band { box-shadow: 0 0 80px -10px color-mix(in srgb, var(--accent
 </header>
 
 <main id="main">
-  <section class="hero wrap" id="top">
-    <span class="sticker s1" aria-hidden="true">Web</span><span class="sticker s2" aria-hidden="true">free &amp; open source</span><span class="sticker s3" aria-hidden="true">2 ways to use it ✦</span>
-    <div class="hero-copy">
+  <section class="hero wrap poster" id="top">
+    
+    <div class="hero-top"><div class="hero-copy">
       <span class="pill"><span class="dot"></span>Web · Next.js<span class="status">in progress</span></span>
       <h1>Turn one blog post into a week of <span class="hl">social content<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 14 C 40 4, 80 4, 110 11 S 170 18, 198 7" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg></span>.</h1>
       <p class="sub">Paste one post and get 5 LinkedIn posts, 8 tweets, 3 newsletters and a YouTube Short script.</p>
       <div class="cta"><a class="btn primary" href="https://github.com/juw12/atomize#readme">Read the README</a><a class="btn " href="https://github.com/juw12/atomize">View source</a></div>
       <div class="meta">Web · Next.js · open source (MIT) · free</div>
     </div>
+    <span class="art" aria-hidden="true"><svg viewBox="0 0 200 200" role="presentation" focusable="false"><ellipse class="ao" cx="100" cy="100" rx="80" ry="30"/><ellipse class="o" cx="100" cy="100" rx="80" ry="30" transform="rotate(60 100 100)"/><ellipse class="o" cx="100" cy="100" rx="80" ry="30" transform="rotate(-60 100 100)"/><circle class="a o" cx="100" cy="100" r="16"/><circle class="a" cx="178" cy="96" r="7"/></svg></span></div>
     
     <figure class="frame reveal" id="showcase">
       <div class="bar"><i></i><i></i><i></i><span>atomize · preview</span><em>screenshot</em></div>
@@ -463,18 +550,18 @@ html.t-arcade .band { box-shadow: 0 0 80px -10px color-mix(in srgb, var(--accent
 
   <section class="block wrap why reveal" id="why">
     <div class="why-grid">
-      <div><div class="kicker">Why it exists</div><h2>The problem Atomize solves.</h2></div>
+      <div><div class="kicker">Why it exists</div><h2>One post deserves more than one day.</h2></div>
       <div><p class="lead">A monorepo for product projects, each promoted from prototype to a real, runnable, deployable project, offline-first and server-optional.</p></div>
     </div>
   </section>
   <section class="block alt wrap reveal" id="ideas">
     <div class="kicker">In short</div>
-    <h2>Atomize in three ideas.</h2>
+    <h2>In, out, and ready to sell.</h2>
     <div class="grid3"><article class="idea dark"><span class="tag">01</span><h3>One post in</h3><p>Paste a blog post or an article link.</p></article><article class="idea"><span class="tag">02</span><h3>A week out</h3><p>LinkedIn posts, tweets, newsletters and a Short script.</p></article><article class="idea"><span class="tag">03</span><h3>SaaS-ready</h3><p>Next.js 14 and Claude, with Lemon Squeezy for payments.</p></article></div>
   </section>
   <section class="block wrap reveal" id="features">
     <div class="kicker">What's inside</div>
-    <h2>Small details, real features.</h2>
+    <h2>From one post to a week.</h2>
     <div class="bento"><article class="cell wide dark"><h3>Orbis</h3><p>Communication, identity, protection and hiring in one app, on a zero-dependency Python server.</p></article><article class="cell"><h3>Peers</h3><p>Verified reviews across category modes, every category sharing one interface.</p></article><article class="cell"><h3>House of Articles</h3><p>Athlete-moment sneaker news with a live market feed.</p></article><article class="cell accent"><h3>Hazel</h3><p>A desktop studio for creators: auto-cut, repurpose, publish, measure.</p></article><article class="cell"><h3>Lingua</h3><p>Live-translated Teams captions in an always-on-top overlay.</p></article><article class="cell"><h3>Pips</h3><p>An always-on-top Pomodoro timer and daily score widget.</p></article></div>
   </section>
   <section class="block alt wrap reveal" id="run">
@@ -495,12 +582,20 @@ python apps/house-of-articles/server/server.py"><svg viewBox="0 0 24 24" aria-hi
       </div>
     </div>
   </section>
-  <section class="block wrap reveal" id="faq">
+  <section class="block wrap reveal" id="hood">
+    <div class="kicker">Under the hood</div>
+    <h2>How it's built.</h2>
+    <div class="hood solo"><div class="hood-card">
+        <h3>Built with</h3><div class="sg"><span>Framework</span><div class="chips"><b class=chip>Next.js 14</b></div></div><div class="sg"><span>AI</span><div class="chips"><b class=chip>Claude</b></div></div><div class="sg"><span>Payments</span><div class="chips"><b class=chip>Lemon Squeezy</b></div></div><p class="hood-note">Stack as stated in the README. The Atomize app code isn&#x27;t in the public repo yet, so there&#x27;s no file count or commit history to show.</p>
+        <a class="go" href="https://github.com/juw12/atomize#readme">Read the README <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div></div>
+  </section>
+  <section class="block alt wrap reveal" id="faq">
     <div class="kicker">Questions</div>
     <h2>Good questions.</h2>
     <div class="faq"><details open><summary>What does it run on?</summary><p>Web, Next.js.</p></details><details><summary>How do I get it running?</summary><p>The commands in the “Run a project locally” box above come straight from the README. Paste them into a terminal; the README covers options and troubleshooting.</p></details><details><summary>Is it finished?</summary><p>Not yet: it&#x27;s marked “in progress” and still changing. The README always has the current state.</p></details><details><summary>Is it free?</summary><p>Yes. The source is public on GitHub under the MIT licence.</p></details><details><summary>Who made it?</summary><p>Juwen Lie, an R&amp;D mechanical engineer in Batam, Indonesia, as an independent personal project.</p></details></div>
   </section>
-  <section class="block alt wrap reveal" id="more">
+  <section class="block wrap reveal" id="more">
     <div class="kicker">Keep exploring</div>
     <h2>More from the same workbench.</h2>
     <div class="related"><a class="rel" href="../peers/"><img src="../peers/shot.jpg" alt="" loading="lazy"><div><b>Peers</b><span>Food, travel, market, AI tools, health and finance reviews in one interface, each with a Use it / Wait / Skip…</span></div></a><a class="rel" href="../haru/"><img src="../haru/shot.jpg" alt="" loading="lazy"><div><b>Haru</b><span>A cozy photo diary, walking map and weather town in a Japanese and Korean indie style.</span></div></a><a class="rel" href="../guang-yao-together/"><img src="../guang-yao-together/shot.jpg" alt="" loading="lazy"><div><b>Guang Yao Together 光耀同行</b><span>An unofficial learning app with admin-published lessons, an AI study companion, spaced review and streaks.</span></div></a></div>
@@ -508,7 +603,7 @@ python apps/house-of-articles/server/server.py"><svg viewBox="0 0 24 24" aria-hi
 
   <div class="wrap">
     <section class="band reveal" aria-label="Get Atomize">
-      <h2>Explore Atomize.</h2>
+      <h2>Read how Atomize is planned.</h2>
       <p>Turn one blog post into a week of social content.</p>
       <div class="cta"><a class="btn primary" href="https://github.com/juw12/atomize#readme">Read the README</a><a class="btn ghost" href="https://github.com/juw12/atomize">View source</a></div>
     </section>
