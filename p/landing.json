@@ -283,5 +283,10 @@
   "name": "gate",
   "landing": "https://juw12.github.io/p/gate/",
   "readme": "https://github.com/juw12/gate#readme"
+ },
+ "https://github.com/juw12/reachpilot": {
+  "name": "ReachPilot",
+  "landing": "https://juw12.github.io/p/reachpilot/",
+  "readme": "https://github.com/juw12/reachpilot#readme"
  }
 }
