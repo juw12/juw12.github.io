@@ -308,5 +308,10 @@
   "name": "precedent",
   "landing": "https://juw12.github.io/p/precedent/",
   "readme": "https://github.com/juw12/precedent#readme"
+ },
+ "https://github.com/juw12/meetline": {
+  "name": "Meetline",
+  "landing": "https://juw12.github.io/p/meetline/",
+  "readme": "https://github.com/juw12/meetline#readme"
  }
 }
