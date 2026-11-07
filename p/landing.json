@@ -303,5 +303,10 @@
   "name": "Millennium Digest",
   "landing": "https://juw12.github.io/p/millennium-digest/",
   "readme": "https://github.com/juw12/millennium-digest#readme"
+ },
+ "https://github.com/juw12/precedent": {
+  "name": "precedent",
+  "landing": "https://juw12.github.io/p/precedent/",
+  "readme": "https://github.com/juw12/precedent#readme"
  }
 }
