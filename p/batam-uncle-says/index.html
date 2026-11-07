@@ -465,6 +465,7 @@ html.c-outline :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks 
 html.c-brutal :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border: 2.5px solid var(--ink); border-radius: 6px; box-shadow: 5px 5px 0 var(--accent); }
 html.c-flat :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border-color: transparent; border-radius: 16px; box-shadow: none; background: color-mix(in srgb, var(--accent-soft) 55%, var(--card)); }
 html.c-flat :is(.idea, .cell).dark { background: var(--dark); }  /* keep dark cards dark: the flat tint above outranks .cell.dark */
+.c-flat .cell.accent { background: var(--accent); }  /* flat cards must not wash out the accent card */
 html.c-ticket :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border: 2px dashed color-mix(in srgb, var(--ink) 30%, transparent); border-radius: 6px; box-shadow: none; }
 html.c-pill :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border: 1.5px solid var(--line); border-radius: 30px; box-shadow: 0 3px 0 var(--line); }
 html.c-brutal .frame { border-radius: 6px; box-shadow: 10px 10px 0 var(--accent); }
@@ -587,10 +588,10 @@ html.dna.dna.dna { --fd: "Bitter", var(--fd-fallback); --fdw: 800; --fd-fallback
   <section class="block wrap reveal" id="hood">
     <div class="kicker">Under the hood</div>
     <h2>How it's built.</h2>
-    <div class="hood solo"><div class="hood-card">
-        <h3>Built with</h3><div class="sg"><span>Language</span><div class="chips"><b class=chip>JavaScript</b><b class=chip>HTML/CSS</b></div></div><div class="sg"><span>Platform</span><div class="chips"><b class=chip>PWA</b><b class=chip>Offline service worker</b></div></div><p class="repo-line">36 files in the repo · last updated 7 Nov 2026.</p>
+    <div class="hood"><div class="hood-card">
+        <h3>Built with</h3><div class="sg"><span>Language</span><div class="chips"><b class=chip>HTML/CSS</b><b class=chip>Python</b><b class=chip>JavaScript</b></div></div><div class="sg"><span>Platform</span><div class="chips"><b class=chip>PWA</b><b class=chip>Offline service worker</b></div></div><p class="repo-line">69 files in the repo · 12 commits since Nov 2026 · last updated 7 Nov 2026.</p>
         <a class="go" href="https://github.com/juw12/batam-uncle-says">Browse the code <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div></div>
+      </div><div class="hood-card"><h3>Recently shipped</h3><ol class="log"><li><time datetime="2026-11-07">7 Nov 2026</time><p>Day-trip guide and 5 ferry terminal pages from data; Day trip in nav</p></li><li><time datetime="2026-11-07">7 Nov 2026</time><p>Money switch: multiple support links (SociaBuzz, Saweria, Trakteer)</p></li><li><time datetime="2026-11-07">7 Nov 2026</time><p>Money switch: accept SociaBuzz, Saweria, Trakteer, Lynk.id links</p></li><li><time datetime="2026-11-07">7 Nov 2026</time><p>One-link money switch: Support button in app and all search pages once a payment link is set</p></li><li><time datetime="2026-11-07">7 Nov 2026</time><p>Search pages for prices, entry rules, money, places by area; llms.txt; IndexNow for all pages; share previews</p></li></ol><a class="go" href="https://github.com/juw12/batam-uncle-says/commits/main">Full history on GitHub <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div>
   </section>
   <section class="block alt wrap reveal" id="faq">
     <div class="kicker">Questions</div>
