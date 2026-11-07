@@ -258,5 +258,15 @@
   "name": "Cairn",
   "landing": "https://juw12.github.io/p/cairn/",
   "readme": "https://github.com/juw12/cairn#readme"
+ },
+ "https://github.com/juw12/peakwise": {
+  "name": "Peakwise",
+  "landing": "https://juw12.github.io/p/peakwise/",
+  "readme": "https://github.com/juw12/peakwise#readme"
+ },
+ "https://github.com/juw12/retrace": {
+  "name": "Retrace",
+  "landing": "https://juw12.github.io/p/retrace/",
+  "readme": "https://github.com/juw12/retrace#readme"
  }
 }
