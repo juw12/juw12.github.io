@@ -464,6 +464,7 @@ html.c-soft :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li)
 html.c-outline :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border: 1.5px solid color-mix(in srgb, var(--ink) 55%, transparent); border-radius: 10px; box-shadow: none; }
 html.c-brutal :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border: 2.5px solid var(--ink); border-radius: 6px; box-shadow: 5px 5px 0 var(--accent); }
 html.c-flat :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border-color: transparent; border-radius: 16px; box-shadow: none; background: color-mix(in srgb, var(--accent-soft) 55%, var(--card)); }
+html.c-flat :is(.idea, .cell).dark { background: var(--dark); }  /* keep dark cards dark: the flat tint above outranks .cell.dark */
 html.c-ticket :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border: 2px dashed color-mix(in srgb, var(--ink) 30%, transparent); border-radius: 6px; box-shadow: none; }
 html.c-pill :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border: 1.5px solid var(--line); border-radius: 30px; box-shadow: 0 3px 0 var(--line); }
 html.c-brutal .frame { border-radius: 6px; box-shadow: 10px 10px 0 var(--accent); }
