@@ -298,5 +298,10 @@
   "name": "Vow",
   "landing": "https://juw12.github.io/p/vow/",
   "readme": "https://github.com/juw12/vow#readme"
+ },
+ "https://github.com/juw12/millennium-digest": {
+  "name": "Millennium Digest",
+  "landing": "https://juw12.github.io/p/millennium-digest/",
+  "readme": "https://github.com/juw12/millennium-digest#readme"
  }
 }
