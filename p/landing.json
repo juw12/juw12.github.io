@@ -293,5 +293,10 @@
   "name": "Nadaku",
   "landing": "https://juw12.github.io/p/nadaku/",
   "readme": "https://github.com/juw12/nadaku#readme"
+ },
+ "https://github.com/juw12/vow": {
+  "name": "Vow",
+  "landing": "https://juw12.github.io/p/vow/",
+  "readme": "https://github.com/juw12/vow#readme"
  }
 }
