@@ -273,5 +273,10 @@
   "name": "Tally",
   "landing": "https://juw12.github.io/p/tally/",
   "readme": "https://github.com/juw12/tally#readme"
+ },
+ "https://github.com/juw12/batam-uncle-says": {
+  "name": "Batam Uncle Says",
+  "landing": "https://juw12.github.io/p/batam-uncle-says/",
+  "readme": "https://github.com/juw12/batam-uncle-says#readme"
  }
 }
