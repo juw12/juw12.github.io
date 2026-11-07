@@ -288,5 +288,10 @@
   "name": "ReachPilot",
   "landing": "https://juw12.github.io/p/reachpilot/",
   "readme": "https://github.com/juw12/reachpilot#readme"
+ },
+ "https://github.com/juw12/nadaku": {
+  "name": "Nadaku",
+  "landing": "https://juw12.github.io/p/nadaku/",
+  "readme": "https://github.com/juw12/nadaku#readme"
  }
 }
