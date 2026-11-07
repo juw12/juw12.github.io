@@ -268,5 +268,10 @@
   "name": "Retrace",
   "landing": "https://juw12.github.io/p/retrace/",
   "readme": "https://github.com/juw12/retrace#readme"
+ },
+ "https://github.com/juw12/tally": {
+  "name": "Tally",
+  "landing": "https://juw12.github.io/p/tally/",
+  "readme": "https://github.com/juw12/tally#readme"
  }
 }
