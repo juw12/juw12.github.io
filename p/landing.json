@@ -328,5 +328,10 @@
   "name": "Teduh",
   "landing": "https://juw12.github.io/p/teduh/",
   "readme": "https://github.com/juw12/teduh#readme"
+ },
+ "https://github.com/juw12/trunnion-topopt": {
+  "name": "Trunnion TopOpt",
+  "landing": "https://juw12.github.io/p/trunnion-topopt/",
+  "readme": "https://github.com/juw12/trunnion-topopt#readme"
  }
 }
