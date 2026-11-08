@@ -338,5 +338,10 @@
   "name": "Bilas",
   "landing": "https://juw12.github.io/p/bilas/",
   "readme": "https://github.com/juw12/bilas#readme"
+ },
+ "https://github.com/juw12/lahap": {
+  "name": "Lahap",
+  "landing": "https://juw12.github.io/p/lahap/",
+  "readme": "https://github.com/juw12/lahap#readme"
  }
 }
