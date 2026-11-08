@@ -348,5 +348,15 @@
   "name": "Lahap",
   "landing": "https://juw12.github.io/p/lahap/",
   "readme": "https://github.com/juw12/lahap#readme"
+ },
+ "https://github.com/juw12/hoki": {
+  "name": "Hoki",
+  "landing": "https://juw12.github.io/p/hoki/",
+  "readme": "https://github.com/juw12/hoki#readme"
+ },
+ "https://github.com/juw12/pocketdex": {
+  "name": "PocketDex",
+  "landing": "https://juw12.github.io/p/pocketdex/",
+  "readme": "https://github.com/juw12/pocketdex#readme"
  }
 }
