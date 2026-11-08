@@ -333,5 +333,10 @@
   "name": "Trunnion TopOpt",
   "landing": "https://juw12.github.io/p/trunnion-topopt/",
   "readme": "https://github.com/juw12/trunnion-topopt#readme"
+ },
+ "https://github.com/juw12/bilas": {
+  "name": "Bilas",
+  "landing": "https://juw12.github.io/p/bilas/",
+  "readme": "https://github.com/juw12/bilas#readme"
  }
 }
