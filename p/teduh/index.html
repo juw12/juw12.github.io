@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="k-game t-calm dna h-editorial bg-fine c-soft hd-left">
+<html lang="en" class="dna storyboard">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,665 +11,1429 @@
 <meta property="og:url" content="https://juw12.github.io/p/teduh/">
 <meta property="og:image" content="https://juw12.github.io/p/teduh/shot.jpg">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#2f5d4a">
 <link rel="canonical" href="https://juw12.github.io/p/teduh/">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Teduh", "description": "A free, cozy solarpunk life sim that runs in any browser, on phone or desktop, and keeps working offline. No account, no shop.", "url": "https://juw12.github.io/p/teduh/", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "author": {"@type": "Person", "name": "Juwen Lie", "url": "https://juwenlie.pages.dev/"}, "image": "https://juw12.github.io/p/teduh/shot.jpg", "codeRepository": "https://github.com/juw12/teduh"}</script>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%232f5d4a'/><text x='32' y='44' font-size='34' font-family='Arial' font-weight='700' text-anchor='middle' fill='white'>T</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%232f5d4a'/><text x='32' y='44' font-size='34' font-family='Georgia' font-weight='700' text-anchor='middle' fill='%23f8f3e8'>T</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,500;0,700;0,800;1,500;1,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --accent: #2f5d4a; --accent-soft: #e2e8e6; --accent-ink: #234638;
-  --paper: #fffaf3; --ink: #1f2330; --muted: #5d6273; --line: #ece4d6; --card: #fff; --dark: #1f2330;
+  --ink: #23302a;
+  --ink-soft: #4d5a52;
+  --muted: #66716a;
+  --green: #2f5d4a;
+  --green-deep: #234638;
+  --green-tint: #e3ebe2;
+  --sun: #c9951a;
+  --sun-tint: #f6e7bf;
+  --clay: #c0583a;
+  --paper: #f3ecdc;
+  --sheet: #fbf8f0;
+  --line: #d8ccb3;
+  --sky: #d7e9ef;
+  --grass: #9fb77a;
+  --night: #1c2830;
+  --fd: "Alegreya", Georgia, serif;
+  --fb: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
-
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
 body {
-  margin: 0; font-family: var(--fb); color: var(--ink);
-  background-color: var(--paper); background-image: radial-gradient(color-mix(in srgb, var(--ink) 11%, transparent) 1px, transparent 1px);
-  background-size: 22px 22px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+  margin: 0;
+  font-family: var(--fb);
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 120px;
 }
-.k-sim body, html.k-sim body {
-  background-image: linear-gradient(color-mix(in srgb, var(--accent) 9%, transparent) 1px, transparent 1px),
-                    linear-gradient(90deg, color-mix(in srgb, var(--accent) 9%, transparent) 1px, transparent 1px);
-  background-size: 28px 28px;
-}
-html.k-game { --paper: #12131a; --ink: #f3f1ea; --muted: #b3b5c2; --line: #2a2c38; --card: #1b1d27; --dark: #0b0c11; }
-html.k-game body { background-image: radial-gradient(color-mix(in srgb, var(--accent) 22%, transparent) 1px, transparent 1px); background-size: 26px 26px; }
+img { max-width: 100%; display: block; }
 a { color: inherit; }
-img { max-width: 100%; }
-:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
-.skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: var(--paper); padding: 8px 14px; border-radius: 8px; z-index: 50; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; border-radius: 6px; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: var(--sheet); padding: 8px 14px; border-radius: 8px; z-index: 90; }
 .skip:focus { left: 12px; }
-.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-h1, h2, h3, .brand, .stat b { font-family: var(--fd); letter-spacing: -0.02em; }
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 22px; }
+h1, h2, h3 { font-family: var(--fd); line-height: 1.08; margin: 0; letter-spacing: -0.01em; }
+h2 { font-size: clamp(2rem, 3.6vw, 2.9rem); font-weight: 800; }
+h3 { font-size: 1.55rem; font-weight: 800; }
+p { margin: 0 0 1em; }
+.kicker { font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--green); margin: 0 0 12px; }
+.lede { font-size: 1.12rem; color: var(--ink-soft); max-width: 60ch; }
 
-header.top { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--paper) 86%, transparent);
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-header.top .wrap { display: flex; align-items: center; gap: 20px; height: 64px; }
-.brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; text-decoration: none; white-space: nowrap; }
-.logo { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: var(--accent);
-  color: #fff; font-weight: 800; font-size: 17px; box-shadow: 0 3px 0 var(--accent-ink); }
-nav.links { display: flex; gap: 22px; margin-left: auto; font-size: 15px; color: var(--muted); }
-nav.links a { text-decoration: none; }
-nav.links a:hover { color: var(--ink); }
-.view-switch { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; background: var(--card); padding: 3px; font-size: 13px; font-weight: 600; white-space: nowrap; }
-.view-switch a { padding: 6px 12px; border-radius: 999px; text-decoration: none; color: var(--muted); }
-.view-switch a.on { background: var(--ink); color: var(--paper); }
+/* top bar */
+.top { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; gap: 18px; height: 60px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--fd); font-weight: 800; font-size: 1.35rem; text-decoration: none; }
+.brand i { width: 30px; height: 30px; border-radius: 9px; background: var(--green); color: var(--sheet); display: grid; place-items: center; font-style: normal; font-size: 1.05rem; }
+.top nav { display: flex; gap: 18px; margin-left: auto; font-size: .93rem; font-weight: 600; }
+.top nav a { text-decoration: none; color: var(--ink-soft); }
+.top nav a:hover { color: var(--green); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 10px 20px; border-radius: 999px; border: 2px solid var(--ink); background: var(--green); color: var(--sheet); font-weight: 700; text-decoration: none; cursor: pointer; transition: transform .15s ease, box-shadow .15s ease; box-shadow: 3px 3px 0 var(--ink); }
+.btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
+.btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+.btn.ghost { background: var(--sheet); color: var(--ink); }
+.btn.small { min-height: 38px; padding: 6px 14px; font-size: .9rem; box-shadow: 2px 2px 0 var(--ink); }
+.btn[disabled] { opacity: .45; cursor: not-allowed; transform: none; box-shadow: 2px 2px 0 var(--ink); }
+.top .btn { min-height: 38px; padding: 6px 16px; font-size: .9rem; box-shadow: 2px 2px 0 var(--ink); }
+.textlinks { display: flex; flex-wrap: wrap; gap: 18px; font-weight: 600; font-size: .95rem; }
+.textlinks a { color: var(--green-deep); text-underline-offset: 4px; }
 
-.btn { display: inline-flex; align-items: center; gap: 8px; justify-content: center; padding: 14px 26px; border-radius: 999px;
-  font-weight: 600; font-size: 17px; text-decoration: none; border: 1.5px solid var(--line); background: var(--card); color: var(--ink);
-  transition: transform .15s ease, box-shadow .15s ease; white-space: nowrap; }
-.btn:hover { transform: translateY(-2px); }
-.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 6px 0 var(--accent-ink), 0 14px 30px -10px var(--accent); }
-.btn.primary:hover { box-shadow: 0 8px 0 var(--accent-ink), 0 18px 34px -10px var(--accent); }
-.btn.small { padding: 9px 18px; font-size: 15px; box-shadow: 0 4px 0 var(--accent-ink); }
+/* sections */
+.block { padding: 84px 0; }
+.block + .block { border-top: 1px dashed var(--line); }
 
-.hero { position: relative; text-align: center; padding: 80px 24px 10px; }
-.pill { display: inline-flex; align-items: center; gap: 8px; background: var(--card); border: 1px solid var(--line); border-radius: 999px;
-  padding: 7px 16px; font-size: 14px; font-weight: 500; flex-wrap: wrap; justify-content: center; }
-.pill .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
-.status { font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-ink); }
-.hero h1 { font-size: clamp(40px, 7.2vw, 90px); line-height: 1.02; margin: 26px auto 22px; max-width: 980px; font-weight: 800; text-wrap: balance; }
-.hero h1 .hl { color: var(--accent); position: relative; white-space: nowrap; }
-.hero h1 .hl svg { position: absolute; left: 0; right: 0; bottom: -0.16em; width: 100%; height: 0.28em; color: var(--ink); }
-.hero p.sub { font-size: clamp(17px, 2vw, 21px); color: var(--muted); max-width: 690px; margin: 0 auto 34px; text-wrap: pretty; }
-.cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-.meta { margin-top: 20px; font-size: 14px; color: var(--muted); }
-.sticker { position: absolute; background: var(--card); border: 2px solid var(--ink); border-radius: 12px; padding: 7px 14px;
-  font-weight: 600; font-size: 14px; box-shadow: 4px 4px 0 var(--ink); }
-.sticker.s1 { left: 3%; top: 120px; transform: rotate(-8deg); background: var(--accent-soft); color: var(--accent-ink); }
-.sticker.s2 { right: 3%; top: 96px; transform: rotate(7deg); }
-.sticker.s3 { left: calc(50% + 372px); top: 410px; transform: rotate(-5deg); }
-@media (max-width: 1100px) { .sticker.s3 { display: none; } }
-html.k-game .sticker.s1 { color: var(--accent-ink); }
+/* hero */
+.hero { padding: 54px 0 70px; }
+.hero .wrap { display: grid; grid-template-columns: 1fr 1.08fr; gap: 48px; align-items: center; }
+.hero h1 { font-size: clamp(2.6rem, 5.4vw, 4.4rem); font-weight: 800; margin-bottom: 18px; }
+.hero h1 em { font-style: italic; color: var(--green); font-weight: 700; }
+.hero .cta { display: flex; flex-wrap: wrap; gap: 14px; margin: 26px 0 20px; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.facts li { font-size: .84rem; font-weight: 600; padding: 4px 11px; border: 1.5px solid var(--line); border-radius: 999px; background: var(--sheet); color: var(--ink-soft); }
 
-.frame { margin: 56px auto 0; max-width: 980px; background: var(--card); border: 2px solid var(--ink); border-radius: 18px; overflow: hidden; box-shadow: 10px 10px 0 var(--ink); }
-.frame .bar { display: flex; align-items: center; gap: 7px; padding: 11px 16px; border-bottom: 2px solid var(--ink); font-size: 13px; font-weight: 600; background: var(--paper); }
-.frame .bar i { width: 11px; height: 11px; border-radius: 50%; border: 1.5px solid var(--ink); display: inline-block; }
-.frame .bar i:first-child { background: var(--accent); }
-.frame .bar span { margin-left: 8px; }
-.frame .bar em { margin-left: auto; font-style: normal; color: var(--muted); font-weight: 500; }
-.frame img { display: block; width: 100%; height: auto; }
+/* contact sheet in the hero */
+.sheet { background: var(--sheet); border: 2px solid var(--ink); border-radius: 6px; padding: 16px 16px 12px; box-shadow: 8px 8px 0 rgba(35, 48, 42, .14); position: relative; }
+.sheet-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); border-bottom: 1.5px solid var(--ink); padding-bottom: 8px; margin-bottom: 12px; }
+.sheet-head b { font-family: var(--fd); font-size: 1.15rem; letter-spacing: 0; text-transform: none; color: var(--ink); }
+.thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.thumb { all: unset; cursor: pointer; display: block; position: relative; }
+.thumb img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border: 1.5px solid var(--ink); border-radius: 3px; transition: transform .18s ease; }
+.thumb:hover img, .thumb:focus-visible img { transform: translateY(-3px) rotate(-1deg); }
+.thumb span { display: flex; justify-content: space-between; font-size: .7rem; font-weight: 700; color: var(--ink-soft); margin-top: 4px; letter-spacing: .04em; }
+.thumb.done::after { content: "Done"; position: absolute; top: 6px; right: 6px; font-size: .62rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; background: var(--green); color: var(--sheet); padding: 1px 6px; border-radius: 3px; }
+.sheet-foot { font-family: var(--fd); font-style: italic; font-size: 1.02rem; color: var(--ink-soft); margin-top: 10px; }
 
-.stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; max-width: 980px; margin: 44px auto 0; text-align: left; }
-.stats .stat { flex: 1 1 200px; max-width: 300px; }
-.stat { background: var(--card); border: 1.5px solid var(--line); border-radius: 16px; padding: 16px 18px; display: flex; gap: 12px; align-items: center; }
-.stat b { font-size: 30px; color: var(--accent-ink); line-height: 1; white-space: nowrap; }
-html.k-game .stat b { color: var(--accent); }
-.stat span { font-size: 13.5px; color: var(--muted); line-height: 1.35; }
+/* storyboard shots */
+.story-intro { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: end; margin-bottom: 46px; }
+.story-intro p { margin: 0; color: var(--ink-soft); }
+.shot { display: grid; grid-template-columns: 1.35fr 1fr; gap: 36px; align-items: start; padding: 38px 0; scroll-margin-top: 80px; }
+.shot:nth-of-type(even) .frame { order: 2; }
+.shot > *, .hero .wrap > *, .story-intro > *, .wrapup > *, .hood-grid > *, .final .wrap > * { min-width: 0; }
+.shot.establishing { grid-template-columns: 1fr; gap: 26px; }
+.shot.establishing .side { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 40px; align-items: start; }
+.shot.establishing .side h3, .shot.establishing .side .sub { grid-column: 1; }
+.shot.establishing .side .card { grid-column: 2; grid-row: 1 / span 2; }
+.shot.establishing .side .row.begin { grid-column: 2; }
+.frame { background: var(--sheet); border: 2px solid var(--ink); border-radius: 5px; padding: 10px; box-shadow: 7px 7px 0 rgba(35, 48, 42, .13); position: relative; }
+.slug { display: flex; justify-content: space-between; gap: 10px; align-items: center; font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 2px 4px 9px; }
+.slug .no { background: var(--ink); color: var(--sheet); padding: 2px 8px; border-radius: 3px; }
+.slug .loc { color: var(--ink-soft); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+.slug .clock { color: var(--green); }
+.stage { position: relative; border: 1.5px solid var(--ink); border-radius: 3px; overflow: hidden; aspect-ratio: 16 / 9; background: var(--sky); }
+.stage img { width: 100%; height: 100%; object-fit: cover; }
+.stage .move { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.move path { fill: none; stroke: #fff; stroke-width: .45; stroke-dasharray: 1.4 1.1; stroke-linecap: round; filter: drop-shadow(0 0 .3px rgba(0,0,0,.6)); }
+.move text { font: 700 2.1px var(--fb); fill: #fff; letter-spacing: .25px; paint-order: stroke; stroke: rgba(35, 48, 42, .65); stroke-width: .45px; }
+.note { font-family: var(--fd); font-style: italic; font-size: 1.02rem; color: var(--ink-soft); padding: 9px 4px 2px; margin: 0; }
+.stamp { position: absolute; top: 46px; right: 20px; z-index: 6; font-family: var(--fd); font-weight: 800; font-size: 1.25rem; letter-spacing: .08em; text-transform: uppercase; color: var(--green); border: 3px solid var(--green); padding: 2px 12px; border-radius: 6px; background: rgba(251, 248, 240, .9); transform: rotate(-8deg) scale(1.6); opacity: 0; transition: opacity .25s ease, transform .35s cubic-bezier(.2, 1.6, .4, 1); pointer-events: none; }
+.shot.done .stamp { opacity: 1; transform: rotate(-8deg) scale(1); }
 
-section.block { padding-top: 104px; }
-.kicker { text-align: center; font-size: 13px; font-weight: 700; letter-spacing: .14em; color: var(--accent-ink); text-transform: uppercase; }
-html.k-game .kicker { color: var(--accent); }
-.kicker.left { text-align: left; }
-.kicker.light { color: color-mix(in srgb, var(--accent) 70%, #fff); }
-section.block h2 { text-align: center; font-size: clamp(32px, 4.6vw, 54px); margin: 10px 0 44px; line-height: 1.08; text-wrap: balance; }
-section.block h2.left { text-align: left; margin-bottom: 18px; }
-.muted { color: var(--muted); }
+/* hotspots on the frame */
+.hot { position: absolute; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 4px; background: none; border: 0; padding: 0; cursor: pointer; z-index: 4; }
+.hot .dot { width: 44px; height: 44px; border-radius: 50%; border: 3px solid #fff; background: rgba(201, 149, 26, .35); box-shadow: 0 0 0 2px rgba(35, 48, 42, .55); position: relative; transition: transform .12s ease, background .2s; }
+.hot .dot::after { content: ""; position: absolute; inset: -9px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, .85); animation: ping 1.8s ease-out infinite; }
+.hot .tag { font-size: .76rem; font-weight: 700; color: var(--ink); background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 999px; padding: 1px 9px; white-space: nowrap; }
+.hot:hover .dot, .hot:focus-visible .dot { transform: scale(1.1); background: rgba(201, 149, 26, .6); }
+.hot:active .dot { transform: scale(.9); }
+.hot.cool .dot { background: rgba(35, 48, 42, .35); }
+.hot.cool .dot::after { animation: none; opacity: 0; }
+.hot.cool .tag { opacity: .7; }
+.hot[disabled] { cursor: default; }
+@keyframes ping { 0% { transform: scale(.7); opacity: .9; } 100% { transform: scale(1.35); opacity: 0; } }
+.pop { position: absolute; z-index: 8; font-weight: 800; font-size: .95rem; color: var(--ink); background: var(--sun-tint); border: 1.5px solid var(--ink); border-radius: 999px; padding: 1px 10px; pointer-events: none; transform: translate(-50%, -100%); animation: rise 1.1s ease-out forwards; white-space: nowrap; }
+@keyframes rise { 0% { opacity: 0; margin-top: 4px; } 15% { opacity: 1; } 100% { opacity: 0; margin-top: -42px; } }
 
-.why-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 48px; align-items: start; border-top: 2px solid var(--ink); padding-top: 34px; }
-.why-grid .kicker { text-align: left; }
-.why-grid h2 { text-align: left !important; margin: 10px 0 0 !important; font-size: clamp(30px, 3.8vw, 44px) !important; }
-.lead { font-family: var(--fd); font-size: clamp(22px, 2.5vw, 30px); line-height: 1.3; margin: 0; font-weight: 600; letter-spacing: -0.01em; }
-.lead-2 { color: var(--muted); font-size: 18px; margin: 18px 0 0; }
+/* side notes */
+.side h3 { margin-bottom: 8px; }
+.side .sub { color: var(--ink-soft); margin-bottom: 14px; }
+.goalchips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; padding: 0; list-style: none; }
+.goalchips li { font-size: .8rem; font-weight: 700; padding: 3px 10px 3px 8px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--sheet); color: var(--ink-soft); display: flex; align-items: center; gap: 6px; }
+.goalchips li::before { content: ""; width: 10px; height: 10px; border-radius: 50%; border: 2px solid currentColor; }
+.goalchips li.ok { border-color: var(--green); color: var(--green-deep); background: var(--green-tint); }
+.goalchips li.ok::before { background: var(--green); border-color: var(--green); }
+.card { background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 10px; padding: 14px 16px; }
+.card + .card { margin-top: 10px; }
+.fine { font-size: .84rem; color: var(--muted); margin: 10px 0 0; }
+.row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.sw { width: 14px; height: 14px; border-radius: 4px; border: 1.5px solid rgba(35, 48, 42, .55); display: inline-block; flex: none; }
 
-.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.idea { background: var(--card); border: 1.5px solid var(--line); border-radius: 20px; padding: 28px; }
-.idea .tag { font-size: 12px; font-weight: 700; letter-spacing: .1em; color: var(--accent-ink); }
-.idea h3 { font-size: 24px; margin: 10px 0 8px; line-height: 1.15; }
-.idea p { margin: 0; color: var(--muted); }
-.idea.dark { background: var(--dark); color: #fff; border-color: var(--dark); }
-.idea.dark p { color: #c9ccd6; }
-.idea.dark .tag { color: var(--accent); }
+/* planters */
+.pots { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.pot { background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 10px; padding: 12px; }
+.pot b { display: block; font-size: .95rem; }
+.pot small { display: block; color: var(--muted); font-size: .8rem; min-height: 1.3em; }
+.bar { height: 8px; border-radius: 99px; background: #e6dcc6; overflow: hidden; margin: 8px 0 10px; border: 1px solid rgba(35, 48, 42, .25); }
+.bar > i { display: block; height: 100%; width: 0; background: var(--green); border-radius: 99px; transition: width .3s linear; }
 
-.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 18px; counter-reset: s; position: relative; }
-.steps.n2 { grid-template-columns: repeat(2, 1fr); } .steps.n3 { grid-template-columns: repeat(3, 1fr); } .steps.n4 { grid-template-columns: repeat(4, 1fr); }
-.steps li { background: var(--card); border: 1.5px solid var(--line); border-radius: 20px; padding: 26px 24px; position: relative; }
-.steps li:not(:last-child)::after { content: ""; position: absolute; top: 44px; right: -19px; width: 20px; height: 2px; background: var(--ink); }
-.steps .num { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; font-weight: 800; background: var(--accent);
-  color: #fff; font-family: var(--fd); box-shadow: 0 4px 0 var(--accent-ink); margin-bottom: 16px; font-size: 18px; }
-.steps h3 { font-size: 20px; margin: 0 0 6px; line-height: 1.2; }
-.steps p { margin: 0; color: var(--muted); font-size: 15.5px; }
+/* recipes */
+.recipes { display: grid; gap: 8px; }
+.recipe { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: center; background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 10px; padding: 10px 12px; }
+.recipe b { display: flex; align-items: center; gap: 8px; }
+.recipe .needs { grid-column: 1; display: flex; gap: 10px; flex-wrap: wrap; font-size: .82rem; color: var(--ink-soft); }
+.recipe .needs span.short { color: var(--clay); font-weight: 700; }
+.recipe .needs span.have { color: var(--green-deep); font-weight: 700; }
+.recipe .btn { grid-row: 1 / span 2; grid-column: 2; }
+.recipe.ready { border-color: var(--green); box-shadow: inset 4px 0 0 var(--green); }
 
-.bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.cell { background: var(--card); border: 1.5px solid var(--line); border-radius: 22px; padding: 26px 26px 28px; position: relative; overflow: hidden; }
-.cell::before { content: ""; display: block; width: 28px; height: 6px; border-radius: 6px; background: var(--accent); margin-bottom: 18px; }
-.cell h3 { font-size: 22px; margin: 0 0 8px; line-height: 1.15; }
-.cell p { margin: 0; color: var(--muted); }
-.cell.wide { grid-column: span 2; }
-.cell.dark { background: var(--dark); color: #fff; border-color: var(--dark); }
-.cell.dark h3 { font-size: 30px; }
-.cell.dark p { color: #c9ccd6; font-size: 17px; max-width: 560px; }
-.cell.accent { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 6px 0 var(--accent-ink); }
-.cell.accent::before { background: #fff; }
-.cell.accent p { color: rgba(255,255,255,.9); }
+/* villagers */
+.people { display: grid; gap: 10px; }
+.person { display: grid; grid-template-columns: 42px 1fr; gap: 12px; align-items: start; text-align: left; background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 10px; padding: 11px 13px; cursor: pointer; }
+.person .face { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-family: var(--fd); font-weight: 800; font-size: 1.2rem; border: 2px solid var(--ink); }
+.person b { display: block; }
+.person span { font-size: .88rem; color: var(--ink-soft); }
+.person[aria-pressed="true"] { box-shadow: 3px 3px 0 var(--ink); }
+.sell { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.sell button { display: inline-flex; gap: 6px; align-items: center; font-size: .84rem; font-weight: 700; border: 1.5px solid var(--ink); border-radius: 999px; padding: 4px 11px; background: #fff; cursor: pointer; }
+.sell button:hover { background: var(--sun-tint); }
+.sell .none { font-size: .86rem; color: var(--muted); }
 
-.checks { list-style: none; padding: 0; margin: 0 auto; max-width: 900px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px; }
-.checks li { display: flex; gap: 12px; align-items: flex-start; background: var(--card); border: 1.5px solid var(--line); border-radius: 14px; padding: 14px 16px; }
-.checks i { flex: none; width: 26px; height: 26px; border-radius: 8px; background: var(--accent-soft); color: var(--accent-ink); display: grid; place-items: center; }
-.checks svg, .limits svg { width: 18px; height: 18px; }
+/* projects */
+.projects { display: grid; gap: 10px; }
+.proj { background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 10px; padding: 12px 14px; }
+.proj header { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.proj header b { font-family: var(--fd); font-size: 1.12rem; }
+.proj p { font-size: .86rem; color: var(--ink-soft); margin: 4px 0 8px; }
+.proj .needs { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 6px 12px; font-size: .8rem; }
+.proj .needs div { display: grid; gap: 3px; }
+.proj .needs .bar { margin: 0; height: 6px; }
+.proj.locked { opacity: .7; background: repeating-linear-gradient(-45deg, var(--sheet), var(--sheet) 8px, #f1eadb 8px, #f1eadb 16px); }
+.proj.finished { border-color: var(--green); box-shadow: inset 4px 0 0 var(--green); }
 
-.gallery { display: grid; gap: 18px; }
-.gallery.g1 { grid-template-columns: minmax(0, 820px); justify-content: center; }
-.gallery.g2 { grid-template-columns: 1fr 1fr; } .gallery.g3 { grid-template-columns: repeat(3, 1fr); } .gallery.g4 { grid-template-columns: repeat(3, 1fr); }
-.gallery.g4 .shot:first-child { grid-column: span 2; grid-row: span 2; }
-.shot { display: block; position: relative; border: 2px solid var(--ink); border-radius: 16px; overflow: hidden; background: var(--card); box-shadow: 6px 6px 0 var(--ink); transition: transform .15s ease; }
-.shot:hover { transform: translate(-2px, -2px); }
-.shot img { display: block; width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16 / 10; }
-.gallery.g1 .shot img { aspect-ratio: auto; object-fit: contain; }
-.shot span { position: absolute; left: 10px; bottom: 10px; background: var(--card); border: 1.5px solid var(--ink); border-radius: 999px; padding: 3px 10px; font-size: 12.5px; font-weight: 600; }
+/* energy */
+.energy .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; margin-bottom: 12px; }
+.stepper { display: flex; align-items: center; justify-content: space-between; gap: 6px; background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 10px; padding: 6px 6px 6px 12px; font-size: .86rem; font-weight: 600; }
+.stepper button { width: 32px; height: 32px; border-radius: 8px; border: 1.5px solid var(--ink); background: #fff; font-weight: 800; cursor: pointer; }
+.stepper output { min-width: 1.4em; text-align: center; font-weight: 800; }
+.chart { width: 100%; height: auto; display: block; background: var(--night); border: 1.5px solid var(--ink); border-radius: 10px; }
+.readout { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+.readout div { background: var(--sheet); border: 1.5px solid var(--line); border-radius: 10px; padding: 8px 10px; }
+.readout b { display: block; font-family: var(--fd); font-size: 1.3rem; }
+.readout span { font-size: .76rem; color: var(--muted); font-weight: 600; }
+.verdict { margin-top: 10px; font-weight: 700; padding: 10px 12px; border-radius: 10px; border: 1.5px solid var(--ink); }
+.verdict.good { background: var(--green-tint); }
+.verdict.bad { background: #f6dfd6; }
+.range { width: 100%; accent-color: var(--green); }
 
-.quick { display: grid; grid-template-columns: 0.9fr 1.3fr; gap: 40px; align-items: center; }
-.qs-note { color: var(--muted); margin: 0 0 16px; }
-.go { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; color: var(--accent-ink); text-decoration: none; }
-html.k-game .go { color: var(--accent); }
-.go svg { width: 18px; height: 18px; }
-.go:hover { text-decoration: underline; }
-.term { background: #15161d; color: #e9e9ef; border-radius: 16px; border: 2px solid var(--ink); box-shadow: 8px 8px 0 var(--accent); overflow: hidden; min-width: 0; }
-.term-bar { display: flex; align-items: center; gap: 7px; padding: 10px 14px; background: #1f2029; font-size: 12.5px; color: #9ea0ad; }
-.term-bar i { width: 10px; height: 10px; border-radius: 50%; background: #3a3c48; }
-.term-bar i:first-child { background: var(--accent); }
-.term-bar span { margin-left: 8px; font-family: "JetBrains Mono", monospace; }
-.copy { margin-left: auto; display: inline-flex; gap: 6px; align-items: center; background: #2b2d39; color: #e9e9ef; border: 0; border-radius: 8px; padding: 5px 10px; font: 600 12.5px Inter, sans-serif; cursor: pointer; }
-.copy svg { width: 14px; height: 14px; }
-.term pre { margin: 0; padding: 18px 20px 20px; overflow-x: auto; font: 14px/1.75 "JetBrains Mono", ui-monospace, monospace; }
-.term .p { color: var(--accent); user-select: none; }
-.term .c { color: #7d8091; }
+/* lang toggle */
+.seg { display: inline-flex; border: 2px solid var(--ink); border-radius: 999px; overflow: hidden; }
+.seg button { border: 0; background: var(--sheet); padding: 6px 14px; font-weight: 700; cursor: pointer; font-size: .9rem; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--sheet); }
+.quote { font-family: var(--fd); font-size: 1.3rem; line-height: 1.3; margin: 14px 0 6px; }
+.quote small { display: block; font-family: var(--fb); font-size: .82rem; color: var(--muted); margin-top: 4px; }
 
-.privacy { display: grid; grid-template-columns: auto 1fr; gap: 28px; background: var(--dark); color: #fff; border-radius: 28px; padding: 44px; }
-.privacy .lock { width: 64px; height: 64px; border-radius: 18px; background: var(--accent); display: grid; place-items: center; color: #fff; box-shadow: 0 5px 0 var(--accent-ink); }
-.privacy .lock svg { width: 32px; height: 32px; }
-.privacy h2 { color: #fff; }
-.privacy ul { margin: 0; padding-left: 20px; color: #d3d5de; display: grid; gap: 8px; }
+/* HUD */
+.hud { position: fixed; left: 50%; bottom: 14px; transform: translate(-50%, 140%); width: min(760px, calc(100% - 20px)); z-index: 60; background: var(--sheet); border: 2px solid var(--ink); border-radius: 16px; box-shadow: 5px 5px 0 rgba(35, 48, 42, .3); padding: 10px 12px; display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; transition: transform .35s ease; }
+.hud.show { transform: translate(-50%, 0); }
+.hud .sun { width: 44px; height: 44px; flex: none; }
+.hud .goal { min-width: 0; }
+.hud .goal small { display: block; font-size: .7rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--green); }
+.hud .goal b { display: block; font-size: .98rem; line-height: 1.25; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hud .pips { display: flex; gap: 3px; margin-top: 5px; }
+.hud .pips i { width: 16px; height: 5px; border-radius: 3px; background: #e2d7bf; }
+.hud .pips i.ok { background: var(--green); }
+.hud .right { display: flex; align-items: center; gap: 8px; }
+.inv { display: flex; gap: 5px; max-width: 290px; overflow-x: auto; scrollbar-width: none; }
+.inv::-webkit-scrollbar { display: none; }
+.chip { display: inline-flex; align-items: center; gap: 5px; font-size: .8rem; font-weight: 700; padding: 3px 8px; border-radius: 999px; background: #fff; border: 1.5px solid var(--line); white-space: nowrap; }
+.chip.bump { animation: bump .45s ease; }
+@keyframes bump { 40% { transform: scale(1.18); border-color: var(--sun); } }
+.credits { font-weight: 800; font-size: .86rem; background: var(--sun-tint); border: 1.5px solid var(--ink); border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+.hud .go { min-height: 36px; padding: 4px 12px; font-size: .84rem; }
+.toast { position: fixed; left: 50%; bottom: 112px; transform: translate(-50%, 20px); opacity: 0; z-index: 70; background: var(--ink); color: var(--sheet); padding: 9px 16px; border-radius: 12px; font-weight: 600; font-size: .92rem; transition: opacity .25s, transform .25s; pointer-events: none; max-width: calc(100% - 30px); text-align: center; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
 
-.limits { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; align-items: start; }
-.limits ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-.limits li { display: flex; gap: 12px; align-items: flex-start; background: var(--card); border: 1.5px dashed color-mix(in srgb, var(--ink) 30%, transparent); border-radius: 14px; padding: 14px 16px; }
-.limits i { flex: none; color: #b7791f; margin-top: 2px; }
+/* wrap-up */
+.wrapup { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+.wrapup .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.wrapup .stats div { background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 10px; padding: 12px 14px; }
+.wrapup .stats b { display: block; font-family: var(--fd); font-size: 2rem; line-height: 1; }
+.wrapup .stats span { font-size: .84rem; color: var(--muted); font-weight: 600; }
+.reset { background: none; border: 0; text-decoration: underline; color: var(--muted); cursor: pointer; font-size: .86rem; padding: 0; }
 
-.devices { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
-.dev { background: var(--card); border: 1.5px solid var(--line); border-top: 5px solid var(--accent); border-radius: 16px; padding: 18px 18px 20px; }
-.dev b { font-family: var(--fd); font-size: 18px; display: block; margin-bottom: 6px; }
-.dev p { margin: 0; color: var(--muted); font-size: 14.5px; }
-.center { text-align: center; margin-top: 26px; }
-.faq { max-width: 780px; margin: 0 auto; }
-.faq details { background: var(--card); border: 1.5px solid var(--line); border-radius: 16px; padding: 18px 22px; margin-bottom: 12px; }
-.faq summary { cursor: pointer; font-weight: 600; font-size: 17px; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+/* call sheet */
+.callsheet { background: var(--sheet); border: 2px solid var(--ink); border-radius: 6px; box-shadow: 8px 8px 0 rgba(35, 48, 42, .12); margin-top: 32px; }
+.callsheet .head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 12px 18px; border-bottom: 2px solid var(--ink); font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+.callsheet dl { margin: 0; display: grid; grid-template-columns: 170px 1fr; }
+.callsheet dt, .callsheet dd { margin: 0; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+.callsheet dt { font-weight: 800; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--green); border-right: 1px solid var(--line); }
+.callsheet dd { color: var(--ink); }
+.callsheet dl > :nth-last-child(-n+2) { border-bottom: 0; }
+
+/* hood */
+.hood-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px; }
+.layers { list-style: none; margin: 0; padding: 0; border-left: 3px solid var(--ink); }
+.layers li { padding: 0 0 18px 20px; position: relative; }
+.layers li::before { content: ""; position: absolute; left: -9px; top: 6px; width: 15px; height: 15px; border-radius: 50%; background: var(--sheet); border: 3px solid var(--ink); }
+.layers b { display: block; font-family: var(--fd); font-size: 1.2rem; }
+.layers span { color: var(--ink-soft); font-size: .95rem; }
+.formula { background: var(--night); color: #e9efe6; border-radius: 10px; padding: 18px 20px; font-family: ui-monospace, Consolas, monospace; font-size: .88rem; line-height: 1.7; overflow-x: auto; border: 2px solid var(--ink); }
+.formula .c { color: #9fb77a; }
+
+/* faq */
+.faq { margin-top: 26px; display: grid; gap: 10px; max-width: 820px; }
+.faq details { background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 10px; padding: 0 18px; }
+.faq summary { cursor: pointer; font-weight: 700; padding: 15px 0; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
 .faq summary::-webkit-details-marker { display: none; }
-.faq summary::after { content: "+"; color: var(--accent-ink); font-weight: 700; font-size: 20px; line-height: 1; }
-html.k-game .faq summary::after { color: var(--accent); }
-.faq details[open] summary::after { content: "\2212"; }
-.faq details p { margin: 10px 0 0; color: var(--muted); }
+.faq summary::after { content: "+"; font-family: var(--fd); font-size: 1.4rem; line-height: 1; }
+.faq details[open] summary::after { content: "-"; }
+.faq details p { color: var(--ink-soft); }
 
-.related { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.rel { display: block; background: var(--card); border: 1.5px solid var(--line); border-radius: 18px; overflow: hidden; text-decoration: none; transition: transform .15s ease, box-shadow .15s ease; }
-.rel:hover { transform: translateY(-3px); box-shadow: 0 12px 30px -16px rgba(0,0,0,.35); }
-.rel img, .rel-ph { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-bottom: 1.5px solid var(--line); }
-.rel-ph { display: grid; place-items: center; color: #fff; font: 800 44px var(--fd); }
-.rel div { padding: 14px 16px 18px; }
-.rel b { display: block; font-family: var(--fd); font-size: 19px; }
-.rel span { font-size: 14px; color: var(--muted); }
+/* related */
+.related { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 26px; }
+.related a { display: block; text-decoration: none; background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 10px; padding: 16px 18px; transition: transform .15s ease; }
+.related a:hover { transform: translateY(-3px); }
+.related b { font-family: var(--fd); font-size: 1.2rem; display: block; }
+.related span { font-size: .9rem; color: var(--ink-soft); }
 
-.band { margin: 120px auto 0; border-radius: 28px; background: var(--accent); color: #fff; text-align: center; padding: 72px 24px; box-shadow: 0 8px 0 var(--accent-ink); }
-.band h2 { font-size: clamp(36px, 5vw, 60px); margin: 0 0 10px; }
-.band p { margin: 0 auto 30px; font-size: 18px; opacity: .93; max-width: 640px; }
-.band .btn { border-color: #fff; }
-.band .btn.primary { background: #fff; color: var(--accent-ink); border-color: #fff; box-shadow: 0 6px 0 rgba(0,0,0,.18); }
-.band .btn.ghost { background: transparent; color: #fff; }
+/* final */
+.final { background: var(--night); color: #eef2ea; }
+.final .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.final h2 { color: #fff; }
+.final p { color: #c9d3cb; }
+.final img { border: 2px solid #0e1519; border-radius: 6px; }
+.final .btn { box-shadow: 3px 3px 0 #0e1519; border-color: #0e1519; }
+.final .btn.ghost { background: #eef2ea; }
+.final .textlinks a { color: #cfe0c0; }
+footer { padding: 26px 0 30px; font-size: .88rem; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+footer nav { display: flex; gap: 16px; flex-wrap: wrap; }
 
-footer { padding: 46px 0 60px; text-align: center; color: var(--muted); font-size: 14px; }
-footer a { text-decoration: none; }
-footer a:hover { color: var(--ink); text-decoration: underline; }
-.foot-links, .foot-note { margin-top: 10px; }
-
-.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
-.js .reveal.in { opacity: 1; transform: none; }
-
-
-/* ---------- theme systems ---------- */
-:root { --fd: "Bricolage Grotesque", Inter, sans-serif; --fb: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
-
-/* under the hood */
-.hood { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
-.hood.solo { grid-template-columns: minmax(0, 860px); justify-content: center; }
-.hood-card { background: var(--card); border: 1.5px solid var(--line); border-radius: 20px; padding: 26px 28px; min-width: 0; }
-.hood-card h3 { margin: 0 0 14px; font-size: 21px; }
-.sg { display: flex; gap: 14px; align-items: baseline; padding: 11px 0; border-top: 1px dashed var(--line); }
-.hood-card h3 + .sg { border-top: 0; }
-.hood-note { margin: 12px 0 0; font-size: 14.5px; line-height: 1.55; color: var(--muted); }
-.sg > span { width: 96px; flex: none; font: 600 11.5px "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip { font-size: 14px; font-weight: 600; padding: 4px 12px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-ink); }
-html.k-game .chip, html.t-blueprint .chip { background: color-mix(in srgb, var(--accent) 22%, transparent); color: var(--ink); }
-.repo-line { margin: 16px 0 12px; font-size: 14px; color: var(--muted); }
-.log { list-style: none; margin: 0 0 14px; padding: 0; }
-.log li { position: relative; padding: 0 0 16px 28px; }
-.log li::before { content: ""; position: absolute; left: 4px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
-.log li:not(:last-child)::after { content: ""; position: absolute; left: 8px; top: 22px; bottom: 2px; width: 2px; background: var(--line); }
-.log time { font: 600 12.5px "JetBrains Mono", monospace; color: var(--muted); }
-.log p { margin: 2px 0 0; font-size: 15px; line-height: 1.45; overflow-wrap: anywhere; }
-
-/* split hero (clean / tech / blueprint) */
-.hero.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: 52px; align-items: center; text-align: left; padding-top: 72px; max-width: 1280px; }
-.hero.split h1 { font-size: clamp(38px, 4.9vw, 64px); margin: 22px 0 18px; max-width: none; }
-.hero.split p.sub { margin: 0 0 30px; }
-.hero.split .cta { justify-content: flex-start; }
-.hero.split .frame { margin: 0; max-width: none; }
-.hero.split .stats { grid-column: 1 / -1; margin: 40px 0 0; max-width: none; justify-content: flex-start; }
-.hero.split .sticker { display: none; }
-
-/* calm: serif, soft, warm */
-html.t-calm { --fd: "Fraunces", Georgia, serif; }
-html.t-calm body { background-image: radial-gradient(60rem 40rem at 90% -10%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%),
-  radial-gradient(48rem 34rem at -10% 25%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 70%); background-size: auto; background-repeat: no-repeat; }
-html.t-calm h1, html.t-calm h2, html.t-calm h3 { font-weight: 600; letter-spacing: -0.015em; }
-html.t-calm .hero h1 { font-weight: 500; }
-html.t-calm .hero h1 .hl { font-style: italic; }
-html.t-calm .hero h1 .hl svg { color: var(--accent); opacity: .35; }
-html.t-calm .kicker { text-transform: none; letter-spacing: 0; font: italic 500 19px var(--fd); }
-html.t-calm .sticker { display: none; }
-html.t-calm .logo, html.t-calm .steps .num { border-radius: 50%; box-shadow: none; }
-html.t-calm .btn.primary { box-shadow: 0 12px 26px -12px var(--accent); }
-html.t-calm .btn.small { box-shadow: none; }
-html.t-calm .frame, html.t-calm .shot, html.t-calm .term { border: 0; border-radius: 26px; box-shadow: 0 0 0 1px rgba(0,0,0,.06), 0 40px 70px -36px rgba(70,45,20,.45); }
-html.t-calm .frame .bar { border-bottom: 1px solid var(--line); }
-html.t-calm .frame .bar i { border: 0; background: #ddd5c9; }
-html.t-calm .shot span { border: 0; }
-html.t-calm :is(.idea, .cell, .steps li, .checks li, .faq details, .stat, .dev, .rel, .limits li, .hood-card) { border-color: transparent; border-radius: 26px;
-  box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 14px 34px -20px rgba(70,45,20,.3); }
-html.t-calm .cell.accent, html.t-calm .band { box-shadow: none; }
-html.t-calm .band { border-radius: 36px; }
-html.t-calm .why-grid { border-top: 1px solid var(--line); }
-html.t-calm .steps li::after { display: none; }
-
-/* tech: grotesk + mono, grid paper, sharp */
-html.t-tech { --fd: "Space Grotesk", Inter, sans-serif; }
-html.t-tech body { background-image: linear-gradient(color-mix(in srgb, var(--ink) 6%, transparent) 1px, transparent 1px),
-  linear-gradient(90deg, color-mix(in srgb, var(--ink) 6%, transparent) 1px, transparent 1px); background-size: 44px 44px; }
-html.t-tech .kicker { font: 600 13px "JetBrains Mono", monospace; letter-spacing: 0; text-transform: none; }
-html.t-tech .kicker::before { content: "// "; opacity: .55; }
-html.t-tech .hero h1 { font-weight: 700; letter-spacing: -0.04em; }
-html.t-tech .hero h1 .hl svg { display: none; }
-html.t-tech .hero h1::after { content: "_"; color: var(--accent); margin-left: .04em; animation: caret 1.1s steps(1) infinite; }
-@keyframes caret { 50% { opacity: 0; } }
-html.t-tech :is(.idea, .cell, .steps li, .checks li, .faq details, .stat, .dev, .rel, .limits li, .hood-card, .pill, .view-switch, .view-switch a, .status, .chip) { border-radius: 8px; }
-html.t-tech .btn { border-radius: 8px; }
-html.t-tech .btn.primary { box-shadow: 4px 4px 0 var(--ink); }
-html.t-tech .btn.small { box-shadow: 3px 3px 0 var(--ink); }
-html.t-tech .logo, html.t-tech .steps .num { border-radius: 8px; box-shadow: none; font-family: "JetBrains Mono", monospace; }
-html.t-tech .frame { border: 1px solid var(--ink); border-radius: 10px; box-shadow: 0 40px 80px -40px rgba(0,0,0,.5); }
-html.t-tech .frame .bar { border-bottom: 1px solid var(--line); font-family: "JetBrains Mono", monospace; font-weight: 500; }
-html.t-tech .shot { border-width: 1px; border-radius: 8px; box-shadow: none; }
-html.t-tech .term { border: 1px solid #000; border-radius: 10px; box-shadow: 0 30px 60px -30px rgba(0,0,0,.55); }
-html.t-tech .stat b { font-family: "JetBrains Mono", monospace; letter-spacing: -0.03em; }
-html.t-tech .cell::before { width: 18px; height: 3px; border-radius: 0; }
-html.t-tech .band { border-radius: 14px; background: var(--dark); box-shadow: 8px 8px 0 var(--accent); }
-html.t-tech .band .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); box-shadow: none; }
-html.t-tech .why-grid { border-top: 1px dashed color-mix(in srgb, var(--ink) 40%, transparent); }
-
-/* clean: white, product-grade, alternating bands */
-html.t-clean { --fd: "Plus Jakarta Sans", Inter, sans-serif; --paper: #ffffff; --line: #e6e8ee; }
-html.t-clean body { background-image: none; }
-html.t-clean section.block.alt { background: #f5f6f9; box-shadow: 0 0 0 100vmax #f5f6f9; clip-path: inset(0 -100vmax); padding-bottom: 96px; }
-html.t-clean .hero h1 { font-weight: 800; letter-spacing: -0.035em; }
-html.t-clean .hero h1 .hl svg { display: none; }
-html.t-clean .hero h1 .hl { background: linear-gradient(transparent 70%, var(--accent-soft) 70%); }
-html.t-clean .sticker { display: none; }
-html.t-clean .logo { border-radius: 9px; box-shadow: none; }
-html.t-clean .btn { border-radius: 10px; }
-html.t-clean .btn.primary { box-shadow: 0 10px 24px -10px var(--accent); }
-html.t-clean .btn.small { box-shadow: none; }
-html.t-clean :is(.idea, .cell, .steps li, .checks li, .faq details, .stat, .dev, .rel, .limits li, .hood-card) { border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 1px 2px rgba(16,24,40,.05); }
-html.t-clean .idea.dark, html.t-clean .cell.dark { border-color: var(--dark); }
-html.t-clean .cell.accent { box-shadow: none; }
-html.t-clean .frame { border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 50px 90px -40px rgba(16,24,40,.35); }
-html.t-clean .frame .bar { border-bottom: 1px solid var(--line); background: #f8f9fb; }
-html.t-clean .frame .bar i { border: 0; background: #dcdfe6; }
-html.t-clean .shot { border: 1px solid var(--line); box-shadow: 0 24px 48px -28px rgba(16,24,40,.35); }
-html.t-clean .shot span { border-width: 1px; }
-html.t-clean .term { border: 0; box-shadow: 0 30px 60px -30px rgba(16,24,40,.55); }
-html.t-clean .why-grid { border-top: 0; }
-html.t-clean .steps .num { border-radius: 10px; box-shadow: none; }
-html.t-clean .steps li::after { display: none; }
-html.t-clean .band { border-radius: 22px; box-shadow: none; background: linear-gradient(135deg, var(--accent), var(--accent-ink)); }
-
-/* blueprint: engineering drawing, navy + plex */
-html.t-blueprint { --fd: "IBM Plex Sans", Inter, sans-serif; --fb: "IBM Plex Sans", Inter, sans-serif;
-  --paper: #0c1a2b; --ink: #e5eef8; --muted: #9db1c7; --line: #223a54; --card: #10233a; --dark: #07111d; }
-html.t-blueprint body { background-image: linear-gradient(rgba(120,170,230,.10) 1px, transparent 1px), linear-gradient(90deg, rgba(120,170,230,.10) 1px, transparent 1px),
-  linear-gradient(rgba(120,170,230,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(120,170,230,.045) 1px, transparent 1px);
-  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px; }
-html.t-blueprint :is(.kicker, .stat b, .go, .idea .tag, .faq summary::after, .steps .num) { color: var(--accent); }
-html.t-blueprint .kicker, html.t-blueprint .stat b, html.t-blueprint .sg > span { font-family: "IBM Plex Mono", monospace; }
-html.t-blueprint .kicker { letter-spacing: .08em; }
-html.t-blueprint .hero h1 { font-weight: 600; letter-spacing: -0.03em; }
-html.t-blueprint .hero h1 .hl svg { display: none; }
-html.t-blueprint .hero h1 .hl { color: var(--accent); }
-html.t-blueprint :is(.idea, .cell, .steps li, .checks li, .faq details, .stat, .dev, .rel, .limits li, .hood-card, .pill, .view-switch) { border: 1px solid var(--line); border-radius: 4px; box-shadow: none; }
-html.t-blueprint .btn { border-radius: 4px; }
-html.t-blueprint .btn.primary, html.t-blueprint .btn.small { box-shadow: none; }
-html.t-blueprint .logo { border-radius: 4px; box-shadow: none; }
-html.t-blueprint .steps .num { background: transparent; border: 1px solid var(--accent); box-shadow: none; border-radius: 4px; font-family: "IBM Plex Mono", monospace; }
-html.t-blueprint .steps li::after { background: var(--accent); }
-html.t-blueprint .frame { border: 1px solid var(--accent); border-radius: 4px; box-shadow: 0 0 0 8px color-mix(in srgb, var(--accent) 12%, transparent); }
-html.t-blueprint .frame .bar { border-bottom: 1px solid var(--line); background: var(--dark); font-family: "IBM Plex Mono", monospace; }
-html.t-blueprint .frame .bar i { border-color: var(--muted); }
-html.t-blueprint .shot { border: 1px solid var(--accent); border-radius: 4px; box-shadow: none; }
-html.t-blueprint .shot span { border-width: 1px; }
-html.t-blueprint .term { border: 1px solid var(--line); border-radius: 4px; box-shadow: none; }
-html.t-blueprint .sticker { display: none; }
-html.t-blueprint .why-grid { border-top: 1px solid var(--accent); }
-html.t-blueprint .cell.accent { box-shadow: none; }
-html.t-blueprint .band { background: transparent; border: 1px solid var(--accent); border-radius: 4px; box-shadow: inset 0 0 0 8px color-mix(in srgb, var(--accent) 10%, transparent); }
-html.t-blueprint .band .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); box-shadow: none; }
-html.t-blueprint .status { color: var(--ink); background: color-mix(in srgb, var(--accent) 30%, transparent); }
-html.t-blueprint .checks i { color: var(--accent); background: color-mix(in srgb, var(--accent) 18%, transparent); }
-
-/* arcade: games, dark with neon glow */
-html.t-arcade .hero::before { content: ""; position: absolute; left: 50%; top: -60px; width: min(1400px, 140vw); height: 900px; transform: translateX(-50%);
-  background: radial-gradient(45% 45% at 50% 45%, color-mix(in srgb, var(--accent) 34%, transparent), transparent 72%); z-index: -1; pointer-events: none; }
-html.t-arcade .hero { isolation: isolate; }
-html.t-arcade main { overflow-x: clip; }
-html.t-arcade .hero h1 { text-shadow: 0 0 44px color-mix(in srgb, var(--accent) 45%, transparent); }
-html.t-arcade .kicker { letter-spacing: .32em; }
-html.t-arcade .frame { max-width: 1080px; border: 2px solid var(--accent); box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 18%, transparent), 0 50px 130px -30px color-mix(in srgb, var(--accent) 60%, transparent); }
-html.t-arcade .frame .bar { border-bottom-color: var(--accent); }
-html.t-arcade .shot { border-color: color-mix(in srgb, var(--accent) 70%, #000); box-shadow: 0 24px 60px -24px color-mix(in srgb, var(--accent) 65%, transparent); }
-html.t-arcade .band { box-shadow: 0 0 80px -10px color-mix(in srgb, var(--accent) 60%, transparent); }
-
-/* neo: dark glass, red-to-teal gradient edges (NFT-gallery feel). No purple. */
-html.t-neo { --paper: #07090d; --ink: #eef2f6; --muted: #a3adbb; --line: #1c2430; --card: #0d1219; --dark: #05070a;
-  --neo1: #ff4d5e; --neo2: #00d9c0; --neo-edge: linear-gradient(135deg, var(--neo1), var(--neo2)); color-scheme: dark; }
-html.t-neo body { background-color: var(--paper);
-  background-image: radial-gradient(48rem 30rem at 12% -6%, rgba(255,77,94,.20), transparent 70%),
-    radial-gradient(44rem 28rem at 95% 8%, rgba(0,217,192,.16), transparent 70%),
-    linear-gradient(rgba(238,242,246,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(238,242,246,.045) 1px, transparent 1px);
-  background-size: auto, auto, 44px 44px, 44px 44px; background-attachment: fixed, fixed, scroll, scroll; }
-html.t-neo header.top { background: rgba(7,9,13,.72); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%);
-  border-bottom: 1px solid rgba(238,242,246,.08); }
-html.t-neo .logo { background: var(--neo-edge); color: #05070a; box-shadow: none; }
-html.t-neo.dna .hero h1 { letter-spacing: -0.02em; line-height: 1.08; }
-html.t-neo.dna .hero h1 .hl { color: transparent; -webkit-text-stroke: 0; background: var(--neo-edge); -webkit-background-clip: text; background-clip: text; }
-html.t-neo .hero h1 .hl svg { display: none; }
-html.t-neo .kicker, html.t-neo .idea .tag { font: 600 13px "JetBrains Mono", monospace; letter-spacing: .06em; color: var(--neo2); }
-html.t-neo .kicker.light { color: var(--neo2); }
-html.t-neo.dna :is(.idea, .cell, .steps li, .checks li, .faq details, .stat, .dev, .rel, .limits li, .hood-card) {
-  border: 1px solid transparent; border-radius: 18px; box-shadow: 0 24px 60px -36px rgba(0,0,0,.9);
-  background: linear-gradient(var(--card), var(--card)) padding-box, linear-gradient(135deg, rgba(255,77,94,.55), rgba(0,217,192,.45)) border-box; }
-html.t-neo.dna :is(.idea.dark, .cell.dark) { background: linear-gradient(#0a0e14, #0a0e14) padding-box, var(--neo-edge) border-box; }
-html.t-neo.dna .cell.accent { background: linear-gradient(135deg, #c8192f, #0a7f73); border-color: transparent; box-shadow: none; }
-html.t-neo .cell::before { background: var(--neo-edge); height: 3px; border-radius: 2px; }
-html.t-neo :is(.idea p, .cell p, .idea.dark p, .cell.dark p) { color: var(--muted); }
-html.t-neo .btn { border-radius: 12px; border-color: rgba(238,242,246,.22); }
-html.t-neo .btn.primary { background: linear-gradient(135deg, #d91f3a, #a3122a); border-color: transparent; color: #fff;
-  box-shadow: 0 0 0 1px rgba(255,77,94,.4), 0 14px 34px -12px rgba(255,77,94,.65); }
-html.t-neo .btn.primary:hover { box-shadow: 0 0 0 1px rgba(0,217,192,.55), 0 18px 40px -12px rgba(0,217,192,.5); }
-html.t-neo .btn.small { box-shadow: none; }
-html.t-neo.dna .frame { border: 1px solid transparent; border-radius: 20px;
-  background: linear-gradient(var(--card), var(--card)) padding-box, var(--neo-edge) border-box;
-  box-shadow: 0 0 0 6px rgba(255,77,94,.06), 0 60px 120px -40px rgba(0,217,192,.35); }
-html.t-neo .frame .bar { background: #0a0e14; border-bottom: 1px solid var(--line); font-family: "JetBrains Mono", monospace; font-weight: 500; color: var(--muted); }
-html.t-neo .frame .bar i { border-color: rgba(238,242,246,.25); }
-html.t-neo .frame .bar i:first-child { background: var(--neo1); }
-html.t-neo .shot { border: 1px solid var(--line); border-radius: 14px; box-shadow: none; }
-html.t-neo .sticker { background: rgba(13,18,25,.8); color: var(--ink); border: 1px solid rgba(0,217,192,.45); border-radius: 999px;
-  font: 600 12px "JetBrains Mono", monospace; box-shadow: none; }
-html.t-neo .sticker.s1 { background: rgba(255,77,94,.14); color: #ffd5d9; border-color: rgba(255,77,94,.5); }
-html.t-neo .steps .num { background: var(--neo-edge); color: #05070a; border: 0; box-shadow: none; font-family: "JetBrains Mono", monospace; }
-html.t-neo .steps li::after { background: linear-gradient(90deg, var(--neo1), var(--neo2)); }
-html.t-neo .why-grid { border-top: 1px solid rgba(238,242,246,.1); }
-html.t-neo .band { background: linear-gradient(#0a0e14, #0a0e14) padding-box, var(--neo-edge) border-box; border: 1px solid transparent;
-  border-radius: 24px; color: var(--ink); box-shadow: 0 0 90px -20px rgba(255,77,94,.35); }
-html.t-neo .band p { color: var(--muted); opacity: 1; }
-html.t-neo .band .btn.primary { background: linear-gradient(135deg, #d91f3a, #a3122a); color: #fff; border-color: transparent; }
-html.t-neo .band .btn.ghost { color: var(--ink); border-color: rgba(0,217,192,.5); }
-html.t-neo :is(.status, .chip, .pill) { background: rgba(0,217,192,.12); color: #bff6ee; border-color: rgba(0,217,192,.35); }
-html.t-neo .art .o { stroke: var(--ink); }
-html.t-neo .art .s { fill: rgba(0,217,192,.14); }
-html.t-neo .art .a { fill: var(--neo1); }
-html.t-neo .art .ao { stroke: var(--neo2); }
-html.t-neo footer a:hover { color: var(--neo2); }
-@media (prefers-reduced-motion: no-preference) {
-  html.t-neo.dna :is(.idea, .cell, .rel) { transition: transform .2s ease, box-shadow .2s ease; }
-  html.t-neo.dna :is(.idea, .cell, .rel):hover { transform: translateY(-3px); box-shadow: 0 30px 70px -34px rgba(0,217,192,.45); }
+@media (max-width: 960px) {
+  .hero .wrap, .story-intro, .shot, .wrapup, .hood-grid, .final .wrap { grid-template-columns: 1fr; }
+  .shot:nth-of-type(even) .frame { order: 0; }
+  .shot.establishing .side { display: block; }
+  .related { grid-template-columns: 1fr; }
+  .top nav { display: none; }
+  .top .btn { margin-left: auto; }
 }
-
-@media (max-width: 980px) {
-  .hero.split { grid-template-columns: 1fr; text-align: center; gap: 36px; }
-  .hero.split .cta, .hero.split .stats { justify-content: center; }
-  .hero.split p.sub { margin: 0 auto 30px; }
+@media (max-width: 560px) {
+  .wrap { padding: 0 14px; }
+  .block { padding: 60px 0; }
+  .thumbs { grid-template-columns: repeat(2, 1fr); }
+  .hot .dot { width: 38px; height: 38px; }
+  .hot .tag { font-size: .7rem; }
+  .pots, .energy .controls { grid-template-columns: 1fr; }
+  .readout { grid-template-columns: 1fr 1fr; }
+  .callsheet dl { grid-template-columns: 1fr; }
+  .callsheet dt { border-right: 0; border-bottom: 0; padding-bottom: 0; }
+  .hud { grid-template-columns: auto 1fr; gap: 6px 10px; padding: 8px 10px; }
+  .hud .sun { width: 36px; height: 36px; }
+  .hud .right { grid-column: 1 / -1; }
+  .inv { max-width: none; flex: 1; }
+  .slug .loc { display: none; }
+  body { padding-bottom: 150px; }
+  .toast { bottom: 150px; }
 }
-@media (max-width: 860px) {
-  .hood { grid-template-columns: 1fr; }
-  .sg { flex-direction: column; gap: 6px; }
-  .sg > span { width: auto; }
-  html.t-clean section.block.alt { padding-bottom: 72px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }
-
-@media (max-width: 980px) {
-  nav.links { display: none; }
-  .view-switch { margin-left: auto; }
-  .steps.n4 { grid-template-columns: repeat(2, 1fr); }
-  .steps li::after { display: none; }
-}
-@media (max-width: 860px) {
-  .sticker { display: none; }
-  .grid3, .bento, .related, .steps.n2, .steps.n3, .steps.n4, .checks, .quick, .limits, .why-grid, .gallery.g2, .gallery.g3, .gallery.g4 { grid-template-columns: 1fr; }
-  .cell.wide, .gallery.g4 .shot:first-child { grid-column: auto; grid-row: auto; }
-  .hero { padding-top: 52px; }
-  header.top .wrap { gap: 12px; }
-  header.top .btn.small { display: none; }
-  .privacy { grid-template-columns: 1fr; padding: 30px; }
-  .why-grid { gap: 18px; }
-  section.block { padding-top: 80px; }
-  .frame { box-shadow: 6px 6px 0 var(--ink); }
-}
-@media (max-width: 600px) {
-  .view-switch { display: none; }
-  .brand { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
-  .hero h1 .hl { white-space: normal; }
-  .hero h1 { font-size: clamp(34px, 10vw, 46px); overflow-wrap: anywhere; }
-}
-@media (max-width: 480px) {
-  .stats, .hero.split .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .stats .stat { max-width: none; flex-direction: column; align-items: flex-start; gap: 6px; padding: 14px; }
-  .stats .stat:last-child:nth-child(odd) { grid-column: 1 / -1; }
-  .stat b { font-size: 26px; }
-  .stat span { font-size: 12.5px; }
-  .btn { padding: 13px 20px; font-size: 16px; }
-  .brand { font-size: 18px; }
-  .view-switch a { padding: 6px 9px; }
-}
-
-
-.art { display: block; width: var(--art-size, 120px); height: var(--art-size, 120px); margin: 0 auto 18px; }
-.art svg { width: 100%; height: 100%; overflow: visible; }
-.art .o { fill: none; stroke: var(--ink); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
-.art .ao { fill: none; stroke: var(--accent); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
-.art .a { fill: var(--accent); }
-.art .s { fill: var(--accent-soft); }
-.art .p { fill: var(--card); }
-@media (prefers-reduced-motion: no-preference) {
-  .art svg { animation: art-in .9s cubic-bezier(.2,.8,.2,1) both; }
-  @keyframes art-in { from { opacity: 0; transform: translateY(10px) rotate(-4deg) scale(.94); } to { opacity: 1; transform: none; } }
-}
-
-
-/* ---- per-project design DNA (fonts, backgrounds, cards, headings, hero layouts) ---- */
-h1, h2, h3, .brand, .stat b, .lead { font-weight: var(--fdw, 800); }
-
-/* backgrounds */
-html.bg-dots body { background-image: radial-gradient(color-mix(in srgb, var(--ink) 13%, transparent) 1.2px, transparent 1.3px); background-size: 20px 20px; }
-html.bg-grid body { background-image: linear-gradient(color-mix(in srgb, var(--ink) 7%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--ink) 7%, transparent) 1px, transparent 1px); background-size: 40px 40px; }
-html.bg-fine body { background-image: linear-gradient(color-mix(in srgb, var(--accent) 14%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--accent) 14%, transparent) 1px, transparent 1px), linear-gradient(color-mix(in srgb, var(--accent) 6%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--accent) 6%, transparent) 1px, transparent 1px); background-size: 96px 96px, 96px 96px, 16px 16px, 16px 16px; }
-html.bg-lines body { background-image: linear-gradient(color-mix(in srgb, var(--ink) 8%, transparent) 1px, transparent 1px); background-size: 100% 34px; }
-html.bg-diag body { background-image: repeating-linear-gradient(-45deg, color-mix(in srgb, var(--accent) 9%, transparent) 0 2px, transparent 2px 22px); background-size: auto; }
-html.bg-plus body { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34'%3E%3Cpath d='M17 11v12M11 17h12' stroke='%23888' stroke-opacity='.28' stroke-width='1.5'/%3E%3C/svg%3E"); background-size: 34px 34px; }
-html.bg-waves body { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='40'%3E%3Cpath d='M0 20 Q15 8 30 20 T60 20 T90 20 T120 20' fill='none' stroke='%23888' stroke-opacity='.22' stroke-width='1.5'/%3E%3C/svg%3E"); background-size: 120px 40px; }
-html.bg-topo body { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cg fill='none' stroke='%23888' stroke-opacity='.2' stroke-width='1.3'%3E%3Cpath d='M-20 60 C60 20 120 110 200 60 S300 40 330 80'/%3E%3Cpath d='M-20 100 C70 60 120 150 210 100 S300 80 330 120'/%3E%3Cpath d='M-20 170 C50 130 130 220 200 170 S290 150 330 190'/%3E%3Cpath d='M-20 230 C80 190 120 280 210 230 S300 210 330 250'/%3E%3Cellipse cx='240' cy='150' rx='26' ry='14'/%3E%3Cellipse cx='240' cy='150' rx='12' ry='6'/%3E%3C/g%3E%3C/svg%3E"); background-size: 300px 300px; }
-html.bg-rings body { background-image: radial-gradient(circle at 85% 0%, transparent 0 120px, color-mix(in srgb, var(--accent) 12%, transparent) 121px 122px, transparent 123px 200px, color-mix(in srgb, var(--accent) 10%, transparent) 201px 202px, transparent 203px 290px, color-mix(in srgb, var(--accent) 8%, transparent) 291px 292px, transparent 293px), radial-gradient(color-mix(in srgb, var(--ink) 9%, transparent) 1px, transparent 1.2px); background-size: auto, 26px 26px; background-repeat: no-repeat, repeat; background-attachment: fixed, scroll; }
-html.bg-stars body { background-image: radial-gradient(1.4px 1.4px at 20px 30px, color-mix(in srgb, var(--ink) 40%, transparent), transparent), radial-gradient(1px 1px at 90px 120px, color-mix(in srgb, var(--ink) 30%, transparent), transparent), radial-gradient(1.8px 1.8px at 160px 60px, color-mix(in srgb, var(--accent) 60%, transparent), transparent), radial-gradient(1px 1px at 130px 170px, color-mix(in srgb, var(--ink) 30%, transparent), transparent); background-size: 200px 200px; }
-html.bg-checker body { background-image: conic-gradient(color-mix(in srgb, var(--ink) 5%, transparent) 25%, transparent 0 50%, color-mix(in srgb, var(--ink) 5%, transparent) 0 75%, transparent 0); background-size: 48px 48px; }
-html.bg-paper body { background-image: radial-gradient(70rem 30rem at 50% -8%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 70%); background-repeat: no-repeat; }
-
-/* cards */
-html.c-soft :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border: 1px solid color-mix(in srgb, var(--line) 70%, transparent); border-radius: 24px; box-shadow: 0 18px 40px -26px rgba(15, 20, 40, .35); }
-html.c-outline :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border: 1.5px solid color-mix(in srgb, var(--ink) 55%, transparent); border-radius: 10px; box-shadow: none; }
-html.c-brutal :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border: 2.5px solid var(--ink); border-radius: 6px; box-shadow: 5px 5px 0 var(--accent); }
-html.c-flat :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border-color: transparent; border-radius: 16px; box-shadow: none; background: color-mix(in srgb, var(--accent-soft) 55%, var(--card)); }
-html.c-flat :is(.idea, .cell).dark { background: var(--dark); }  /* keep dark cards dark: the flat tint above outranks .cell.dark */
-.c-flat .cell.accent { background: var(--accent); }  /* flat cards must not wash out the accent card */
-html.c-ticket :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border: 2px dashed color-mix(in srgb, var(--ink) 30%, transparent); border-radius: 6px; box-shadow: none; }
-html.c-pill :is(.idea, .cell, .stat, .hood-card, .faq details, .rel, .checks li) { border: 1.5px solid var(--line); border-radius: 30px; box-shadow: 0 3px 0 var(--line); }
-html.c-brutal .frame { border-radius: 6px; box-shadow: 10px 10px 0 var(--accent); }
-html.c-soft .frame { border-width: 1px; border-color: color-mix(in srgb, var(--line) 80%, transparent); border-radius: 22px; box-shadow: 0 40px 80px -40px rgba(15, 20, 40, .45); }
-html.c-outline .frame { box-shadow: none; border-radius: 10px; }
-html.c-flat .frame { border-color: transparent; box-shadow: 0 0 0 10px color-mix(in srgb, var(--accent-soft) 70%, transparent); }
-html.c-ticket .frame { box-shadow: 0 0 0 8px var(--paper), 0 0 0 10px color-mix(in srgb, var(--ink) 25%, transparent); }
-html.c-pill .frame { border-radius: 28px; }
-
-/* section headings */
-html.hd-marker section.block > h2::after { content: ""; display: block; width: 64px; height: 7px; margin: 16px auto 0; border-radius: 7px; background: var(--accent); }
-html.hd-left section.block > :is(h2, .kicker) { text-align: left; margin-left: 0; }
-html.hd-left section.block > h2 { max-width: 760px; }
-html.hd-upper section.block > h2 { text-transform: uppercase; letter-spacing: .01em; font-size: clamp(28px, 4vw, 46px); }
-html.hd-upper .kicker { letter-spacing: .22em; }
-html.hd-italic section.block > h2 { font-style: italic; }
-html.hd-outline .hero h1 .hl { color: transparent; -webkit-text-stroke: 2px var(--accent); }
-html.hd-outline section.block > h2 { position: relative; }
-
-/* hero layouts */
-.hero.split.rev .hero-copy { order: 2; }
-.hero.split.rev .frame { order: 1; }
-.hero.split.rev .stats { order: 3; }
-.hero.split .art { margin: 0 0 14px; --art-size: 96px; }
-.hero.poster { text-align: left; max-width: 1240px; padding-top: 64px; }
-.hero.poster .hero-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 40px; align-items: center; }
-.hero.poster .art { --art-size: clamp(150px, 20vw, 250px); margin: 0; order: 2; }
-.hero.poster h1 { font-size: clamp(46px, 8.6vw, 116px); margin: 20px 0 40px; max-width: none; line-height: .96; }
-.hero.poster p.sub { margin-left: 0; }
-.hero.poster .cta { justify-content: flex-start; }
-.hero.poster .frame { transform: rotate(-1.2deg); margin-top: 60px; max-width: none; }
-.hero.poster .stats { justify-content: flex-start; max-width: none; }
-.hero.editorial { text-align: left; max-width: 1180px; padding-top: 64px; }
-.hero.editorial .hero-top { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 48px; align-items: center; border-bottom: 2px solid var(--ink); padding-bottom: 36px; }
-.hero.editorial .art { --art-size: clamp(170px, 22vw, 280px); margin: 0 auto; }
-.hero.editorial h1 { font-size: clamp(42px, 6.4vw, 84px); margin: 18px 0 20px; max-width: none; }
-.hero.editorial p.sub { margin-left: 0; }
-.hero.editorial .cta { justify-content: flex-start; }
-.hero.editorial .stats { justify-content: flex-start; max-width: none; }
-.hero:is(.poster, .editorial) .sticker { display: none; }
-@media (max-width: 860px) {
-  .hero.poster .hero-top, .hero.editorial .hero-top { grid-template-columns: 1fr; gap: 10px; }
-  .hero.poster .art, .hero.editorial .art { --art-size: 120px; order: -1; margin: 0; }
-  .hero.split.rev .hero-copy { order: 0; }
-  .hero.poster .frame { transform: none; }
-}
-
-html.dna.dna.dna { --fd: "Alegreya", var(--fd-fallback); --fdw: 800; --fd-fallback: system-ui, sans-serif; }
 </style>
-<script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#top"><span class="logo" aria-hidden="true">T</span>Teduh</a>
-    <nav class="links" aria-label="On this page"><a href="#gallery">Screens</a><a href="#hood">Built with</a><a href="#faq">FAQ</a></nav>
-    <div class="view-switch" title="Pick how you want to read about Teduh">
-      <a class="on" href="https://juw12.github.io/p/teduh/" aria-current="page">Landing page</a>
-      <a href="https://github.com/juw12/teduh#readme">README</a>
-    </div>
-    <a class="btn primary small" href="https://juw12.github.io/teduh/">▶ Try it live</a>
+    <a class="brand" href="#top" aria-label="Teduh, back to top"><i>T</i>Teduh</a>
+    <nav aria-label="Page sections">
+      <a href="#story">Storyboard</a>
+      <a href="#cast">Full game</a>
+      <a href="#hood">How it's built</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn" href="https://juw12.github.io/teduh/">Play free</a>
   </div>
 </header>
 
 <main id="main">
-  <section class="hero wrap editorial" id="top">
-    
-    <div class="hero-top"><div class="hero-copy">
-      <span class="pill"><span class="dot"></span>Web, PWA, three.js<span class="status">live</span></span>
-      <h1>A calm sky village you build with <span class="hl">sun and wind<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 14 C 40 4, 80 4, 110 11 S 170 18, 198 7" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg></span>.</h1>
-      <p class="sub">A free, cozy solarpunk life sim that runs in any browser, on phone or desktop, and keeps working offline. No account, no shop.</p>
-      <div class="cta"><a class="btn primary" href="https://juw12.github.io/teduh/">▶ Try it live</a><a class="btn " href="https://github.com/juw12/teduh#readme">Read the README</a><a class="btn " href="https://github.com/juw12/teduh">View source</a></div>
-      <div class="meta">Web, PWA, three.js</div>
-    </div>
-    <span class="art" aria-hidden="true"><svg viewBox="0 0 200 200" role="presentation" focusable="false"><circle class="a" cx="152" cy="46" r="15"/><path class="ao" d="M152 20 v-8 M152 80 v-6 M178 46 h8 M120 46 h6" style="stroke-width:4"/><path class="s o" d="M32 120 Q58 172 100 184 Q142 172 168 120 Z"/><ellipse class="a o" cx="100" cy="120" rx="70" ry="15"/><rect class="p o" x="56" y="86" width="34" height="30" rx="2"/><path class="s o" d="M51 88 L73 68 L95 88 Z"/><path class="p o" d="M108 104 L142 94 L147 106 L113 116 Z"/><line class="o" x1="128" y1="111" x2="128" y2="118"/><path class="p o" d="M20 70 q8 -12 20 -6 q8 -10 20 0 q10 2 6 10 H22 q-6 0 -2 -4 Z"/></svg></span></div>
-    
-    <figure class="frame reveal" id="showcase">
-      <div class="bar"><i></i><i></i><i></i><span>teduh · live demo</span><em>live demo</em></div>
-      <img src="shot.jpg" alt="Teduh screenshot" width="1280" height="800" fetchpriority="high">
-    </figure>
-    <div class="stats reveal" style="--n:2"><div class="stat"><b>1</b><span>platform: Web, PWA, three.js</span></div><div class="stat"><b>MIT</b><span>open source licence</span></div></div>
-  </section>
-
-  <section class="block wrap why reveal" id="why">
-    <div class="why-grid">
-      <div><div class="kicker">Why it exists</div><h2>A calm village above the clouds.</h2></div>
-      <div><p class="lead">Farm, fish, craft, decorate Plant basil, tomatoes, sunflowers and sky berries, fish two pools, cook meals that give boosts, and furnish your own floating island.</p><p class="lead-2">Teduh (Indonesian for &quot;sheltered, calm&quot;) is a cozy life sim set on floating islands above the clouds.</p></div>
-    </div>
-  </section>
-  <section class="block alt wrap reveal" id="gallery">
-    <div class="kicker">Screens</div>
-    <h2>Take a look around.</h2>
-    <div class="gallery g1" style="grid-template-columns:minmax(0,820px)"><a class="shot" href="g1.jpg"><img src="g1.jpg" alt="Teduh screenshot 1" loading="lazy" width="1400" height="875"></a></div>
-  </section>
-  <section class="block wrap reveal" id="hood">
-    <div class="kicker">Under the hood</div>
-    <h2>How it's built.</h2>
-    <div class="hood solo"><div class="hood-card">
-        <h3>Built with</h3><div class="sg"><span>Language</span><div class="chips"><b class=chip>JavaScript</b><b class=chip>HTML/CSS</b></div></div><div class="sg"><span>Platform</span><div class="chips"><b class=chip>PWA</b><b class=chip>Offline service worker</b></div></div><div class="sg"><span>Testing</span><div class="chips"><b class=chip>Automated tests</b></div></div><div class="sg"><span>UI</span><div class="chips"><b class=chip>Multi-language UI</b></div></div><p class="repo-line">32 files in the repo · last updated 7 Nov 2026.</p>
-        <a class="go" href="https://github.com/juw12/teduh">Browse the code <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div></div>
-  </section>
-  <section class="block alt wrap reveal" id="faq">
-    <div class="kicker">Questions</div>
-    <h2>Good questions.</h2>
-    <div class="faq"><details open><summary>What does it run on?</summary><p>Web, PWA, three.js. You can try it in the browser with nothing to install.</p></details><details><summary>Where does my data go?</summary><p>Playing together is opt-in.</p></details><details><summary>Is it finished?</summary><p>Not yet: it&#x27;s marked “live” and still changing. The README always has the current state.</p></details><details><summary>Is it free?</summary><p>The source is public on GitHub under the MIT licence.</p></details><details><summary>Who made it?</summary><p>Juwen Lie, an R&amp;D mechanical engineer in Batam, Indonesia, as an independent personal project.</p></details></div>
-  </section>
-  <section class="block wrap reveal" id="more">
-    <div class="kicker">Keep exploring</div>
-    <h2>More from the same workbench.</h2>
-    <div class="related"><a class="rel" href="../townsquare-3d/"><img src="../townsquare-3d/shot.jpg" alt="" loading="lazy"><div><b>Townsquare 3D</b><span>Claim land, run crops and workshops, and trade at a market that follows supply and demand.</span></div></a><a class="rel" href="../glow/"><img src="../glow/shot.jpg" alt="" loading="lazy"><div><b>Glow</b><span>Four AI apps on one free account, in 4 languages.</span></div></a><a class="rel" href="../batam-uncle-says/"><img src="../batam-uncle-says/shot.jpg" alt="" loading="lazy"><div><b>Batam Uncle Says</b><span>Plan a day around your ferry times, check a price before you pay, and know the rules at both terminals.</span></div></a></div>
-  </section>
-
+<section class="block hero" id="top">
   <div class="wrap">
-    <section class="band reveal" aria-label="Get Teduh">
-      <h2>Build your sky village.</h2>
-      <p>A calm sky village you build with sun and wind.</p>
-      <div class="cta"><a class="btn primary" href="https://juw12.github.io/teduh/">▶ Try it live</a><a class="btn ghost" href="https://github.com/juw12/teduh#readme">Read the README</a><a class="btn ghost" href="https://github.com/juw12/teduh">View source</a></div>
-    </section>
+    <div>
+      <p class="kicker">A storyboard you can play</p>
+      <h1>A calm sky village you build with <em>sun and wind.</em></h1>
+      <p class="lede">Teduh is a free, cozy solarpunk life sim that runs in any browser, on phone or desktop, and keeps working offline. No account, no shop. Below is one day on the islands, told in eight shots, and you can play its first goals right on this page.</p>
+      <div class="cta">
+        <a class="btn" href="https://juw12.github.io/teduh/">Try it live</a>
+        <a class="btn ghost" href="#shot-1">Play day one here</a>
+      </div>
+      <div class="textlinks">
+        <a href="https://github.com/juw12/teduh#readme">Read the README</a>
+        <a href="https://github.com/juw12/teduh">View source</a>
+      </div>
+      <ul class="facts" style="margin-top:22px">
+        <li>Browser and phone</li>
+        <li>Works offline</li>
+        <li>English and Bahasa Indonesia</li>
+        <li>Co-op with a room code</li>
+        <li>MIT licence</li>
+      </ul>
+    </div>
+    <div class="sheet" aria-label="Storyboard contact sheet">
+      <div class="sheet-head"><b>A day on Teduh</b><span>8 shots, 06:30 to 21:30</span></div>
+      <div class="thumbs" id="thumbs"></div>
+      <p class="sheet-foot">Every frame is a real render from the game. Pick one to jump in.</p>
+    </div>
   </div>
+</section>
+
+<section class="block story" id="story" aria-labelledby="story-title">
+  <div class="wrap">
+    <div class="story-intro">
+      <div>
+        <p class="kicker">The storyboard</p>
+        <h2 id="story-title">One day, eight shots, eleven goals.</h2>
+      </div>
+      <p>The goal card at the bottom of the screen works like the one in the game. Tap the marked spots in each frame to gather, plant, craft and trade. Recipes, yields, prices and goal rewards are the game's own numbers; only the waiting is sped up. Your progress is saved in this browser.</p>
+    </div>
+
+    <!-- SHOT 1 -->
+    <article class="shot establishing" id="shot-1" data-shot="1">
+      <div class="frame">
+        <div class="slug"><span class="no">Shot 01</span><span class="loc">Ext. Home Isle, wide</span><span class="clock">06:30 Dawn</span></div>
+        <div class="stage">
+          <img src="g1.jpg" alt="Dawn over Home Isle: a floating island with a red-roofed house, planters, lamp posts and a round pond, with two more islands behind" width="1200" height="675">
+          <svg class="move" viewBox="0 0 100 56.25" aria-hidden="true"><path d="M8 50 Q 30 30 52 26"/><text x="10" y="54">SLOW CRANE DOWN</text></svg>
+        </div>
+        <p class="note">Wide on the island at first light. Hold, let the clouds drift, then find the traveller by the bench.</p>
+      </div>
+      <div class="side">
+        <h3>You wake on Home Isle.</h3>
+        <p class="sub">A small house, two empty planters, a workbench and a pond. You start with 4 basil seeds, 2 wood and 30 credits. The first day is always clear, so you learn in sunshine.</p>
+        <div class="card">
+          <div class="row" style="justify-content:space-between">
+            <b>Play in</b>
+            <div class="seg" role="group" aria-label="Language for goals">
+              <button type="button" data-lang="en" aria-pressed="true">English</button>
+              <button type="button" data-lang="id" aria-pressed="false">Bahasa Indonesia</button>
+            </div>
+          </div>
+          <p class="quote" id="firstGoal">Chop a tree for wood<small>Goal 1 of 19, the same words the game uses</small></p>
+        </div>
+        <div class="row begin" style="margin-top:16px">
+          <button class="btn" type="button" id="begin">Start the day</button>
+          <span class="fine" style="margin:0">Jumps to shot 02.</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- SHOT 2 -->
+    <article class="shot" id="shot-2" data-shot="2">
+      <div class="frame">
+        <span class="stamp" aria-hidden="true">Done</span>
+        <div class="slug"><span class="no">Shot 02</span><span class="loc">Ext. Home Isle, the big tree</span><span class="clock">07:45 Morning</span></div>
+        <div class="stage" data-stage="2">
+          <img src="g2.jpg" alt="Close on a large low-poly tree with a pale ring around its trunk, a traveller beside it and a round bush to the right" width="1200" height="675" loading="lazy">
+          <svg class="move" viewBox="0 0 100 56.25" aria-hidden="true"><path d="M90 8 L 62 20"/><text x="66" y="6">PUSH IN</text></svg>
+          <button class="hot" type="button" data-node="tree" style="left:41%;top:44%"><span class="dot"></span><span class="tag">Chop tree</span></button>
+          <button class="hot" type="button" data-node="bush" style="left:79%;top:62%"><span class="dot"></span><span class="tag">Pick fiber</span></button>
+        </div>
+        <p class="note">Push in on the tree. The ring on the grass is the guide beacon pointing at the current goal.</p>
+      </div>
+      <div class="side">
+        <h3>Gather what the island gives.</h3>
+        <p class="sub">Trees give 2 to 3 wood, and sometimes a basil seed. Bushes give 2 to 3 plant fiber. Both grow back, so nothing runs out.</p>
+        <ul class="goalchips" data-goals="q_wood q_fiber"></ul>
+        <p class="fine">Regrowth is faster on this page than in the game, where a tree takes 90 seconds.</p>
+      </div>
+    </article>
+
+    <!-- SHOT 3 -->
+    <article class="shot" id="shot-3" data-shot="3">
+      <div class="frame">
+        <span class="stamp" aria-hidden="true">Done</span>
+        <div class="slug"><span class="no">Shot 03</span><span class="loc">Ext. Home Isle, planters by the pond</span><span class="clock">09:10 Morning</span></div>
+        <div class="stage" data-stage="3">
+          <img src="g3.jpg" alt="Two wooden planters with leafy basil in the foreground, the traveller standing behind them next to the pond and the house" width="1200" height="675" loading="lazy">
+          <svg class="move" viewBox="0 0 100 56.25" aria-hidden="true"><path d="M20 10 Q 26 28 36 40"/><text x="8" y="8">TILT DOWN</text></svg>
+          <button class="hot" type="button" data-pot="0" style="left:48%;top:80%"><span class="dot"></span><span class="tag">Planter 1</span></button>
+          <button class="hot" type="button" data-pot="1" style="left:67%;top:66%"><span class="dot"></span><span class="tag">Planter 2</span></button>
+        </div>
+        <p class="note">Tilt down to the planters. Hold on the leaves for a beat once they fill out.</p>
+      </div>
+      <div class="side">
+        <h3>Plant, water, wait a little.</h3>
+        <p class="sub">Basil needs one seed and a splash of water. In the game it grows in 60 seconds of play; here it takes 6. Each harvest gives 2 to 3 basil.</p>
+        <ul class="goalchips" data-goals="q_plant q_water q_harvest"></ul>
+        <div class="pots" id="pots"></div>
+      </div>
+    </article>
+
+    <!-- SHOT 4 -->
+    <article class="shot" id="shot-4" data-shot="4">
+      <div class="frame">
+        <span class="stamp" aria-hidden="true">Done</span>
+        <div class="slug"><span class="no">Shot 04</span><span class="loc">Ext. Home Isle, by the old bridge</span><span class="clock">10:30 Late morning</span></div>
+        <div class="stage" data-stage="4">
+          <img src="g4.jpg" alt="A pile of rusty scrap metal near a wooden bridge leading off the island, with a yellow signpost and the traveller nearby" width="1200" height="675" loading="lazy">
+          <svg class="move" viewBox="0 0 100 56.25" aria-hidden="true"><path d="M40 52 L 70 46"/><text x="40" y="55">TRACK RIGHT</text></svg>
+          <button class="hot" type="button" data-node="scrap" style="left:66%;top:72%"><span class="dot"></span><span class="tag">Salvage scrap</span></button>
+          <button class="hot" type="button" data-node="rock" style="left:69%;top:27%"><span class="dot"></span><span class="tag">Break rock</span></button>
+        </div>
+        <p class="note">Track right along the path to the scrap pile. The bridge to Market Isle waits behind it.</p>
+      </div>
+      <div class="side">
+        <h3>Salvage, do not mine.</h3>
+        <p class="sub">The islands are built from what was left behind. Scrap piles give 1 to 2 scrap metal, rocks give 2 to 3 stone. A solar panel needs both.</p>
+        <ul class="goalchips" data-goals="q_scrap"></ul>
+      </div>
+    </article>
+
+    <!-- SHOT 5 -->
+    <article class="shot" id="shot-5" data-shot="5">
+      <div class="frame">
+        <span class="stamp" aria-hidden="true">Done</span>
+        <div class="slug"><span class="no">Shot 05</span><span class="loc">Ext. Home Isle, the workbench</span><span class="clock">12:00 Noon</span></div>
+        <div class="stage" data-stage="5">
+          <img src="g5.jpg" alt="The traveller at a wooden workbench at noon, with a wind turbine, planters and the bridge to Market Isle in the background" width="1200" height="675" loading="lazy">
+          <svg class="move" viewBox="0 0 100 56.25" aria-hidden="true"><path d="M30 6 Q 40 18 44 26"/><text x="18" y="5">DOLLY IN</text></svg>
+          <button class="hot" type="button" data-scroll="recipes" style="left:45%;top:46%"><span class="dot"></span><span class="tag">Workbench</span></button>
+        </div>
+        <p class="note">Noon, shadows short. Dolly in to the bench; the turbine turns behind.</p>
+      </div>
+      <div class="side">
+        <h3>Make parts, then power.</h3>
+        <p class="sub">The same recipes as the game. Copper wire comes from scrap, and a solar panel is wire, scrap and one stone.</p>
+        <ul class="goalchips" data-goals="q_wire q_solar"></ul>
+        <div class="recipes" id="recipes"></div>
+        <p class="fine" id="placeNote">Place a crafted solar panel to finish the goal. It then charges the battery in shot 08.</p>
+      </div>
+    </article>
+
+    <!-- SHOT 6 -->
+    <article class="shot" id="shot-6" data-shot="6">
+      <div class="frame">
+        <span class="stamp" aria-hidden="true">Done</span>
+        <div class="slug"><span class="no">Shot 06</span><span class="loc">Ext. Market Isle, Sari's stall</span><span class="clock">14:20 Afternoon</span></div>
+        <div class="stage" data-stage="6">
+          <img src="g6.jpg" alt="Market Isle: a stall with a yellow awning run by Sari, a friend named Rani, Lin and Bayu standing nearby, and the bridge back to Home Isle" width="1200" height="675" loading="lazy">
+          <svg class="move" viewBox="0 0 100 56.25" aria-hidden="true"><path d="M86 50 Q 70 40 52 34"/><text x="70" y="55">FOLLOW</text></svg>
+          <button class="hot" type="button" data-cross="1" style="left:80%;top:84%"><span class="dot"></span><span class="tag">Cross bridge</span></button>
+          <button class="hot" type="button" data-npc="sari" style="left:37%;top:60%"><span class="dot"></span><span class="tag">Sari</span></button>
+          <button class="hot" type="button" data-npc="bayu" style="left:61%;top:36%"><span class="dot"></span><span class="tag">Bayu</span></button>
+          <button class="hot" type="button" data-npc="lin" style="left:22%;top:40%"><span class="dot"></span><span class="tag">Lin</span></button>
+        </div>
+        <p class="note">Follow the traveller over the bridge. Rani is a friend who joined with a room code.</p>
+      </div>
+      <div class="side">
+        <h3>Market Isle.</h3>
+        <p class="sub">Three villagers live here. Sari buys anything at fixed prices, so there is no rush.</p>
+        <ul class="goalchips" data-goals="q_market q_sell"></ul>
+        <div class="people" id="people"></div>
+      </div>
+    </article>
+
+    <!-- SHOT 7 -->
+    <article class="shot" id="shot-7" data-shot="7">
+      <div class="frame">
+        <span class="stamp" aria-hidden="true">Done</span>
+        <div class="slug"><span class="no">Shot 07</span><span class="loc">Ext. Home Isle, the broken sky bridge</span><span class="clock">17:50 Dusk</span></div>
+        <div class="stage" data-stage="7">
+          <img src="g7.jpg" alt="At dusk a golden beam of light marks the broken sky bridge site at the island edge, with the traveller standing near a crafting spot" width="1200" height="675" loading="lazy">
+          <svg class="move" viewBox="0 0 100 56.25" aria-hidden="true"><path d="M62 4 L 62 34"/><text x="64" y="8">TILT UP THE BEAM</text></svg>
+          <button class="hot" type="button" data-scroll="projects" style="left:61%;top:70%"><span class="dot"></span><span class="tag">Bridge site</span></button>
+        </div>
+        <p class="note">Dusk. Tilt up the beam: the bridge to Grove Isle is a job for everyone.</p>
+      </div>
+      <div class="side">
+        <h3>Build it together.</h3>
+        <p class="sub">Community projects take materials from you and from friends in your room. Finish one and a new island opens.</p>
+        <ul class="goalchips" data-goals="q_project"></ul>
+        <div class="projects" id="projects"></div>
+      </div>
+    </article>
+
+    <!-- SHOT 8 -->
+    <article class="shot finale energy" id="shot-8" data-shot="8">
+      <div class="frame">
+        <div class="slug"><span class="no">Shot 08</span><span class="loc">Ext. Home Isle, night</span><span class="clock" id="clock8">21:30 Night</span></div>
+        <div class="stage">
+          <img src="g8.jpg" alt="Home Isle at night under a deep blue sky, lamp posts glowing warm yellow around the house and the dark pond" width="1200" height="675" loading="lazy">
+          <svg class="move" viewBox="0 0 100 56.25" aria-hidden="true"><path d="M50 4 Q 70 12 78 30"/><text x="52" y="5">SLOW PULL BACK</text></svg>
+        </div>
+        <p class="note">Pull back slowly. The lamps run on what the island stored during the day.</p>
+      </div>
+      <div class="side">
+        <h3>Will the lamps last the night?</h3>
+        <p class="sub">The real energy rules: a panel makes up to 0.06 energy per second in full sun and nothing at night, a turbine makes 0.035 day and night, a lamp uses 0.004 after dark. Storage is 20, plus 40 per battery.</p>
+        <div class="controls">
+          <div class="stepper"><span>Solar panels</span><span class="row" style="gap:4px"><button type="button" data-step="solar" data-d="-1" aria-label="Fewer solar panels">-</button><output id="o-solar">1</output><button type="button" data-step="solar" data-d="1" aria-label="More solar panels">+</button></span></div>
+          <div class="stepper"><span>Turbines</span><span class="row" style="gap:4px"><button type="button" data-step="turbine" data-d="-1" aria-label="Fewer turbines">-</button><output id="o-turbine">0</output><button type="button" data-step="turbine" data-d="1" aria-label="More turbines">+</button></span></div>
+          <div class="stepper"><span>Batteries</span><span class="row" style="gap:4px"><button type="button" data-step="battery" data-d="-1" aria-label="Fewer batteries">-</button><output id="o-battery">0</output><button type="button" data-step="battery" data-d="1" aria-label="More batteries">+</button></span></div>
+          <div class="stepper"><span>Lamps</span><span class="row" style="gap:4px"><button type="button" data-step="lamp" data-d="-1" aria-label="Fewer lamps">-</button><output id="o-lamp">4</output><button type="button" data-step="lamp" data-d="1" aria-label="More lamps">+</button></span></div>
+        </div>
+        <canvas class="chart" id="chart" width="640" height="250" role="img" aria-label="Chart of stored energy across one day on Teduh"></canvas>
+        <label class="fine" for="tod" style="display:block;margin-top:8px">Scrub the clock</label>
+        <input class="range" id="tod" type="range" min="0" max="1439" step="5" value="1290">
+        <div class="readout">
+          <div><b id="r-light">0%</b><span>Daylight</span></div>
+          <div><b id="r-rate">0</b><span>Energy per minute</span></div>
+          <div><b id="r-store">0</b><span>Stored now</span></div>
+        </div>
+        <div class="verdict" id="verdict" aria-live="polite">Working it out.</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="block wrap-sec" id="wrap" aria-labelledby="wrap-title">
+  <div class="wrap wrapup">
+    <div>
+      <p class="kicker">That's a wrap</p>
+      <h2 id="wrap-title">Day one, in the can.</h2>
+      <p class="lede" id="wrapText">Finish the goals in the storyboard and your tally lands here. The game picks up at goal 11 with villager orders, then fishing, cooking and three more islands.</p>
+      <div class="cta" style="display:flex;flex-wrap:wrap;gap:14px;margin:22px 0 12px">
+        <a class="btn" href="https://juw12.github.io/teduh/">Continue in the game</a>
+        <a class="btn ghost" href="#shot-1">Back to shot 01</a>
+      </div>
+      <button class="reset" type="button" id="reset">Start this page over</button>
+    </div>
+    <div class="stats" id="stats"></div>
+  </div>
+</section>
+
+<section class="block cast" id="cast" aria-labelledby="cast-title">
+  <div class="wrap">
+    <p class="kicker">Beyond day one</p>
+    <h2 id="cast-title">The call sheet for the full game.</h2>
+    <p class="lede">Teduh (Indonesian for "sheltered, calm") is a cozy life sim on floating islands above the clouds. Here is everything the storyboard left out.</p>
+    <div class="callsheet">
+      <div class="head"><span>Production: Teduh</span><span>Runs in the browser, offline after first visit</span></div>
+      <dl>
+        <dt>Locations</dt>
+        <dd>Four islands. Home Isle and Market Isle are open from the start. Grove Isle opens when the sky bridge is mended, Reef Isle when the reef dock is built.</dd>
+        <dt>Cast</dt>
+        <dd>Sari runs the stall and sells seeds and hats. Bayu is the engineer who keeps the islands on sun and wind. Lin fishes and cooks. Villagers post orders every morning, and friends join you with a room code.</dd>
+        <dt>Crops</dt>
+        <dd>Basil, tomatoes, sunflowers and sky berries, each with its own growing time and yield.</dd>
+        <dt>Water</dt>
+        <dd>Fish your own pond, or the reef pool where the rare glass ray swims. Cook meals on a solar cookstove for helpful boosts.</dd>
+        <dt>Weather</dt>
+        <dd>A full day takes 10 minutes of play. Rainy days cut solar to 40 percent and push turbines to 150 percent, so a mixed island copes best.</dd>
+        <dt>Goals</dt>
+        <dd>19 guided goals, from chopping the first tree to lighting the old lighthouse so every island glows at night.</dd>
+        <dt>Talking</dt>
+        <dd>Co-op chat uses preset phrases, so there is nothing to moderate. Play in English or Bahasa Indonesia.</dd>
+        <dt>Not included</dt>
+        <dd>No account, no shop, no ads, no timers that punish you for being away.</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="block hood" id="hood" aria-labelledby="hood-title">
+  <div class="wrap">
+    <p class="kicker">Under the hood</p>
+    <h2 id="hood-title">How it's built.</h2>
+    <div class="hood-grid">
+      <ol class="layers">
+        <li><b>Plain JavaScript modules</b><span>No build step and no runtime dependencies from the network.</span></li>
+        <li><b>three.js r160, bundled</b><span>The whole world is built from primitives in code, which keeps it light enough for phones.</span></li>
+        <li><b>Service worker and local saves</b><span>After the first visit the game, its fonts and its pictures work offline. Your island is saved on your device.</span></li>
+        <li><b>Opt-in co-op over WebRTC</b><span>Trystero connects players through public Nostr relays. Playing together is opt-in.</span></li>
+        <li><b>Tested in a real browser</b><span>A Playwright suite with 86 tests, plus scripts that re-render the guide pictures and these storyboard frames from the game itself.</span></li>
+      </ol>
+      <div>
+        <p>The energy chart in shot 08 runs the same rule the game uses for daylight and power:</p>
+        <pre class="formula" aria-label="Energy formula"><span class="c">// time of day t runs 0 to 1</span>
+daylight(t) = clamp(sin((t - 0.25) * 2 pi) * 1.5, 0, 1)
+night       = daylight(t) &lt; 0.08
+
+<span class="c">// energy per second</span>
+rate = panels   * 0.06  * daylight(t)
+     + turbines * 0.035
+     - lamps    * 0.004 (only at night)
+
+capacity = 20 + 40 * batteries</pre>
+        <p class="fine">MIT licence. three.js and Trystero are MIT; Fraunces and Figtree are SIL OFL 1.1.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block faqsec" id="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <p class="kicker">Questions</p>
+    <h2 id="faq-title">Before you go up.</h2>
+    <div class="faq">
+      <details open><summary>What do I need to play?</summary><p>A modern browser on a phone, tablet or computer. Open the link and play; there is nothing to install. You can add it to your home screen and it keeps working offline after the first visit.</p></details>
+      <details><summary>Is it really free?</summary><p>Yes. There is no account, no shop and no ads. The source is public on GitHub under the MIT licence.</p></details>
+      <details><summary>Where does my data go?</summary><p>Your island is saved in your own browser. Playing together is opt-in: when you share a room code, the game connects you to friends directly over WebRTC.</p></details>
+      <details><summary>Is the page progress the same as the game?</summary><p>No. This page keeps its own small save so you can try the first goals. The game starts you fresh on Home Isle with the same goals, recipes and rewards.</p></details>
+      <details><summary>Is it finished?</summary><p>It is live and still changing. The README always has the current state.</p></details>
+      <details><summary>Who made it?</summary><p>Juwen Lie, an R&amp;D mechanical engineer in Batam, Indonesia, as an independent personal project.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="block more" id="more" aria-labelledby="more-title">
+  <div class="wrap">
+    <p class="kicker">Keep exploring</p>
+    <h2 id="more-title">More from the same workbench.</h2>
+    <div class="related">
+      <a href="../townsquare-3d/"><b>Townsquare 3D</b><span>Claim land, run crops and workshops, and trade at a market that follows supply and demand.</span></a>
+      <a href="../glow/"><b>Glow</b><span>Four AI apps on one free account, in 4 languages.</span></a>
+      <a href="../batam-uncle-says/"><b>Batam Uncle Says</b><span>Plan a day around your ferry times, check a price before you pay, and know the rules at both terminals.</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="block final" id="play" aria-labelledby="play-title">
+  <div class="wrap">
+    <div>
+      <p class="kicker" style="color:#c9d9a8">Roll camera</p>
+      <h2 id="play-title">Build your sky village.</h2>
+      <p>A calm sky village you build with sun and wind. Free, offline, and ready in your browser.</p>
+      <div class="cta" style="display:flex;flex-wrap:wrap;gap:14px;margin:22px 0 16px">
+        <a class="btn" href="https://juw12.github.io/teduh/">Try it live</a>
+        <a class="btn ghost" href="https://github.com/juw12/teduh#readme">Read the README</a>
+      </div>
+      <div class="textlinks"><a href="https://github.com/juw12/teduh">View source</a></div>
+    </div>
+    <img src="shot.jpg" alt="The Teduh title screen over the floating islands" width="1200" height="675" loading="lazy">
+  </div>
+</section>
 </main>
 
-<footer class="wrap">
-  <div>Teduh · made by <a href="https://juwenlie.pages.dev/">Juwen Lie</a></div>
-  <div class="foot-links"><a href="https://github.com/juw12/teduh#readme">README</a> · <a href="https://github.com/juw12/teduh">Source</a> · <a href="https://juw12.github.io/p/">All projects</a> · <a href="https://github.com/juw12">GitHub profile</a></div>
-  <div class="foot-note"><small>An independent personal project. No employer endorsement implied.</small></div>
+<footer>
+  <div class="wrap">
+    <span>Teduh, made by <a href="https://juwenlie.pages.dev/">Juwen Lie</a>. An independent personal project. No employer endorsement implied.</span>
+    <nav aria-label="Footer">
+      <a href="https://github.com/juw12/teduh#readme">README</a>
+      <a href="https://github.com/juw12/teduh">Source</a>
+      <a href="https://juw12.github.io/p/">All projects</a>
+      <a href="https://github.com/juw12">GitHub profile</a>
+    </nav>
+  </div>
 </footer>
+
+<div class="hud" id="hud" aria-label="Goal and bag">
+  <svg class="sun" id="sunIcon" viewBox="0 0 44 44" aria-hidden="true"></svg>
+  <div class="goal">
+    <small id="goalNo">Goal 1 of 19</small>
+    <b id="goalText">Chop a tree for wood</b>
+    <div class="pips" id="pips"></div>
+  </div>
+  <div class="right">
+    <div class="inv" id="inv" aria-label="Bag"></div>
+    <span class="credits" id="credits">30 cr</span>
+    <button class="btn small go" type="button" id="goBtn">Go</button>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <script>
-(function () {
-  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var els = document.querySelectorAll(".reveal");
-  if (reduce || !("IntersectionObserver" in window)) {
-    els.forEach(function (el) { el.classList.add("in"); });
-  } else {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
-    }, { rootMargin: "0px 0px -8% 0px" });
-    els.forEach(function (el) { io.observe(el); });
+(() => {
+  'use strict';
+  // ---- real game data (teduh/js/data.js) ----
+  const ITEMS = {
+    wood: { en: 'Wood', id: 'Kayu', sell: 2, color: '#9b6a3f' },
+    stone: { en: 'Stone', id: 'Batu', sell: 2, color: '#8c9196' },
+    scrap: { en: 'Scrap metal', id: 'Besi bekas', sell: 3, color: '#b0643c' },
+    fiber: { en: 'Plant fiber', id: 'Serat tanaman', sell: 1, color: '#a8b85c' },
+    plank: { en: 'Plank', id: 'Papan', sell: 6, color: '#c08a52' },
+    rope: { en: 'Rope', id: 'Tali', sell: 5, color: '#c9b27a' },
+    wire: { en: 'Copper wire', id: 'Kawat tembaga', sell: 8, color: '#c7793a' },
+    seed_basil: { en: 'Basil seeds', id: 'Benih kemangi', sell: 1, color: '#6f8f3a' },
+    seed_tomato: { en: 'Tomato seeds', id: 'Benih tomat', sell: 2, color: '#b8452f' },
+    basil: { en: 'Basil', id: 'Kemangi', sell: 7, color: '#4f8a2e' },
+    solar: { en: 'Solar panel', id: 'Panel surya', sell: 30, color: '#2c5470' },
+    planter: { en: 'Planter', id: 'Pot tanam', sell: 10, color: '#8a5a33' },
+  };
+  const NODES = {
+    tree: { item: 'wood', amount: [2, 3], respawn: 90, extra: { item: 'seed_basil', chance: 0.12 } },
+    bush: { item: 'fiber', amount: [2, 3], respawn: 60 },
+    rock: { item: 'stone', amount: [2, 3], respawn: 110 },
+    scrap: { item: 'scrap', amount: [1, 2], respawn: 130 },
+  };
+  const RESPAWN_SPEEDUP = 40; // page only
+  const GROW_MS = 6000; // basil: 60 s in game, 10x faster here
+  const RECIPES = [
+    { id: 'plank', in: { wood: 2 }, out: 'plank' },
+    { id: 'rope', in: { fiber: 3 }, out: 'rope' },
+    { id: 'wire', in: { scrap: 2 }, out: 'wire' },
+    { id: 'solar', in: { wire: 2, scrap: 2, stone: 1 }, out: 'solar' },
+    { id: 'planter', in: { plank: 2, stone: 1 }, out: 'planter' },
+  ];
+  const GOALS = [
+    { id: 'q_wood', n: 1, shot: 2, reward: { credits: 10 }, en: 'Chop a tree for wood', idn: 'Tebang pohon untuk kayu' },
+    { id: 'q_fiber', n: 2, shot: 2, reward: { credits: 10 }, en: 'Gather plant fiber from a bush', idn: 'Kumpulkan serat dari semak' },
+    { id: 'q_plant', n: 3, shot: 3, reward: { items: { seed_tomato: 2 } }, en: 'Plant basil in a planter', idn: 'Tanam kemangi di pot tanam' },
+    { id: 'q_water', n: 4, shot: 3, reward: { credits: 10 }, en: 'Water the planter so it grows', idn: 'Siram pot agar tanaman tumbuh' },
+    { id: 'q_scrap', n: 5, shot: 4, reward: { credits: 10 }, en: 'Salvage scrap metal', idn: 'Ambil besi bekas' },
+    { id: 'q_wire', n: 6, shot: 5, reward: { items: { scrap: 2 } }, en: 'Craft copper wire at the workbench', idn: 'Buat kawat tembaga di meja kerja' },
+    { id: 'q_solar', n: 7, shot: 5, reward: { credits: 25 }, en: 'Build and place a solar panel', idn: 'Buat dan pasang panel surya' },
+    { id: 'q_harvest', n: 8, shot: 3, reward: { credits: 15 }, en: 'Harvest your first crop', idn: 'Panen tanaman pertama' },
+    { id: 'q_market', n: 9, shot: 6, reward: { credits: 10 }, en: 'Cross the bridge to Market Isle', idn: 'Seberangi jembatan ke Pulau Pasar' },
+    { id: 'q_sell', n: 10, shot: 6, reward: { credits: 10 }, en: "Sell something at Sari's stall", idn: 'Jual sesuatu di kios Sari' },
+    { id: 'q_project', n: 12, shot: 7, reward: { credits: 15 }, en: 'Give materials to a community project', idn: 'Sumbang bahan untuk proyek warga' },
+  ];
+  const PROJECTS = [
+    { id: 'bridge', need: { plank: 10, stone: 15, rope: 6 }, reward: 120, en: 'Mend the sky bridge', body: 'Rebuild the rope bridge to Grove Isle: berries, tall trees and a quiet glade.' },
+    { id: 'tower', need: { scrap: 15, wire: 8, plank: 6 }, reward: 150, en: 'Restore the wind tower', body: 'Bayu can teach you to build wind turbines once the old tower spins again.' },
+    { id: 'dock', need: { plank: 16, stone: 12, rope: 8, scrap: 6 }, reward: 180, after: 'bridge', en: 'Build the reef dock', body: 'A walkway to Reef Isle, where the rare glass ray swims in the sky pool.' },
+    { id: 'lighthouse', locked: true, en: 'Light the lighthouse', body: 'Power the old lighthouse with clean energy so every island glows at night. Needs 2 solar panels, a battery, 3 lamps and 6 wire, after the dock and the tower. That one is for the game.' },
+  ];
+  const NPCS = [
+    { id: 'sari', name: 'Sari', color: '#c0583a', role: 'Runs the market stall. Buys anything, sells seeds and hats.' },
+    { id: 'bayu', name: 'Bayu', color: '#2f6e6a', role: 'Engineer. Keeps the islands running on sun and wind.' },
+    { id: 'lin', name: 'Lin', color: '#3b5d8c', role: 'Fisher and cook. Knows every pool between the clouds.' },
+  ];
+  const ENERGY = { base: 20, battery: 40, solar: 0.06, turbine: 0.035, lamp: 0.004, day: 600, start: 6 };
+  const SHOT_CLOCK = { 1: 390, 2: 465, 3: 550, 4: 630, 5: 720, 6: 860, 7: 1070, 8: 1290 };
+
+  // ---- state ----
+  const KEY = 'teduh-storyboard-v1';
+  const fresh = () => ({
+    inv: { seed_basil: 4, wood: 2 }, credits: 30, done: {}, lang: 'en',
+    pots: [{ s: 'empty' }, { s: 'empty' }], solarPlaced: 0, proj: {},
+    stats: { gathered: 0, crafted: 0, earned: 0, harvested: 0 },
+    energy: { solar: 1, turbine: 0, battery: 0, lamp: 4 },
+  });
+  let S;
+  try {
+    S = Object.assign(fresh(), JSON.parse(localStorage.getItem(KEY) || '{}'));
+  } catch (err) {
+    S = fresh();
   }
-  document.querySelectorAll("button.copy").forEach(function (b) {
-    b.addEventListener("click", function () {
-      var label = b.querySelector("span");
-      var done = function () { label.textContent = "Copied"; setTimeout(function () { label.textContent = "Copy"; }, 1600); };
-      if (navigator.clipboard) { navigator.clipboard.writeText(b.getAttribute("data-copy")).then(done, done); } else { done(); }
+  const save = () => {
+    try {
+      localStorage.setItem(KEY, JSON.stringify(S));
+    } catch (err) {
+      /* storage may be blocked; the page still works for this visit */
+    }
+  };
+  const cool = {};
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  const name = (item) => (ITEMS[item] ? (S.lang === 'id' ? ITEMS[item].id : ITEMS[item].en) : item);
+  const rnd = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
+  const have = (item) => S.inv[item] || 0;
+  const add = (item, n) => {
+    S.inv[item] = have(item) + n;
+    if (S.inv[item] <= 0) {
+      delete S.inv[item];
+    }
+  };
+  const fmtClock = (mins) => {
+    const m = ((Math.round(mins) % 1440) + 1440) % 1440;
+    return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
+  };
+  const daylight = (t) => Math.max(0, Math.min(1, Math.sin((t - 0.25) * Math.PI * 2) * 1.5));
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---- toast and pop ----
+  let toastTimer = 0;
+  function toast(msg) {
+    const el = $('#toast');
+    el.textContent = msg;
+    el.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove('show'), 2600);
+  }
+  function pop(anchor, text) {
+    const stage = anchor.closest('.stage');
+    if (!stage) {
+      return;
+    }
+    const el = document.createElement('span');
+    el.className = 'pop';
+    el.textContent = text;
+    el.style.left = anchor.style.left;
+    el.style.top = 'calc(' + anchor.style.top + ' - 18px)';
+    stage.appendChild(el);
+    setTimeout(() => el.remove(), 1200);
+  }
+
+  // ---- goals ----
+  function complete(id) {
+    if (S.done[id]) {
+      return;
+    }
+    const goal = GOALS.find((g) => g.id === id);
+    if (!goal) {
+      return;
+    }
+    S.done[id] = Date.now();
+    const parts = [];
+    if (goal.reward.credits) {
+      S.credits += goal.reward.credits;
+      S.stats.earned += goal.reward.credits;
+      parts.push('+' + goal.reward.credits + ' credits');
+    }
+    Object.entries(goal.reward.items || {}).forEach(([item, n]) => {
+      add(item, n);
+      parts.push('+' + n + ' ' + name(item).toLowerCase());
+    });
+    toast((S.lang === 'id' ? 'Tujuan selesai: ' : 'Goal done: ') + (S.lang === 'id' ? goal.idn : goal.en) + '. ' + parts.join(', '));
+  }
+  const currentGoal = () => GOALS.find((g) => !S.done[g.id]);
+
+  // ---- HUD ----
+  function drawSun(mins) {
+    const t = mins / 1440;
+    const light = daylight(t);
+    const angle = (t - 0.25) * Math.PI * 2;
+    const x = 22 - Math.cos(angle) * 15;
+    const y = 30 - Math.sin(angle) * 15;
+    const night = light < 0.08;
+    const sky = night ? '#1c2830' : light < 0.5 ? '#e9c98f' : '#d7e9ef';
+    $('#sunIcon').innerHTML =
+      '<rect x="1" y="1" width="42" height="42" rx="11" fill="' + sky + '" stroke="#23302a" stroke-width="2"/>' +
+      '<rect x="2" y="30" width="40" height="12" rx="0" fill="' + (night ? '#2d3d33' : '#9fb77a') + '"/>' +
+      '<line x1="2" y1="30" x2="42" y2="30" stroke="#23302a" stroke-width="1.5"/>' +
+      (night
+        ? '<circle cx="' + (44 - x) + '" cy="' + Math.min(26, 60 - y) + '" r="5" fill="#f3ecdc"/><circle cx="' + (46 - x) + '" cy="' + (Math.min(26, 60 - y) - 2) + '" r="4.2" fill="#1c2830"/>'
+        : '<circle cx="' + x + '" cy="' + Math.min(27, y) + '" r="5.5" fill="#c9951a" stroke="#23302a" stroke-width="1.5"/>');
+  }
+  let hudMins = SHOT_CLOCK[1];
+  function renderHud(bumpItem) {
+    const goal = currentGoal();
+    const doneCount = GOALS.filter((g) => S.done[g.id]).length;
+    if (goal) {
+      $('#goalNo').textContent = (S.lang === 'id' ? 'Tujuan ' : 'Goal ') + goal.n + (S.lang === 'id' ? ' dari 19' : ' of 19') + '  ' + fmtClock(hudMins);
+      $('#goalText').textContent = S.lang === 'id' ? goal.idn : goal.en;
+      $('#goBtn').textContent = S.lang === 'id' ? 'Ke sana' : 'Go';
+      $('#goBtn').dataset.target = 'shot-' + goal.shot;
+    } else {
+      $('#goalNo').textContent = (S.lang === 'id' ? 'Hari pertama selesai  ' : 'Day one done  ') + fmtClock(hudMins);
+      $('#goalText').textContent = S.lang === 'id' ? 'Berikutnya: tujuan 11 di game' : 'Next: goal 11, in the game';
+      $('#goBtn').textContent = S.lang === 'id' ? 'Main' : 'Play';
+      $('#goBtn').dataset.target = 'game';
+    }
+    $('#pips').innerHTML = GOALS.map((g) => '<i class="' + (S.done[g.id] ? 'ok' : '') + '" title="' + g.en + '"></i>').join('');
+    $('#pips').setAttribute('aria-label', doneCount + ' of ' + GOALS.length + ' page goals done');
+    const items = Object.keys(S.inv).filter((k) => S.inv[k] > 0);
+    $('#inv').innerHTML = items.length
+      ? items.map((k) => '<span class="chip' + (k === bumpItem ? ' bump' : '') + '" title="' + name(k) + '"><i class="sw" style="background:' + ITEMS[k].color + '"></i>' + S.inv[k] + ' ' + name(k).toLowerCase() + '</span>').join('')
+      : '<span class="chip">' + (S.lang === 'id' ? 'Tas kosong' : 'Bag is empty') + '</span>';
+    $('#credits').textContent = S.credits + ' cr';
+    drawSun(hudMins);
+  }
+  $('#goBtn').addEventListener('click', (e) => {
+    const target = e.currentTarget.dataset.target;
+    if (target === 'game') {
+      window.location.href = 'https://juw12.github.io/teduh/';
+      return;
+    }
+    const el = document.getElementById(target);
+    if (el) {
+      el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+    }
+  });
+
+  // ---- render everything that depends on state ----
+  function renderGoalChips() {
+    $$('.goalchips').forEach((ul) => {
+      ul.innerHTML = ul.dataset.goals.split(' ').map((id) => {
+        const g = GOALS.find((x) => x.id === id);
+        return '<li class="' + (S.done[id] ? 'ok' : '') + '">' + g.n + '. ' + (S.lang === 'id' ? g.idn : g.en) + '</li>';
+      }).join('');
+    });
+    $$('.shot').forEach((shot) => {
+      const ul = $('.goalchips', shot);
+      const ids = ul ? ul.dataset.goals.split(' ') : [];
+      shot.classList.toggle('done', ids.length > 0 && ids.every((id) => S.done[id]));
+    });
+    $$('.thumb').forEach((btn) => {
+      const shot = document.getElementById('shot-' + btn.dataset.n);
+      btn.classList.toggle('done', !!(shot && shot.classList.contains('done')));
+    });
+  }
+
+  function renderPots() {
+    const now = Date.now();
+    $('#pots').innerHTML = S.pots.map((p, i) => {
+      let label = 'Empty';
+      let hint = have('seed_basil') ? 'Ready for a seed' : 'No basil seeds left';
+      let action = 'Plant basil';
+      let pct = 0;
+      let disabled = !have('seed_basil');
+      if (p.s === 'dry') {
+        label = 'Planted';
+        hint = 'Needs water to grow';
+        action = 'Water';
+        disabled = false;
+      } else if (p.s === 'growing') {
+        pct = Math.min(100, ((now - p.t) / GROW_MS) * 100);
+        label = 'Growing';
+        hint = Math.max(0, Math.ceil((GROW_MS - (now - p.t)) / 1000)) + ' s to go';
+        action = 'Growing';
+        disabled = true;
+      } else if (p.s === 'ripe') {
+        pct = 100;
+        label = 'Basil is ready';
+        hint = '2 to 3 basil';
+        action = 'Harvest';
+        disabled = false;
+      }
+      return '<div class="pot"><b>Planter ' + (i + 1) + ': ' + label + '</b><small>' + hint + '</small><div class="bar"><i style="width:' + pct + '%"></i></div>' +
+        '<button class="btn small" type="button" data-potbtn="' + i + '"' + (disabled ? ' disabled' : '') + '>' + action + '</button></div>';
+    }).join('');
+    $$('[data-pot]').forEach((hot) => {
+      const p = S.pots[+hot.dataset.pot];
+      const tag = $('.tag', hot);
+      const words = { empty: 'Plant', dry: 'Water', growing: 'Growing', ripe: 'Harvest' };
+      tag.textContent = p ? words[p.s] : '';
+      hot.classList.toggle('cool', !p || p.s === 'growing' || (p.s === 'empty' && !have('seed_basil')));
+    });
+  }
+  function potAction(i, anchor) {
+    const p = S.pots[i];
+    if (!p) {
+      return;
+    }
+    if (p.s === 'empty') {
+      if (!have('seed_basil')) {
+        toast('No basil seeds. Trees sometimes drop one.');
+        return;
+      }
+      add('seed_basil', -1);
+      p.s = 'dry';
+      complete('q_plant');
+      if (anchor) {
+        pop(anchor, 'Planted');
+      }
+    } else if (p.s === 'dry') {
+      p.s = 'growing';
+      p.t = Date.now();
+      complete('q_water');
+      if (anchor) {
+        pop(anchor, 'Watered');
+      }
+    } else if (p.s === 'ripe') {
+      const n = rnd(2, 3);
+      add('basil', n);
+      S.stats.harvested += n;
+      p.s = 'empty';
+      delete p.t;
+      complete('q_harvest');
+      if (anchor) {
+        pop(anchor, '+' + n + ' basil');
+      }
+      update('basil');
+      return;
+    } else {
+      return;
+    }
+    update();
+  }
+  $('#pots').addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-potbtn]');
+    if (btn) {
+      const i = +btn.dataset.potbtn;
+      potAction(i, $('[data-pot="' + Math.min(i, 1) + '"]'));
+    }
+  });
+  $$('[data-pot]').forEach((hot) => hot.addEventListener('click', () => potAction(+hot.dataset.pot, hot)));
+  setInterval(() => {
+    let changed = false;
+    S.pots.forEach((p) => {
+      if (p.s === 'growing' && Date.now() - p.t >= GROW_MS) {
+        p.s = 'ripe';
+        changed = true;
+      }
+    });
+    if (changed) {
+      toast('Basil is ready to harvest in shot 03.');
+      update();
+    } else if (S.pots.some((p) => p.s === 'growing')) {
+      renderPots();
+    }
+  }, 500);
+
+  // ---- gathering ----
+  $$('[data-node]').forEach((hot) => {
+    hot.addEventListener('click', () => {
+      const id = hot.dataset.node;
+      const node = NODES[id];
+      if (cool[id] && cool[id] > Date.now()) {
+        pop(hot, 'Growing back');
+        return;
+      }
+      const n = rnd(node.amount[0], node.amount[1]);
+      add(node.item, n);
+      S.stats.gathered += n;
+      let text = '+' + n + ' ' + name(node.item).toLowerCase();
+      if (node.extra && Math.random() < node.extra.chance) {
+        add(node.extra.item, 1);
+        text += ', +1 seed';
+      }
+      pop(hot, text);
+      if (id === 'tree') {
+        complete('q_wood');
+      } else if (id === 'bush') {
+        complete('q_fiber');
+      } else if (id === 'scrap') {
+        complete('q_scrap');
+      }
+      const ms = (node.respawn * 1000) / RESPAWN_SPEEDUP;
+      cool[id] = Date.now() + ms;
+      hot.classList.add('cool');
+      setTimeout(() => hot.classList.remove('cool'), ms);
+      update(node.item);
     });
   });
+
+  // ---- crafting ----
+  function renderRecipes() {
+    $('#recipes').innerHTML = RECIPES.map((r) => {
+      const ok = Object.entries(r.in).every(([k, n]) => have(k) >= n);
+      const needs = Object.entries(r.in).map(([k, n]) => '<span class="' + (have(k) >= n ? 'have' : 'short') + '">' + Math.min(have(k), n) + '/' + n + ' ' + name(k).toLowerCase() + '</span>').join('');
+      return '<div class="recipe' + (ok ? ' ready' : '') + '"><b><i class="sw" style="background:' + ITEMS[r.out].color + '"></i>' + name(r.out) + '</b><div class="needs">' + needs + '</div>' +
+        '<button class="btn small" type="button" data-craft="' + r.id + '"' + (ok ? '' : ' disabled') + '>Craft</button></div>';
+    }).join('');
+    const place = [];
+    if (have('solar')) {
+      place.push('<button class="btn small" type="button" data-place="solar">Place solar panel (' + have('solar') + ')</button>');
+    }
+    if (have('planter') && S.pots.length < 4) {
+      place.push('<button class="btn small ghost" type="button" data-place="planter">Place planter</button>');
+    }
+    $('#placeNote').innerHTML = place.length
+      ? '<span class="row">' + place.join('') + '</span>'
+      : (S.solarPlaced ? S.solarPlaced + ' solar panel' + (S.solarPlaced > 1 ? 's' : '') + ' on the roof, feeding the chart in shot 08.' : 'Place a crafted solar panel to finish the goal. It then charges the battery in shot 08.');
+  }
+  $('#recipes').addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-craft]');
+    if (!btn) {
+      return;
+    }
+    const r = RECIPES.find((x) => x.id === btn.dataset.craft);
+    if (!Object.entries(r.in).every(([k, n]) => have(k) >= n)) {
+      return;
+    }
+    Object.entries(r.in).forEach(([k, n]) => add(k, -n));
+    add(r.out, 1);
+    S.stats.crafted += 1;
+    if (r.id === 'wire') {
+      complete('q_wire');
+    }
+    toast('Crafted 1 ' + name(r.out).toLowerCase() + '.');
+    update(r.out);
+  });
+  $('#placeNote').addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-place]');
+    if (!btn) {
+      return;
+    }
+    if (btn.dataset.place === 'solar' && have('solar')) {
+      add('solar', -1);
+      S.solarPlaced += 1;
+      S.energy.solar = Math.max(S.energy.solar, S.solarPlaced);
+      complete('q_solar');
+    } else if (btn.dataset.place === 'planter' && have('planter') && S.pots.length < 4) {
+      add('planter', -1);
+      S.pots.push({ s: 'empty' });
+      toast('New planter placed in shot 03.');
+    }
+    update();
+  });
+  $$('[data-scroll]').forEach((hot) => hot.addEventListener('click', () => {
+    const el = document.getElementById(hot.dataset.scroll);
+    el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
+    const first = el.querySelector('button:not([disabled])');
+    if (first) {
+      first.focus({ preventScroll: true });
+    }
+  }));
+
+  // ---- market ----
+  let talking = 'sari';
+  function renderPeople() {
+    $('#people').innerHTML = NPCS.map((p) => {
+      let extra = '';
+      if (p.id === 'sari' && talking === 'sari') {
+        const items = Object.keys(S.inv).filter((k) => S.inv[k] > 0);
+        extra = S.done.q_market
+          ? '<div class="sell">' + (items.length ? items.map((k) => '<button type="button" data-sell="' + k + '"><i class="sw" style="background:' + ITEMS[k].color + '"></i>Sell ' + name(k).toLowerCase() + ', ' + ITEMS[k].sell + ' cr</button>').join('') : '<span class="none">Nothing in the bag to sell yet.</span>') + '</div>'
+          : '<div class="sell"><span class="none">Cross the bridge in the frame first.</span></div>';
+      }
+      return '<div class="person" role="button" tabindex="0" data-talk="' + p.id + '" aria-pressed="' + (talking === p.id) + '"><span class="face" style="background:' + p.color + '">' + p.name[0] + '</span><div><b>' + p.name + '</b><span>' + p.role + '</span>' + extra + '</div></div>';
+    }).join('');
+  }
+  $('#people').addEventListener('click', (e) => {
+    const sell = e.target.closest('[data-sell]');
+    if (sell) {
+      const k = sell.dataset.sell;
+      if (have(k)) {
+        add(k, -1);
+        S.credits += ITEMS[k].sell;
+        S.stats.earned += ITEMS[k].sell;
+        complete('q_sell');
+        update();
+      }
+      return;
+    }
+    const who = e.target.closest('[data-talk]');
+    if (who) {
+      talking = who.dataset.talk;
+      renderPeople();
+    }
+  });
+  $('#people').addEventListener('keydown', (e) => {
+    const who = e.target.closest('[data-talk]');
+    if (who && (e.key === 'Enter' || e.key === ' ') && e.target === who) {
+      e.preventDefault();
+      talking = who.dataset.talk;
+      renderPeople();
+      const again = $('[data-talk="' + talking + '"]');
+      if (again) {
+        again.focus();
+      }
+    }
+  });
+  $$('[data-npc]').forEach((hot) => hot.addEventListener('click', () => {
+    talking = hot.dataset.npc;
+    const npc = NPCS.find((n) => n.id === talking);
+    pop(hot, npc.name);
+    renderPeople();
+  }));
+  $('[data-cross]').addEventListener('click', (e) => {
+    complete('q_market');
+    pop(e.currentTarget, 'Market Isle');
+    update();
+  });
+
+  // ---- community projects ----
+  function projDone(p) {
+    const given = S.proj[p.id] || {};
+    return p.need && Object.entries(p.need).every(([k, n]) => (given[k] || 0) >= n);
+  }
+  function renderProjects() {
+    $('#projects').innerHTML = PROJECTS.map((p) => {
+      if (p.locked) {
+        return '<div class="proj locked"><header><b>' + p.en + '</b><span class="fine" style="margin:0">In the game</span></header><p>' + p.body + '</p></div>';
+      }
+      const waiting = p.after && !projDone(PROJECTS.find((x) => x.id === p.after));
+      const given = S.proj[p.id] || {};
+      const done = projDone(p);
+      const canGive = !waiting && !done && Object.entries(p.need).some(([k, n]) => have(k) > 0 && (given[k] || 0) < n);
+      const bars = Object.entries(p.need).map(([k, n]) => {
+        const g = Math.min(n, given[k] || 0);
+        return '<div><span>' + g + '/' + n + ' ' + name(k).toLowerCase() + '</span><span class="bar"><i style="width:' + (g / n) * 100 + '%"></i></span></div>';
+      }).join('');
+      const status = done ? '<span class="fine" style="margin:0;color:#234638;font-weight:700">Finished</span>'
+        : waiting ? '<span class="fine" style="margin:0">After the bridge</span>'
+        : '<button class="btn small" type="button" data-give="' + p.id + '"' + (canGive ? '' : ' disabled') + '>Give</button>';
+      return '<div class="proj' + (done ? ' finished' : '') + (waiting ? ' locked' : '') + '"><header><b>' + p.en + '</b>' + status + '</header><p>' + p.body + '</p><div class="needs">' + bars + '</div></div>';
+    }).join('');
+  }
+  $('#projects').addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-give]');
+    if (!btn) {
+      return;
+    }
+    const p = PROJECTS.find((x) => x.id === btn.dataset.give);
+    const given = S.proj[p.id] || (S.proj[p.id] = {});
+    let total = 0;
+    Object.entries(p.need).forEach(([k, n]) => {
+      const amount = Math.min(have(k), n - (given[k] || 0));
+      if (amount > 0) {
+        given[k] = (given[k] || 0) + amount;
+        add(k, -amount);
+        total += amount;
+      }
+    });
+    if (total) {
+      complete('q_project');
+      if (projDone(p)) {
+        S.credits += p.reward;
+        S.stats.earned += p.reward;
+        toast(p.en + ': finished. +' + p.reward + ' credits. ' + (p.id === 'bridge' ? 'Grove Isle is open in the game.' : p.id === 'tower' ? 'Bayu can teach turbines now.' : 'Reef Isle is open in the game.'));
+      } else if (!toastTimer || !$('#toast').classList.contains('show')) {
+        toast('Gave ' + total + ' item' + (total > 1 ? 's' : '') + ' to ' + p.en.toLowerCase() + '.');
+      }
+      update();
+    }
+  });
+
+  // ---- energy chart ----
+  const chart = $('#chart');
+  const ctx = chart.getContext('2d');
+  function simulate() {
+    const e = S.energy;
+    const cap = ENERGY.base + e.battery * ENERGY.battery;
+    // start at 07:12 (game start time), with the starting 6 energy, run 2 days and plot the second
+    let stored = Math.min(cap, ENERGY.start);
+    const series = new Array(1440).fill(0);
+    let darkAt = -1;
+    const steps = ENERGY.day * 2;
+    for (let i = 0; i < steps; i += 1) {
+      const t = (0.3 + i / ENERGY.day) % 1;
+      const light = daylight(t);
+      const night = light < 0.08;
+      const rate = e.solar * ENERGY.solar * light + e.turbine * ENERGY.turbine - (night ? e.lamp * ENERGY.lamp : 0);
+      stored = Math.max(0, Math.min(cap, stored + rate));
+      if (i >= ENERGY.day) {
+        const minute = Math.floor(t * 1440);
+        for (let m = minute; m < minute + 3 && m < 1440; m += 1) {
+          series[m] = stored;
+        }
+        if (night && e.lamp > 0 && stored <= 0 && darkAt < 0) {
+          darkAt = minute;
+        }
+      }
+    }
+    return { series, cap, darkAt };
+  }
+  function drawChart() {
+    const W = chart.width;
+    const H = chart.height;
+    const pad = { l: 34, r: 10, t: 12, b: 24 };
+    const sim = simulate();
+    const mins = +$('#tod').value;
+    ctx.clearRect(0, 0, W, H);
+    for (let x = 0; x < W - pad.l - pad.r; x += 2) {
+      const t = x / (W - pad.l - pad.r);
+      const light = daylight(t);
+      const r = Math.round(28 + light * (215 - 28));
+      const g = Math.round(40 + light * (233 - 40));
+      const b = Math.round(48 + light * (239 - 48));
+      ctx.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
+      ctx.fillRect(pad.l + x, pad.t, 2, H - pad.t - pad.b);
+    }
+    ctx.strokeStyle = 'rgba(35,48,42,.35)';
+    ctx.fillStyle = '#c9d3cb';
+    ctx.font = '600 11px Figtree, sans-serif';
+    for (let h = 0; h <= 24; h += 6) {
+      const x = pad.l + (h / 24) * (W - pad.l - pad.r);
+      ctx.fillText(String(h).padStart(2, '0') + ':00', Math.min(W - 38, Math.max(0, x - 14)), H - 7);
+    }
+    ctx.fillText(String(sim.cap), 4, pad.t + 9);
+    ctx.fillText('0', 14, H - pad.b);
+    ctx.beginPath();
+    sim.series.forEach((v, m) => {
+      const x = pad.l + (m / 1439) * (W - pad.l - pad.r);
+      const y = H - pad.b - (v / sim.cap) * (H - pad.t - pad.b);
+      if (m === 0) {
+        ctx.moveTo(x, y);
+      } else {
+        ctx.lineTo(x, y);
+      }
+    });
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = '#c9951a';
+    ctx.stroke();
+    const cx = pad.l + (mins / 1439) * (W - pad.l - pad.r);
+    ctx.strokeStyle = '#f8f3e8';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.moveTo(cx, pad.t);
+    ctx.lineTo(cx, H - pad.b);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    const t = mins / 1440;
+    const light = daylight(t);
+    const night = light < 0.08;
+    const e = S.energy;
+    const rate = (e.solar * ENERGY.solar * light + e.turbine * ENERGY.turbine - (night ? e.lamp * ENERGY.lamp : 0)) * 60;
+    const stored = sim.series[Math.min(1439, mins)];
+    $('#r-light').textContent = Math.round(light * 100) + '%';
+    $('#r-rate').textContent = (rate >= 0 ? '+' : '') + rate.toFixed(2);
+    $('#r-store').textContent = stored.toFixed(1) + ' / ' + sim.cap;
+    $('#clock8').textContent = fmtClock(mins) + (night ? ' Night' : light < 0.6 ? (mins < 720 ? ' Morning' : ' Evening') : ' Day');
+    const v = $('#verdict');
+    if (!e.lamp) {
+      v.className = 'verdict';
+      v.textContent = 'No lamps, so the island just stores energy for cooking and sprinklers.';
+    } else if (sim.darkAt >= 0) {
+      v.className = 'verdict bad';
+      v.textContent = 'The lamps go dark at ' + fmtClock(sim.darkAt) + '. Add a panel, a turbine or a battery.';
+    } else {
+      v.className = 'verdict good';
+      v.textContent = 'The lamps stay lit all night with ' + sim.series[Math.floor(0.26 * 1440)].toFixed(1) + ' energy left at dawn.';
+    }
+    ['solar', 'turbine', 'battery', 'lamp'].forEach((k) => {
+      $('#o-' + k).textContent = e[k];
+    });
+  }
+  const LIMITS = { solar: [0, 4], turbine: [0, 2], battery: [0, 2], lamp: [0, 8] };
+  $$('[data-step]').forEach((btn) => btn.addEventListener('click', () => {
+    const k = btn.dataset.step;
+    S.energy[k] = Math.max(LIMITS[k][0], Math.min(LIMITS[k][1], S.energy[k] + +btn.dataset.d));
+    save();
+    drawChart();
+  }));
+  $('#tod').addEventListener('input', drawChart);
+
+  // ---- language ----
+  function setLang(lang) {
+    S.lang = lang;
+    $$('[data-lang]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+    const g = GOALS[0];
+    $('#firstGoal').innerHTML = (lang === 'id' ? g.idn : g.en) + '<small>' + (lang === 'id' ? 'Tujuan 1 dari 19, kata yang sama dengan di game' : 'Goal 1 of 19, the same words the game uses') + '</small>';
+    update();
+  }
+  $$('[data-lang]').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.lang)));
+  $('#begin').addEventListener('click', () => {
+    document.getElementById('shot-2').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+    $('#hud').classList.add('show');
+  });
+
+  // ---- wrap-up ----
+  function renderWrap() {
+    const done = GOALS.filter((g) => S.done[g.id]).length;
+    const stats = [
+      [done + '/' + GOALS.length, 'goals done on this page'],
+      [S.stats.gathered, 'materials gathered'],
+      [S.stats.crafted, 'things crafted'],
+      [S.credits, 'credits in your pocket'],
+    ];
+    $('#stats').innerHTML = stats.map(([b, s]) => '<div><b>' + b + '</b><span>' + s + '</span></div>').join('');
+    $('#wrapText').textContent = done === GOALS.length
+      ? 'Every goal on this page is done. In the game you would be at goal 11 now: villager orders, then fishing, cooking, the wind tower and three more islands.'
+      : done
+        ? 'You have ' + done + ' of ' + GOALS.length + ' goals done. Keep going in the frames above, or carry on in the game, where the next goals bring villager orders, fishing and cooking.'
+        : 'Finish the goals in the storyboard and your tally lands here. The game picks up at goal 11 with villager orders, then fishing, cooking and three more islands.';
+  }
+  $('#reset').addEventListener('click', () => {
+    S = fresh();
+    save();
+    setLang('en');
+    toast('Fresh start. Back to dawn on Home Isle.');
+  });
+
+  // ---- contact sheet ----
+  const shotNames = ['Dawn', 'Tree', 'Planters', 'Scrap', 'Workbench', 'Market', 'Bridge', 'Night'];
+  $('#thumbs').innerHTML = shotNames.map((n, i) => '<button class="thumb" type="button" data-n="' + (i + 1) + '" aria-label="Go to shot ' + (i + 1) + ', ' + n + '"><img src="g' + (i + 1) + '.jpg" alt="Shot ' + (i + 1) + ': ' + n + '" width="1200" height="675"><span><b>' + String(i + 1).padStart(2, '0') + '</b>' + n + '</span></button>').join('');
+  $$('.thumb').forEach((b) => b.addEventListener('click', () => {
+    document.getElementById('shot-' + b.dataset.n).scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+  }));
+
+  // ---- scroll: show HUD, move the clock ----
+  const hud = $('#hud');
+  const hero = $('.hero');
+  const heroWatch = new IntersectionObserver((entries) => {
+    entries.forEach((en) => hud.classList.toggle('show', !en.isIntersecting));
+  }, { threshold: 0, rootMargin: '0px 0px -45% 0px' });
+  heroWatch.observe(hero);
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.isIntersecting) {
+        hudMins = SHOT_CLOCK[en.target.dataset.shot] || hudMins;
+        renderHud();
+      }
+    });
+  }, { threshold: 0.35 });
+  $$('.shot').forEach((s) => io.observe(s));
+
+  function update(bumpItem) {
+    save();
+    renderHud(bumpItem);
+    renderGoalChips();
+    renderPots();
+    renderRecipes();
+    renderPeople();
+    renderProjects();
+    renderWrap();
+    drawChart();
+  }
+  setLang(S.lang === 'id' ? 'id' : 'en');
 })();
 </script>
 </body>
