@@ -39,7 +39,7 @@
   --fb: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-bottom: 120px; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
 body {
   margin: 0;
   font-family: var(--fb);
@@ -229,35 +229,46 @@ p { margin: 0 0 1em; }
 .quote { font-family: var(--fd); font-size: 1.3rem; line-height: 1.3; margin: 14px 0 6px; }
 .quote small { display: block; font-family: var(--fb); font-size: .82rem; color: var(--muted); margin-top: 4px; }
 
-/* HUD */
-.hud { position: fixed; left: 50%; bottom: 14px; transform: translate(-50%, 140%); width: min(760px, calc(100% - 20px)); z-index: 60; background: var(--sheet); border: 2px solid var(--ink); border-radius: 16px; box-shadow: 5px 5px 0 rgba(35, 48, 42, .3); padding: 10px 12px; display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; transition: transform .35s ease; }
-.hud.show { transform: translate(-50%, 0); }
-.hud .sun { width: 44px; height: 44px; flex: none; }
-.hud .goal { min-width: 0; }
-.hud .goal small { display: block; font-size: .7rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--green); }
-.hud .goal b { display: block; font-size: .98rem; line-height: 1.25; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.hud .pips { display: flex; gap: 3px; margin-top: 5px; }
-.hud .pips i { width: 16px; height: 5px; border-radius: 3px; background: #e2d7bf; }
+/* HUD: docked in the sticky header, takes the nav's place while you play */
+.hud { display: none; flex: 1; min-width: 0; align-items: center; gap: 12px; margin-left: 8px; padding: 4px 6px 4px 4px; border-radius: 14px; transition: background .25s; }
+.hud.show { display: flex; }
+.top.playing nav { display: none; }
+.hud .sun { width: 38px; height: 38px; flex: none; }
+.hud .goal { min-width: 0; flex: 1; }
+.hud .goal small { display: block; font-size: .66rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--green); line-height: 1.3; }
+.hud .goal b { display: block; font-size: .92rem; line-height: 1.25; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hud .pips { display: flex; gap: 3px; margin-top: 4px; }
+.hud .pips i { width: 14px; height: 4px; border-radius: 3px; background: #e2d7bf; }
 .hud .pips i.ok { background: var(--green); }
-.hud .right { display: flex; align-items: center; gap: 8px; }
-.inv { display: flex; gap: 5px; max-width: 290px; overflow-x: auto; scrollbar-width: none; }
+.hud .right { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.inv { display: flex; gap: 5px; max-width: 300px; overflow-x: auto; scrollbar-width: none; }
 .inv::-webkit-scrollbar { display: none; }
-.chip { display: inline-flex; align-items: center; gap: 5px; font-size: .8rem; font-weight: 700; padding: 3px 8px; border-radius: 999px; background: #fff; border: 1.5px solid var(--line); white-space: nowrap; }
+.chip { display: inline-flex; align-items: center; gap: 5px; font-size: .78rem; font-weight: 700; padding: 3px 8px; border-radius: 999px; background: #fff; border: 1.5px solid var(--line); white-space: nowrap; }
 .chip.bump { animation: bump .45s ease; }
 @keyframes bump { 40% { transform: scale(1.18); border-color: var(--sun); } }
-.credits { font-weight: 800; font-size: .86rem; background: var(--sun-tint); border: 1.5px solid var(--ink); border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
-.hud .go { min-height: 36px; padding: 4px 12px; font-size: .84rem; }
-.hud.flash { background: var(--green-tint); border-color: var(--green-deep); }
+.credits { font-weight: 800; font-size: .84rem; background: var(--sun-tint); border: 1.5px solid var(--ink); border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+.hud .go { min-height: 34px; padding: 4px 12px; font-size: .84rem; }
+.hud.flash { background: var(--green-tint); }
 .hud.flash .goal small { color: var(--green-deep); }
+.hud.flash .goal b { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; font-size: .84rem; }
+.hud.flash .pips { display: none; }
 .toast { position: fixed; left: 50%; bottom: 112px; transform: translate(-50%, 20px); opacity: 0; z-index: 70; background: var(--ink); color: var(--sheet); padding: 9px 16px; border-radius: 12px; font-weight: 600; font-size: .92rem; transition: opacity .25s, transform .25s; pointer-events: none; max-width: calc(100% - 30px); text-align: center; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
 /* wrap-up */
 .wrapup { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
-.wrapup .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-.wrapup .stats div { background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 10px; padding: 12px 14px; }
-.wrapup .stats b { display: block; font-family: var(--fd); font-size: 2rem; line-height: 1; }
-.wrapup .stats span { font-size: .84rem; color: var(--muted); font-weight: 600; }
+.slate { background: var(--ink); color: var(--sheet); border: 2px solid var(--ink); border-radius: 12px; box-shadow: 6px 6px 0 rgba(35, 48, 42, .25); overflow: hidden; }
+.slate .clap { height: 30px; background: repeating-linear-gradient(-55deg, var(--sheet) 0 22px, var(--ink) 22px 44px); border-bottom: 2px solid var(--sheet); transform-origin: left bottom; }
+.slate.snap .clap { animation: clap .5s ease; }
+@keyframes clap { 30% { transform: rotate(-9deg); } 60% { transform: rotate(0); } }
+.slate dl { display: grid; grid-template-columns: repeat(2, 1fr); margin: 0; }
+.slate dl div { padding: 12px 16px; border-right: 1px solid rgba(243, 236, 220, .25); border-bottom: 1px solid rgba(243, 236, 220, .25); }
+.slate dl div:nth-child(2n) { border-right: 0; }
+.slate dl div.wide { grid-column: 1 / -1; border-right: 0; }
+.slate dt { font-size: .68rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #c9d9a8; }
+.slate dd { margin: 2px 0 0; font-family: var(--fd); font-size: 1.7rem; line-height: 1.1; }
+.slate dd small { font-family: var(--fb); font-size: .8rem; color: rgba(243, 236, 220, .75); margin-left: 6px; }
+.slate .wide dd { font-size: 1.15rem; }
 .reset { background: none; border: 0; text-decoration: underline; color: var(--muted); cursor: pointer; font-size: .86rem; padding: 0; }
 
 /* call sheet */
@@ -327,12 +338,14 @@ footer nav { display: flex; gap: 16px; flex-wrap: wrap; }
   .readout { grid-template-columns: 1fr 1fr; }
   .callsheet dl { grid-template-columns: 1fr; }
   .callsheet dt { border-right: 0; border-bottom: 0; padding-bottom: 0; }
-  .hud { grid-template-columns: auto 1fr; gap: 6px 10px; padding: 8px 10px; }
-  .hud .sun { width: 36px; height: 36px; }
-  .hud .right { grid-column: 1 / -1; }
+  .top.playing .wrap { height: auto; min-height: 60px; padding-top: 6px; padding-bottom: 6px; }
+  .top.playing .brand, .top.playing > .wrap > .btn { display: none; }
+  .hud { flex-wrap: wrap; gap: 6px 10px; margin-left: 0; }
+  .hud .sun { width: 34px; height: 34px; }
+  .hud .goal { flex: 1 1 calc(100% - 44px); }
+  .hud .right { flex: 1 1 100%; }
   .inv { max-width: none; flex: 1; }
   .slug .loc { display: none; }
-  body { padding-bottom: 150px; }
   .toast { bottom: 150px; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -347,6 +360,19 @@ footer nav { display: flex; gap: 16px; flex-wrap: wrap; }
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Teduh, back to top"><i>T</i>Teduh</a>
+    <div class="hud" id="hud" aria-label="Goal and bag">
+      <svg class="sun" id="sunIcon" viewBox="0 0 44 44" aria-hidden="true"></svg>
+      <div class="goal" aria-live="polite">
+        <small id="goalNo">Goal 1 of 19</small>
+        <b id="goalText">Chop a tree for wood</b>
+        <div class="pips" id="pips"></div>
+      </div>
+      <div class="right">
+        <div class="inv" id="inv" aria-label="Bag"></div>
+        <span class="credits" id="credits">30 cr</span>
+        <button class="btn small go" type="button" id="goBtn">Go</button>
+      </div>
+    </div>
     <nav aria-label="Page sections">
       <a href="#story">Storyboard</a>
       <a href="#cast">Full game</a>
@@ -365,8 +391,8 @@ footer nav { display: flex; gap: 16px; flex-wrap: wrap; }
       <h1>A calm sky village you build with <em>sun and wind.</em></h1>
       <p class="lede">Teduh is a free, cozy solarpunk life sim that runs in any browser, on phone or desktop, and keeps working offline. No account, no shop. Below is one day on the islands, told in eight shots, and you can play its first goals right on this page.</p>
       <div class="cta">
-        <a class="btn" href="https://juw12.github.io/teduh/">Try it live</a>
-        <a class="btn ghost" href="#shot-1">Or play day one on this page</a>
+        <a class="btn" href="#shot-1">Play day one here</a>
+        <a class="btn ghost" href="https://juw12.github.io/teduh/">Try it live, full game</a>
       </div>
       <div class="textlinks">
         <a href="https://github.com/juw12/teduh#readme">Read the README</a>
@@ -599,7 +625,7 @@ footer nav { display: flex; gap: 16px; flex-wrap: wrap; }
       </div>
       <button class="reset" type="button" id="reset">Start this page over</button>
     </div>
-    <div class="stats" id="stats"></div>
+    <div class="slate" id="stats" aria-label="Wrap report"></div>
   </div>
 </section>
 
@@ -718,19 +744,7 @@ capacity = 20 + 40 * batteries</pre>
   </div>
 </footer>
 
-<div class="hud" id="hud" aria-label="Goal and bag">
-  <svg class="sun" id="sunIcon" viewBox="0 0 44 44" aria-hidden="true"></svg>
-  <div class="goal" aria-live="polite">
-    <small id="goalNo">Goal 1 of 19</small>
-    <b id="goalText">Chop a tree for wood</b>
-    <div class="pips" id="pips"></div>
-  </div>
-  <div class="right">
-    <div class="inv" id="inv" aria-label="Bag"></div>
-    <span class="credits" id="credits">30 cr</span>
-    <button class="btn small go" type="button" id="goBtn">Go</button>
-  </div>
-</div>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -1391,19 +1405,32 @@ capacity = 20 + 40 * batteries</pre>
   $$('[data-lang]').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.lang)));
   $('#begin').addEventListener('click', () => {
     document.getElementById('shot-2').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
-    $('#hud').classList.add('show');
+    setPlaying(true);
   });
 
   // ---- wrap-up ----
   function renderWrap() {
     const done = GOALS.filter((g) => S.done[g.id]).length;
-    const stats = [
-      [done + '/' + GOALS.length, 'goals done on this page'],
-      [S.stats.gathered, 'materials gathered'],
-      [S.stats.crafted, 'things crafted'],
-      [S.credits, 'credits in your pocket'],
+    const allDone = done === GOALS.length;
+    const rows = [
+      ['Production', 'Teduh, day one on Home Isle', '', 'wide'],
+      ['Take', allDone ? 'Print it' : 'Rolling', '', ''],
+      ['Goals', done + '/' + GOALS.length, 'on this page', ''],
+      ['Gathered', S.stats.gathered, 'materials', ''],
+      ['Crafted', S.stats.crafted, 'things', ''],
+      ['Pocket', S.credits, 'credits', 'wide'],
     ];
-    $('#stats').innerHTML = stats.map(([b, s]) => '<div><b>' + b + '</b><span>' + s + '</span></div>').join('');
+    const slate = $('#stats');
+    const wasDone = slate.dataset.done === '1';
+    slate.innerHTML = '<div class="clap" aria-hidden="true"></div><dl>' + rows.map(([label, value, note, cls]) =>
+      '<div class="' + cls + '"><dt>' + label + '</dt><dd>' + value + (note ? '<small>' + note + '</small>' : '') + '</dd></div>'
+    ).join('') + '</dl>';
+    slate.dataset.done = allDone ? '1' : '0';
+    if (allDone && !wasDone && !reduced) {
+      slate.classList.remove('snap');
+      void slate.offsetWidth;
+      slate.classList.add('snap');
+    }
     $('#wrapText').textContent = done === GOALS.length
       ? 'Every goal on this page is done. In the game you would be at goal 11 now: villager orders, then fishing, cooking, the wind tower and three more islands.'
       : done
@@ -1425,12 +1452,16 @@ capacity = 20 + 40 * batteries</pre>
     return '<button class="thumb' + (lead ? ' lead' : '') + '" type="button" data-n="' + (lead ? 2 : i + 1) + '" aria-label="' + (lead ? 'Start playing at shot 2' : 'Go to shot ' + (i + 1) + ', ' + n) + '"><img src="g' + (i + 1) + '.jpg" alt="Shot ' + (i + 1) + ': ' + n + '" width="1200" height="675">' + label + '</button>';
   }).join('');
   $$('.thumb').forEach((b) => b.addEventListener('click', () => {
-    $('#hud').classList.add('show');
+    setPlaying(true);
     document.getElementById('shot-' + b.dataset.n).scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
   }));
 
   // ---- scroll: show HUD, move the clock ----
   const hud = $('#hud');
+  function setPlaying(on) {
+    hud.classList.toggle('show', on);
+    $('.top').classList.toggle('playing', on);
+  }
   const inPlay = new Set();
   const playWatch = new IntersectionObserver((entries) => {
     entries.forEach((en) => {
@@ -1440,7 +1471,7 @@ capacity = 20 + 40 * batteries</pre>
         inPlay.delete(en.target.id);
       }
     });
-    hud.classList.toggle('show', inPlay.size > 0);
+    setPlaying(inPlay.size > 0);
   }, { threshold: 0, rootMargin: '-35% 0px -35% 0px' });
   playWatch.observe($('#story'));
   playWatch.observe($('#wrap'));
