@@ -116,12 +116,13 @@ p { margin: 0 0 1em; }
 .story-intro p { margin: 0; color: var(--ink-soft); }
 .shot { display: grid; grid-template-columns: 1.35fr 1fr; gap: 36px; align-items: start; padding: 38px 0; scroll-margin-top: 80px; }
 .shot:nth-of-type(even) .frame { order: 2; }
+.shot:not(.establishing) > .side { align-self: center; }
 .shot > *, .hero .wrap > *, .story-intro > *, .wrapup > *, .hood-grid > *, .final .wrap > * { min-width: 0; }
 .shot.establishing { grid-template-columns: 1fr; gap: 26px; }
 .shot.establishing .side { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 40px; align-items: start; }
 .shot.establishing .side h3, .shot.establishing .side .sub { grid-column: 1; }
 .shot.establishing .side .card { grid-column: 2; grid-row: 1 / span 2; }
-.shot.establishing .side .row.begin { grid-column: 2; }
+.shot .card .row.begin { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); }
 .frame { background: var(--sheet); border: 2px solid var(--ink); border-radius: 5px; padding: 10px; box-shadow: 7px 7px 0 rgba(35, 48, 42, .13); position: relative; }
 .slug { display: flex; justify-content: space-between; gap: 10px; align-items: center; font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 2px 4px 9px; }
 .slug .no { background: var(--ink); color: var(--sheet); padding: 2px 8px; border-radius: 3px; }
@@ -229,6 +230,12 @@ p { margin: 0 0 1em; }
 .quote { font-family: var(--fd); font-size: 1.3rem; line-height: 1.3; margin: 14px 0 6px; }
 .quote small { display: block; font-family: var(--fb); font-size: .82rem; color: var(--muted); margin-top: 4px; }
 
+.goalchips li .gn { font-size: .66rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin-right: 7px; padding: 1px 6px; border-radius: 4px; background: var(--paper); color: var(--ink-soft); }
+.goalchips li.ok .gn { background: var(--green); color: var(--sheet); }
+.goalchips li.chip-pop { animation: chippop .6s ease; }
+@keyframes chippop { 35% { transform: scale(1.08); box-shadow: 0 0 0 4px var(--green-tint); } }
+.cutnote { font-size: .82rem; color: var(--muted); margin: 8px 0 0; }
+.cutnote b { color: var(--ink-soft); }
 /* HUD: docked in the sticky header, takes the nav's place while you play */
 .hud { display: none; flex: 1; min-width: 0; align-items: center; gap: 12px; margin-left: 8px; padding: 4px 6px 4px 4px; border-radius: 14px; transition: background .25s; }
 .hud.show { display: flex; }
@@ -408,7 +415,7 @@ footer nav { display: flex; gap: 16px; flex-wrap: wrap; }
       </ul>
     </div>
     <div class="sheet" aria-label="Storyboard contact sheet">
-      <div class="sheet-head"><b>A day on Teduh</b><span>8 shots, 06:30 to 21:30</span></div>
+      <div class="sheet-head"><b>A day on Teduh</b><span>8 shots, 07:12 to 21:30</span></div>
       <div class="thumbs" id="thumbs"></div>
       <p class="sheet-foot">Every frame is a real render from the game. Tap any shot to jump to it.</p>
     </div>
@@ -428,12 +435,12 @@ footer nav { display: flex; gap: 16px; flex-wrap: wrap; }
     <!-- SHOT 1 -->
     <article class="shot establishing" id="shot-1" data-shot="1">
       <div class="frame">
-        <div class="slug"><span class="no">Shot 01</span><span class="loc">Ext. Home Isle, wide</span><span class="clock">06:30 Dawn</span></div>
+        <div class="slug"><span class="no">Shot 01</span><span class="loc">Ext. Home Isle, wide</span><span class="clock">07:12 Morning</span></div>
         <div class="stage">
-          <img src="g1.jpg" alt="Dawn over Home Isle: a floating island with a red-roofed house, planters, lamp posts and a round pond, with two more islands behind" width="1200" height="675">
+          <img src="g1.jpg" alt="Morning over Home Isle: a floating island with a red-roofed house, planters, lamp posts and a round pond, with two more islands behind" width="1200" height="675">
           <svg class="move" viewBox="0 0 100 56.25" aria-hidden="true"><path d="M8 50 Q 30 30 52 26"/><text x="10" y="54">SLOW CRANE DOWN</text></svg>
         </div>
-        <p class="note">Wide on the island at first light. Hold, let the clouds drift, then find the traveller by the bench.</p>
+        <p class="note">Wide on the island in the first clear light. Hold, let the clouds drift, then find the traveller by the bench.</p>
       </div>
       <div class="side">
         <h3>You wake on Home Isle.</h3>
@@ -447,10 +454,10 @@ footer nav { display: flex; gap: 16px; flex-wrap: wrap; }
             </div>
           </div>
           <p class="quote" id="firstGoal">Chop a tree for wood<small>Goal 1 of 19, the same words the game uses</small></p>
-        </div>
-        <div class="row begin" style="margin-top:16px">
-          <button class="btn" type="button" id="begin">Start the day</button>
-          <span class="fine" style="margin:0">Jumps to shot 02.</span>
+          <div class="row begin">
+            <button class="btn" type="button" id="begin">Start the day</button>
+            <span class="fine" style="margin:0">Cuts to shot 02, the big tree.</span>
+          </div>
         </div>
       </div>
     </article>
@@ -493,6 +500,7 @@ footer nav { display: flex; gap: 16px; flex-wrap: wrap; }
         <h3>Plant, water, wait a little.</h3>
         <p class="sub">Basil needs one seed and a splash of water. In the game it grows in 60 seconds of play; here it takes 6. Each harvest gives 2 to 3 basil.</p>
         <ul class="goalchips" data-goals="q_plant q_water q_harvest"></ul>
+        <p class="cutnote"><b>Cross-cut:</b> goal 8 lands on this frame because the basil grows while you work on goals 5 to 7. Come back to harvest.</p>
         <div class="pots" id="pots"></div>
       </div>
     </article>
@@ -577,6 +585,7 @@ footer nav { display: flex; gap: 16px; flex-wrap: wrap; }
         <h3>Build it together.</h3>
         <p class="sub">Community projects take materials from you and from friends in your room. Finish one and a new island opens.</p>
         <ul class="goalchips" data-goals="q_project"></ul>
+        <p class="cutnote"><b>Skipped on this page:</b> goal 11, villager orders, needs the full game.</p>
         <div class="projects" id="projects"></div>
       </div>
     </article>
@@ -806,7 +815,7 @@ capacity = 20 + 40 * batteries</pre>
     { id: 'lin', name: 'Lin', color: '#3b5d8c', role: 'Fisher and cook. Knows every pool between the clouds.' },
   ];
   const ENERGY = { base: 20, battery: 40, solar: 0.06, turbine: 0.035, lamp: 0.004, day: 600, start: 6 };
-  const SHOT_CLOCK = { 1: 390, 2: 465, 3: 550, 4: 630, 5: 720, 6: 860, 7: 1070, 8: 1290 };
+  const SHOT_CLOCK = { 1: 432, 2: 465, 3: 550, 4: 630, 5: 720, 6: 860, 7: 1070, 8: 1290 };
 
   // ---- state ----
   const KEY = 'teduh-storyboard-v1';
@@ -960,11 +969,15 @@ capacity = 20 + 40 * batteries</pre>
   });
 
   // ---- render everything that depends on state ----
+  const chipSeen = {};
   function renderGoalChips() {
     $$('.goalchips').forEach((ul) => {
       ul.innerHTML = ul.dataset.goals.split(' ').map((id) => {
         const g = GOALS.find((x) => x.id === id);
-        return '<li class="' + (S.done[id] ? 'ok' : '') + '">' + g.n + '. ' + (S.lang === 'id' ? g.idn : g.en) + '</li>';
+        const fresh = S.done[id] && chipSeen[id] === false;
+        chipSeen[id] = !!S.done[id];
+        const label = (S.lang === 'id' ? 'Tujuan ' : 'Goal ') + g.n;
+        return '<li class="' + (S.done[id] ? 'ok' : '') + (fresh && !reduced ? ' chip-pop' : '') + '"><span class="gn">' + label + '</span>' + (S.lang === 'id' ? g.idn : g.en) + '</li>';
       }).join('');
     });
     $$('.shot').forEach((shot) => {
@@ -1442,14 +1455,14 @@ capacity = 20 + 40 * batteries</pre>
     S = fresh();
     save();
     setLang('en');
-    toast('Fresh start. Back to dawn on Home Isle.');
+    toast('Fresh start. Back to morning on Home Isle.');
   });
 
   // ---- contact sheet ----
-  const shotNames = ['Dawn', 'Tree', 'Planters', 'Scrap', 'Workbench', 'Market', 'Bridge', 'Night'];
+  const shotNames = ['Morning', 'Tree', 'Planters', 'Scrap', 'Craft', 'Market', 'Bridge', 'Night'];
   $('#thumbs').innerHTML = shotNames.map((n, i) => {
     const lead = i === 0;
-    const label = lead ? '<span><b>Shot 01, dawn</b>Tap to start the day</span><em class="go">Play day one</em>' : '<span>' + String(i + 1).padStart(2, '0') + ' ' + n + '</span>';
+    const label = lead ? '<span><b>Shot 01, morning</b>Tap to start the day</span><em class="go">Play day one</em>' : '<span>' + String(i + 1).padStart(2, '0') + ' ' + n + '</span>';
     return '<button class="thumb' + (lead ? ' lead' : '') + '" type="button" data-n="' + (lead ? 2 : i + 1) + '" aria-label="' + (lead ? 'Start playing at shot 2' : 'Go to shot ' + (i + 1) + ', ' + n) + '"><img src="g' + (i + 1) + '.jpg" alt="Shot ' + (i + 1) + ': ' + n + '" width="1200" height="675">' + label + '</button>';
   }).join('');
   $$('.thumb').forEach((b) => b.addEventListener('click', () => {
