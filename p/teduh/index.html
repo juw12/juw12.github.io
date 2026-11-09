@@ -39,7 +39,7 @@
   --fb: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-bottom: 120px; }
 body {
   margin: 0;
   font-family: var(--fb);
@@ -98,7 +98,12 @@ p { margin: 0 0 1em; }
 .sheet { background: var(--sheet); border: 2px solid var(--ink); border-radius: 6px; padding: 16px 16px 12px; box-shadow: 8px 8px 0 rgba(35, 48, 42, .14); position: relative; }
 .sheet-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); border-bottom: 1.5px solid var(--ink); padding-bottom: 8px; margin-bottom: 12px; }
 .sheet-head b { font-family: var(--fd); font-size: 1.15rem; letter-spacing: 0; text-transform: none; color: var(--ink); }
-.thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.thumbs { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+.thumb.lead { grid-column: 1 / -1; }
+.thumb.lead span { font-size: .8rem; }
+.thumb .go { position: absolute; left: 50%; top: 42%; transform: translate(-50%, -50%); background: var(--sheet); border: 2px solid var(--ink); border-radius: 999px; padding: 6px 16px; font-weight: 800; font-size: .9rem; box-shadow: 3px 3px 0 var(--ink); }
+.thumb:not(.lead) img { aspect-ratio: 1 / 1; }
+.thumb:not(.lead) span b { display: none; }
 .thumb { all: unset; cursor: pointer; display: block; position: relative; }
 .thumb img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border: 1.5px solid var(--ink); border-radius: 3px; transition: transform .18s ease; }
 .thumb:hover img, .thumb:focus-visible img { transform: translateY(-3px) rotate(-1deg); }
@@ -242,6 +247,8 @@ p { margin: 0 0 1em; }
 @keyframes bump { 40% { transform: scale(1.18); border-color: var(--sun); } }
 .credits { font-weight: 800; font-size: .86rem; background: var(--sun-tint); border: 1.5px solid var(--ink); border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
 .hud .go { min-height: 36px; padding: 4px 12px; font-size: .84rem; }
+.hud.flash { background: var(--green-tint); border-color: var(--green-deep); }
+.hud.flash .goal small { color: var(--green-deep); }
 .toast { position: fixed; left: 50%; bottom: 112px; transform: translate(-50%, 20px); opacity: 0; z-index: 70; background: var(--ink); color: var(--sheet); padding: 9px 16px; border-radius: 12px; font-weight: 600; font-size: .92rem; transition: opacity .25s, transform .25s; pointer-events: none; max-width: calc(100% - 30px); text-align: center; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
@@ -312,7 +319,8 @@ footer nav { display: flex; gap: 16px; flex-wrap: wrap; }
 @media (max-width: 560px) {
   .wrap { padding: 0 14px; }
   .block { padding: 60px 0; }
-  .thumbs { grid-template-columns: repeat(2, 1fr); }
+  .thumbs { gap: 5px; }
+  .thumb:not(.lead) span { font-size: .6rem; }
   .hot .dot { width: 38px; height: 38px; }
   .hot .tag { font-size: .7rem; }
   .pots, .energy .controls { grid-template-columns: 1fr; }
@@ -358,7 +366,7 @@ footer nav { display: flex; gap: 16px; flex-wrap: wrap; }
       <p class="lede">Teduh is a free, cozy solarpunk life sim that runs in any browser, on phone or desktop, and keeps working offline. No account, no shop. Below is one day on the islands, told in eight shots, and you can play its first goals right on this page.</p>
       <div class="cta">
         <a class="btn" href="https://juw12.github.io/teduh/">Try it live</a>
-        <a class="btn ghost" href="#shot-1">Play day one here</a>
+        <a class="btn ghost" href="#shot-1">Or play day one on this page</a>
       </div>
       <div class="textlinks">
         <a href="https://github.com/juw12/teduh#readme">Read the README</a>
@@ -375,7 +383,7 @@ footer nav { display: flex; gap: 16px; flex-wrap: wrap; }
     <div class="sheet" aria-label="Storyboard contact sheet">
       <div class="sheet-head"><b>A day on Teduh</b><span>8 shots, 06:30 to 21:30</span></div>
       <div class="thumbs" id="thumbs"></div>
-      <p class="sheet-foot">Every frame is a real render from the game. Pick one to jump in.</p>
+      <p class="sheet-foot">Every frame is a real render from the game. Tap any shot to jump to it.</p>
     </div>
   </div>
 </section>
@@ -712,7 +720,7 @@ capacity = 20 + 40 * batteries</pre>
 
 <div class="hud" id="hud" aria-label="Goal and bag">
   <svg class="sun" id="sunIcon" viewBox="0 0 44 44" aria-hidden="true"></svg>
-  <div class="goal">
+  <div class="goal" aria-live="polite">
     <small id="goalNo">Goal 1 of 19</small>
     <b id="goalText">Chop a tree for wood</b>
     <div class="pips" id="pips"></div>
@@ -827,12 +835,20 @@ capacity = 20 + 40 * batteries</pre>
 
   // ---- toast and pop ----
   let toastTimer = 0;
+  let flashing = false;
   function toast(msg) {
-    const el = $('#toast');
-    el.textContent = msg;
-    el.classList.add('show');
+    // messages live inside the goal card, so nothing floats over the page
+    flashing = true;
+    $('#hud').classList.add('flash');
+    $('#goalNo').textContent = S.lang === 'id' ? 'Catatan' : 'Note';
+    $('#goalText').textContent = msg;
+    $('#goalText').title = msg;
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => el.classList.remove('show'), 2600);
+    toastTimer = setTimeout(() => {
+      flashing = false;
+      $('#hud').classList.remove('flash');
+      renderHud();
+    }, 2600);
   }
   function pop(anchor, text) {
     const stage = anchor.closest('.stage');
@@ -892,8 +908,11 @@ capacity = 20 + 40 * batteries</pre>
   let hudMins = SHOT_CLOCK[1];
   function renderHud(bumpItem) {
     const goal = currentGoal();
+    const keepFlash = flashing;
     const doneCount = GOALS.filter((g) => S.done[g.id]).length;
-    if (goal) {
+    if (keepFlash) {
+      // leave the note on screen until it times out
+    } else if (goal) {
       $('#goalNo').textContent = (S.lang === 'id' ? 'Tujuan ' : 'Goal ') + goal.n + (S.lang === 'id' ? ' dari 19' : ' of 19') + '  ' + fmtClock(hudMins);
       $('#goalText').textContent = S.lang === 'id' ? goal.idn : goal.en;
       $('#goBtn').textContent = S.lang === 'id' ? 'Ke sana' : 'Go';
@@ -1244,7 +1263,7 @@ capacity = 20 + 40 * batteries</pre>
         S.credits += p.reward;
         S.stats.earned += p.reward;
         toast(p.en + ': finished. +' + p.reward + ' credits. ' + (p.id === 'bridge' ? 'Grove Isle is open in the game.' : p.id === 'tower' ? 'Bayu can teach turbines now.' : 'Reef Isle is open in the game.'));
-      } else if (!toastTimer || !$('#toast').classList.contains('show')) {
+      } else if (!flashing) {
         toast('Gave ' + total + ' item' + (total > 1 ? 's' : '') + ' to ' + p.en.toLowerCase() + '.');
       }
       update();
@@ -1400,18 +1419,31 @@ capacity = 20 + 40 * batteries</pre>
 
   // ---- contact sheet ----
   const shotNames = ['Dawn', 'Tree', 'Planters', 'Scrap', 'Workbench', 'Market', 'Bridge', 'Night'];
-  $('#thumbs').innerHTML = shotNames.map((n, i) => '<button class="thumb" type="button" data-n="' + (i + 1) + '" aria-label="Go to shot ' + (i + 1) + ', ' + n + '"><img src="g' + (i + 1) + '.jpg" alt="Shot ' + (i + 1) + ': ' + n + '" width="1200" height="675"><span><b>' + String(i + 1).padStart(2, '0') + '</b>' + n + '</span></button>').join('');
+  $('#thumbs').innerHTML = shotNames.map((n, i) => {
+    const lead = i === 0;
+    const label = lead ? '<span><b>Shot 01, dawn</b>Tap to start the day</span><em class="go">Play day one</em>' : '<span>' + String(i + 1).padStart(2, '0') + ' ' + n + '</span>';
+    return '<button class="thumb' + (lead ? ' lead' : '') + '" type="button" data-n="' + (lead ? 2 : i + 1) + '" aria-label="' + (lead ? 'Start playing at shot 2' : 'Go to shot ' + (i + 1) + ', ' + n) + '"><img src="g' + (i + 1) + '.jpg" alt="Shot ' + (i + 1) + ': ' + n + '" width="1200" height="675">' + label + '</button>';
+  }).join('');
   $$('.thumb').forEach((b) => b.addEventListener('click', () => {
+    $('#hud').classList.add('show');
     document.getElementById('shot-' + b.dataset.n).scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
   }));
 
   // ---- scroll: show HUD, move the clock ----
   const hud = $('#hud');
-  const hero = $('.hero');
-  const heroWatch = new IntersectionObserver((entries) => {
-    entries.forEach((en) => hud.classList.toggle('show', !en.isIntersecting));
-  }, { threshold: 0, rootMargin: '0px 0px -45% 0px' });
-  heroWatch.observe(hero);
+  const inPlay = new Set();
+  const playWatch = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.isIntersecting) {
+        inPlay.add(en.target.id);
+      } else {
+        inPlay.delete(en.target.id);
+      }
+    });
+    hud.classList.toggle('show', inPlay.size > 0);
+  }, { threshold: 0, rootMargin: '-35% 0px -35% 0px' });
+  playWatch.observe($('#story'));
+  playWatch.observe($('#wrap'));
   const io = new IntersectionObserver((entries) => {
     entries.forEach((en) => {
       if (en.isIntersecting) {
