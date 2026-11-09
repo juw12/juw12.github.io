@@ -371,7 +371,7 @@ footer nav { display: flex; gap: 16px; flex-wrap: wrap; }
     <div class="hud" id="hud" aria-label="Goal and bag">
       <svg class="sun" id="sunIcon" viewBox="0 0 44 44" aria-hidden="true"></svg>
       <div class="goal" aria-live="polite">
-        <small id="goalNo">Goal 1 of 22</small>
+        <small id="goalNo">Goal 1 of 25</small>
         <b id="goalText">Chop a tree for wood</b>
         <div class="pips" id="pips"></div>
       </div>
@@ -453,7 +453,7 @@ footer nav { display: flex; gap: 16px; flex-wrap: wrap; }
               <button type="button" data-lang="id" aria-pressed="false">Bahasa Indonesia</button>
             </div>
           </div>
-          <p class="quote" id="firstGoal">Chop a tree for wood<small>Goal 1 of 22, the same words the game uses</small></p>
+          <p class="quote" id="firstGoal">Chop a tree for wood<small>Goal 1 of 25, the same words the game uses</small></p>
           <div class="row begin">
             <button class="btn" type="button" id="begin">Start the day</button>
             <span class="fine" style="margin:0">Cuts to shot 02, the big tree.</span>
@@ -654,13 +654,15 @@ footer nav { display: flex; gap: 16px; flex-wrap: wrap; }
         <dt>Crops</dt>
         <dd>Basil, tomatoes, sunflowers and sky berries, each with its own growing time and yield.</dd>
         <dt>Water</dt>
-        <dd>Fish your own pond, or the reef pool where the rare glass ray swims. Cook meals on a solar cookstove for helpful boosts.</dd>
+        <dd>Fish your own pond, the reef pool where the rare glass ray swims, or far ponds with fish of their own. Cook meals on a solar cookstove for helpful boosts.</dd>
         <dt>Weather</dt>
         <dd>A full day takes 10 minutes of play. Rainy days cut solar to 40 percent and push turbines to 150 percent, so a mixed island copes best.</dd>
         <dt>Clean skies</dt>
         <dd>Eight smog heaps sit on the islands. Clearing one recycles it into scrap, stone and fiber, and the haze over the sky thins as you go. A fully cleaned island bursts into flowers, and the hen, goat and turtle you free from the smog move in and leave a small gift every morning.</dd>
+        <dt>Far Skies</dt>
+        <dd>Build the skyway to open 40 more islands in 8 biomes, from autumn woods to frost and mangrove. Together they hold 64 crops, 30 fish, more than 1,000 dishes, 123 animals to rescue and 33 villagers.</dd>
         <dt>Goals</dt>
-        <dd>22 guided goals, from chopping the first tree to lighting the old lighthouse so every island glows at night.</dd>
+        <dd>25 guided goals, from chopping the first tree to lighting the old lighthouse so every island glows at night.</dd>
         <dt>Talking</dt>
         <dd>Co-op chat uses preset phrases, so there is nothing to moderate. Play in English or Bahasa Indonesia.</dd>
         <dt>Not included</dt>
@@ -939,7 +941,7 @@ capacity = 20 + 40 * batteries</pre>
     if (keepFlash) {
       // leave the note on screen until it times out
     } else if (goal) {
-      $('#goalNo').textContent = (S.lang === 'id' ? 'Tujuan ' : 'Goal ') + goal.n + (S.lang === 'id' ? ' dari 22' : ' of 22') + '  ' + fmtClock(hudMins);
+      $('#goalNo').textContent = (S.lang === 'id' ? 'Tujuan ' : 'Goal ') + goal.n + (S.lang === 'id' ? ' dari 25' : ' of 25') + '  ' + fmtClock(hudMins);
       $('#goalText').textContent = S.lang === 'id' ? goal.idn : goal.en;
       $('#goBtn').textContent = S.lang === 'id' ? 'Ke sana' : 'Go';
       $('#goBtn').dataset.target = 'shot-' + goal.shot;
@@ -1415,7 +1417,7 @@ capacity = 20 + 40 * batteries</pre>
     S.lang = lang;
     $$('[data-lang]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
     const g = GOALS[0];
-    $('#firstGoal').innerHTML = (lang === 'id' ? g.idn : g.en) + '<small>' + (lang === 'id' ? 'Tujuan 1 dari 22, kata yang sama dengan di game' : 'Goal 1 of 22, the same words the game uses') + '</small>';
+    $('#firstGoal').innerHTML = (lang === 'id' ? g.idn : g.en) + '<small>' + (lang === 'id' ? 'Tujuan 1 dari 25, kata yang sama dengan di game' : 'Goal 1 of 25, the same words the game uses') + '</small>';
     update();
   }
   $$('[data-lang]').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.lang)));

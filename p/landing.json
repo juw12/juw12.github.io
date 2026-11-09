@@ -358,5 +358,10 @@
   "name": "PocketDex",
   "landing": "https://juw12.github.io/p/pocketdex/",
   "readme": "https://github.com/juw12/pocketdex#readme"
+ },
+ "https://github.com/juw12/mise": {
+  "name": "Mise",
+  "landing": "https://juw12.github.io/p/mise/",
+  "readme": "https://github.com/juw12/mise#readme"
  }
 }
