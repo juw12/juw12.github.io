@@ -363,5 +363,20 @@
   "name": "Mise",
   "landing": "https://juw12.github.io/p/mise/",
   "readme": "https://github.com/juw12/mise#readme"
+ },
+ "https://github.com/juw12/skills": {
+  "name": "Skills",
+  "landing": "https://juw12.github.io/p/skills/",
+  "readme": "https://github.com/juw12/skills#readme"
+ },
+ "https://github.com/juw12/projects": {
+  "name": "Together",
+  "landing": "https://juw12.github.io/p/together/",
+  "readme": "https://github.com/juw12/projects/tree/main/apps/together#readme"
+ },
+ "https://github.com/juw12/cfd-wave-schemes": {
+  "name": "CFD Wave Schemes",
+  "landing": "https://juw12.github.io/p/cfd-wave-schemes/",
+  "readme": "https://github.com/juw12/cfd-wave-schemes#readme"
  }
 }
