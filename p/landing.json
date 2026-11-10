@@ -383,5 +383,10 @@
   "name": "Ruang",
   "landing": "https://juw12.github.io/p/ruang/",
   "readme": "https://github.com/juw12/ruang#readme"
+ },
+ "https://github.com/juw12/jepret": {
+  "name": "Jepret",
+  "landing": "https://juw12.github.io/p/jepret/",
+  "readme": "https://github.com/juw12/jepret#readme"
  }
 }
