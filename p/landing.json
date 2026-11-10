@@ -368,5 +368,10 @@
   "name": "CFD Wave Schemes",
   "landing": "https://juw12.github.io/p/cfd-wave-schemes/",
   "readme": "https://github.com/juw12/cfd-wave-schemes#readme"
+ },
+ "https://github.com/juw12/gardu": {
+  "name": "Gardu",
+  "landing": "https://juw12.github.io/p/gardu/",
+  "readme": "https://github.com/juw12/gardu#readme"
  }
 }
