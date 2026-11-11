@@ -398,5 +398,10 @@
   "name": "Who Threw?",
   "landing": "https://juw12.github.io/p/mlbb-blame/",
   "readme": "https://github.com/juw12/mlbb-blame#readme"
+ },
+ "https://github.com/juw12/kilat": {
+  "name": "Kilat",
+  "landing": "https://juw12.github.io/p/kilat/",
+  "readme": "https://github.com/juw12/kilat#readme"
  }
 }
