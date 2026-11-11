@@ -194,7 +194,7 @@ html.k-game .go { color: var(--accent); }
 .devices { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
 .dev { background: var(--card); border: 1.5px solid var(--line); border-top: 5px solid var(--accent); border-radius: 16px; padding: 18px 18px 20px; }
 .dev b { font-family: var(--fd); font-size: 18px; display: block; margin-bottom: 6px; }
-.dev p { margin: 0; color: var(--muted); font-size: 14.5px; }
+.dev p { margin: 0; color: var(--muted); font-size: 14.5px; overflow-wrap: anywhere; }
 .center { text-align: center; margin-top: 26px; }
 .faq { max-width: 780px; margin: 0 auto; }
 .faq details { background: var(--card); border: 1.5px solid var(--line); border-radius: 16px; padding: 18px 22px; margin-bottom: 12px; }
@@ -222,6 +222,7 @@ html.k-game .faq summary::after { color: var(--accent); }
 .band .btn.ghost { background: transparent; color: #fff; }
 
 footer { padding: 46px 0 60px; text-align: center; color: var(--muted); font-size: 14px; }
+footer.wrap { padding-top: 46px; padding-bottom: 60px; }
 footer a { text-decoration: none; }
 footer a:hover { color: var(--ink); text-decoration: underline; }
 .foot-links, .foot-note { margin-top: 10px; }
@@ -584,7 +585,7 @@ html.dna.dna.dna { --fd: "Gelasio", var(--fd-fallback); --fdw: 700; --fd-fallbac
       <a class="on" href="https://juw12.github.io/p/lahap/" aria-current="page">Landing page</a>
       <a href="https://github.com/juw12/lahap#readme">README</a>
     </div>
-    <a class="btn primary small" href="https://juw12.github.io/lahap/?demo=1">Try it live</a>
+    <a class="btn primary small" href="https://juw12.github.io/lahap/">Open the app</a>
   </div>
 </header>
 
@@ -595,13 +596,13 @@ html.dna.dna.dna { --fd: "Gelasio", var(--fd-fallback); --fdw: 700; --fd-fallbac
       <span class="art" aria-hidden="true"><svg viewBox="0 0 200 200" role="presentation" focusable="false"><circle class="p o" cx="92" cy="104" r="66"/><circle class="o" cx="92" cy="104" r="50"/><path class="s o" d="M92 104 L92 54 A50 50 0 0 1 140 92 Z"/><path class="a o" d="M92 104 L140 92 A50 50 0 0 1 60 142 Z"/><path class="o" d="M92 104 L60 142 A50 50 0 0 1 92 54 Z"/><circle class="p ao" cx="150" cy="150" r="20"/><line class="ao" x1="164" y1="164" x2="184" y2="184" style="stroke-width:6"/></svg></span><span class="pill"><span class="dot"></span>Web · PWA · Offline<span class="status">live</span></span>
       <h1>A food diary you can <span class="hl">search<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 14 C 40 4, 80 4, 110 11 S 170 18, 198 7" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg></span></h1>
       <p class="sub">Log a meal fast, then ask “Have I eaten this?” and see how often, the last place, the average price and the plate score.</p>
-      <div class="cta"><a class="btn primary" href="https://juw12.github.io/lahap/?demo=1">Try it live</a><a class="btn " href="https://github.com/juw12/lahap#readme">Read the README</a><a class="btn " href="https://github.com/juw12/lahap">View source</a></div>
+      <div class="cta"><a class="btn primary" href="https://juw12.github.io/lahap/">Open the app</a><a class="btn " href="https://juw12.github.io/lahap/?demo=1">See a sample diary</a><a class="btn " href="https://github.com/juw12/lahap#readme">Read the README</a></div>
       <div class="meta">Web · PWA · Offline</div>
     </div>
     
     
     <figure class="frame reveal" id="showcase">
-      <div class="bar"><i></i><i></i><i></i><span>lahap · live demo</span><em>live demo</em></div>
+      <div class="bar"><i></i><i></i><i></i><span>lahap · live app</span><em>live demo</em></div>
       <img src="shot.jpg" alt="Lahap screenshot" width="1280" height="800" fetchpriority="high">
     </figure>
     <div class="stats reveal" style="--n:2"><div class="stat"><b>3</b><span>platforms: Web, PWA, Offline</span></div><div class="stat"><b>MIT</b><span>open source licence</span></div></div>
@@ -616,7 +617,7 @@ html.dna.dna.dna { --fd: "Gelasio", var(--fd-fallback); --fdw: 700; --fd-fallbac
   <section class="block alt wrap reveal" id="how">
     <div class="kicker">How it works</div>
     <h2>Try it in a minute</h2>
-    <ol class="steps n3"><li><span class="num">1</span><h3>Open the demo</h3><p>Go to juw12.github.io/lahap/?demo=1 to load a sample fortnight of meals.</p></li><li><span class="num">2</span><h3>Search a dish</h3><p>Type something like bakso or nasi lemak and read the answer card: how often, where, how much.</p></li><li><span class="num">3</span><h3>Log and share</h3><p>Tap Log a meal, save it, then make a share card for your story or post.</p></li></ol>
+    <ol class="steps n3"><li><span class="num">1</span><h3>Start your diary</h3><p>Open juw12.github.io/lahap/ on your phone.</p></li><li><span class="num">2</span><h3>Snap a meal</h3><p>Tap Log a meal and pick a photo: the food is cut out, the dish filled in and the nutrition estimated.</p></li><li><span class="num">3</span><h3>Cook from the Lab</h3><p>Type or say what is in the fridge, pick a recipe, then tap Cooked it to log the meal.</p></li></ol>
   </section>
   <section class="block wrap reveal" id="features">
     <div class="kicker">What's inside</div>
@@ -632,7 +633,7 @@ html.dna.dna.dna { --fd: "Gelasio", var(--fd-fallback); --fdw: 700; --fd-fallbac
     <div class="privacy">
       <div class="lock"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 10.5V8a4 4 0 018 0v2.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
       <div><div class="kicker left light">Your data</div><h2 class="left">Stays in your browser</h2>
-      <ul><li>No account and no server: meals and photos are stored in your browser (IndexedDB).</li><li>Export or import a JSON backup whenever you like.</li></ul></div>
+      <ul><li>No account and no server: meals and photos are stored in your browser (IndexedDB) and saved the moment you tap Save.</li><li>Share backup sends the diary to yourself; Restore or merge on another phone or laptop syncs it.</li></ul></div>
     </div>
   </section>
   <section class="block alt wrap reveal" id="limits">
@@ -653,7 +654,7 @@ html.dna.dna.dna { --fd: "Gelasio", var(--fd-fallback); --fdw: 700; --fd-fallbac
   <section class="block alt wrap reveal" id="faq">
     <div class="kicker">Questions</div>
     <h2>Good questions.</h2>
-    <div class="faq"><details open><summary>What does it run on?</summary><p>Web, PWA, Offline. You can try it in the browser with nothing to install.</p></details><details><summary>Where do I start?</summary><p>Open the demo: Go to juw12.github.io/lahap/?demo=1 to load a sample fortnight of meals.</p></details><details><summary>Where does my data go?</summary><p>No account and no server: meals and photos are stored in your browser (IndexedDB). Export or import a JSON backup whenever you like.</p></details><details><summary>What doesn&#x27;t it do yet?</summary><p>The plate score is a rule of thumb from the portions you tick, not nutrition analysis or medical advice. Buds are sample profiles for now: without a server, friends, matching and points live on this device only.</p></details><details><summary>Is it finished?</summary><p>Not yet: it&#x27;s marked “live” and still changing. The README always has the current state.</p></details><details><summary>Is it free?</summary><p>The source is public on GitHub under the MIT licence.</p></details><details><summary>Who made it?</summary><p>Juwen Lie, an R&amp;D mechanical engineer in Batam, Indonesia, as an independent personal project.</p></details></div>
+    <div class="faq"><details open><summary>What does it run on?</summary><p>Web, PWA, Offline. You can try it in the browser with nothing to install.</p></details><details><summary>Where do I start?</summary><p>Start your diary: Open juw12.github.io/lahap/ on your phone. It starts empty, saves every meal the moment you tap Save, and asks five quick questions you can skip.</p></details><details><summary>Where does my data go?</summary><p>No account and no server: meals and photos are stored in your browser (IndexedDB) and saved the moment you tap Save. Share backup sends the diary to yourself; Restore or merge on another phone or laptop syncs it.</p></details><details><summary>What doesn&#x27;t it do yet?</summary><p>The plate score is a rule of thumb from the portions you tick, not nutrition analysis or medical advice. Buds are sample profiles for now: without a server, friends, matching and points live on this device only.</p></details><details><summary>Is it finished?</summary><p>Not yet: it&#x27;s marked “live” and still changing. The README always has the current state.</p></details><details><summary>Is it free?</summary><p>The source is public on GitHub under the MIT licence.</p></details><details><summary>Who made it?</summary><p>Juwen Lie, an R&amp;D mechanical engineer in Batam, Indonesia, as an independent personal project.</p></details></div>
   </section>
   <section class="block wrap reveal" id="more">
     <div class="kicker">Keep exploring</div>
@@ -665,7 +666,7 @@ html.dna.dna.dna { --fd: "Gelasio", var(--fd-fallback); --fdw: 700; --fd-fallbac
     <section class="band reveal" aria-label="Get Lahap">
       <h2>Log your next meal.</h2>
       <p>A food diary you can search</p>
-      <div class="cta"><a class="btn primary" href="https://juw12.github.io/lahap/?demo=1">Try it live</a><a class="btn ghost" href="https://github.com/juw12/lahap#readme">Read the README</a><a class="btn ghost" href="https://github.com/juw12/lahap">View source</a></div>
+      <div class="cta"><a class="btn primary" href="https://juw12.github.io/lahap/">Open the app</a><a class="btn ghost" href="https://juw12.github.io/lahap/?demo=1">See a sample diary</a><a class="btn ghost" href="https://github.com/juw12/lahap#readme">Read the README</a></div>
     </section>
   </div>
 </main>
