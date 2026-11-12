@@ -1,0 +1,1521 @@
+<!doctype html>
+<html lang="en" class="dna storyboard">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teduh: A calm sky village you build with sun and wind.</title>
+<meta name="description" content="A free, cozy solarpunk life sim that runs in any browser, on phone or desktop, and keeps working offline. No account, no shop.">
+<meta property="og:title" content="Teduh: A calm sky village you build with sun and wind.">
+<meta property="og:description" content="A free, cozy solarpunk life sim that runs in any browser, on phone or desktop, and keeps working offline. No account, no shop.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://juw12.github.io/p/teduh/">
+<meta property="og:image" content="https://juw12.github.io/p/teduh/shot.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#2f5d4a">
+<link rel="canonical" href="https://juw12.github.io/p/teduh/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Teduh", "description": "A free, cozy solarpunk life sim that runs in any browser, on phone or desktop, and keeps working offline. No account, no shop.", "url": "https://juw12.github.io/p/teduh/", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "author": {"@type": "Person", "name": "Juwen Lie", "url": "https://juwenlie.pages.dev/"}, "image": "https://juw12.github.io/p/teduh/shot.jpg", "codeRepository": "https://github.com/juw12/teduh"}</script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%232f5d4a'/><text x='32' y='44' font-size='34' font-family='Georgia' font-weight='700' text-anchor='middle' fill='%23f8f3e8'>T</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,500;0,700;0,800;1,500;1,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #23302a;
+  --ink-soft: #4d5a52;
+  --muted: #66716a;
+  --green: #2f5d4a;
+  --green-deep: #234638;
+  --green-tint: #e3ebe2;
+  --sun: #c9951a;
+  --sun-tint: #f6e7bf;
+  --clay: #c0583a;
+  --paper: #f3ecdc;
+  --sheet: #fbf8f0;
+  --line: #d8ccb3;
+  --sky: #d7e9ef;
+  --grass: #9fb77a;
+  --night: #1c2830;
+  --fd: "Alegreya", Georgia, serif;
+  --fb: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body {
+  margin: 0;
+  font-family: var(--fb);
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 120px;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; border-radius: 6px; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: var(--sheet); padding: 8px 14px; border-radius: 8px; z-index: 90; }
+.skip:focus { left: 12px; }
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 22px; }
+h1, h2, h3 { font-family: var(--fd); line-height: 1.08; margin: 0; letter-spacing: -0.01em; }
+h2 { font-size: clamp(2rem, 3.6vw, 2.9rem); font-weight: 800; }
+h3 { font-size: 1.55rem; font-weight: 800; }
+p { margin: 0 0 1em; }
+.kicker { font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--green); margin: 0 0 12px; }
+.lede { font-size: 1.12rem; color: var(--ink-soft); max-width: 60ch; }
+
+/* top bar */
+.top { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; gap: 18px; height: 60px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--fd); font-weight: 800; font-size: 1.35rem; text-decoration: none; }
+.brand i { width: 30px; height: 30px; border-radius: 9px; background: var(--green); color: var(--sheet); display: grid; place-items: center; font-style: normal; font-size: 1.05rem; }
+.top nav { display: flex; gap: 18px; margin-left: auto; font-size: .93rem; font-weight: 600; }
+.top nav a { text-decoration: none; color: var(--ink-soft); }
+.top nav a:hover { color: var(--green); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 10px 20px; border-radius: 999px; border: 2px solid var(--ink); background: var(--green); color: var(--sheet); font-weight: 700; text-decoration: none; cursor: pointer; transition: transform .15s ease, box-shadow .15s ease; box-shadow: 3px 3px 0 var(--ink); }
+.btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
+.btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+.btn.ghost { background: var(--sheet); color: var(--ink); }
+.btn.small { min-height: 38px; padding: 6px 14px; font-size: .9rem; box-shadow: 2px 2px 0 var(--ink); }
+.btn[disabled] { opacity: .45; cursor: not-allowed; transform: none; box-shadow: 2px 2px 0 var(--ink); }
+.top .btn { min-height: 38px; padding: 6px 16px; font-size: .9rem; box-shadow: 2px 2px 0 var(--ink); }
+.textlinks { display: flex; flex-wrap: wrap; gap: 18px; font-weight: 600; font-size: .95rem; }
+.textlinks a { color: var(--green-deep); text-underline-offset: 4px; }
+
+/* sections */
+.block { padding: 84px 0; }
+.block + .block { border-top: 1px dashed var(--line); }
+
+/* hero */
+.hero { padding: 54px 0 70px; }
+.hero .wrap { display: grid; grid-template-columns: 1fr 1.08fr; gap: 48px; align-items: center; }
+.hero h1 { font-size: clamp(2.6rem, 5.4vw, 4.4rem); font-weight: 800; margin-bottom: 18px; }
+.hero h1 em { font-style: italic; color: var(--green); font-weight: 700; }
+.hero .cta { display: flex; flex-wrap: wrap; gap: 14px; margin: 26px 0 20px; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.facts li { font-size: .84rem; font-weight: 600; padding: 4px 11px; border: 1.5px solid var(--line); border-radius: 999px; background: var(--sheet); color: var(--ink-soft); }
+
+/* contact sheet in the hero */
+.sheet { background: var(--sheet); border: 2px solid var(--ink); border-radius: 6px; padding: 16px 16px 12px; box-shadow: 8px 8px 0 rgba(35, 48, 42, .14); position: relative; }
+.sheet-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); border-bottom: 1.5px solid var(--ink); padding-bottom: 8px; margin-bottom: 12px; }
+.sheet-head b { font-family: var(--fd); font-size: 1.15rem; letter-spacing: 0; text-transform: none; color: var(--ink); }
+.thumbs { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+.thumb.lead { grid-column: 1 / -1; }
+.thumb.lead span { font-size: .8rem; }
+.thumb .go { position: absolute; left: 50%; top: 42%; transform: translate(-50%, -50%); background: var(--sheet); border: 2px solid var(--ink); border-radius: 999px; padding: 6px 16px; font-weight: 800; font-size: .9rem; box-shadow: 3px 3px 0 var(--ink); }
+.thumb:not(.lead) img { aspect-ratio: 1 / 1; }
+.thumb:not(.lead) span b { display: none; }
+.thumb { all: unset; cursor: pointer; display: block; position: relative; }
+.thumb img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border: 1.5px solid var(--ink); border-radius: 3px; transition: transform .18s ease; }
+.thumb:hover img, .thumb:focus-visible img { transform: translateY(-3px) rotate(-1deg); }
+.thumb span { display: flex; justify-content: space-between; font-size: .7rem; font-weight: 700; color: var(--ink-soft); margin-top: 4px; letter-spacing: .04em; }
+.thumb.done::after { content: "Done"; position: absolute; top: 6px; right: 6px; font-size: .62rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; background: var(--green); color: var(--sheet); padding: 1px 6px; border-radius: 3px; }
+.sheet-foot { font-family: var(--fd); font-style: italic; font-size: 1.02rem; color: var(--ink-soft); margin-top: 10px; }
+
+/* storyboard shots */
+.story-intro { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: end; margin-bottom: 46px; }
+.story-intro p { margin: 0; color: var(--ink-soft); }
+.shot { display: grid; grid-template-columns: 1.35fr 1fr; gap: 36px; align-items: start; padding: 38px 0; scroll-margin-top: 80px; }
+.shot:nth-of-type(even) .frame { order: 2; }
+.shot:not(.establishing) > .side { align-self: center; }
+.shot > *, .hero .wrap > *, .story-intro > *, .wrapup > *, .hood-grid > *, .final .wrap > * { min-width: 0; }
+.shot.establishing { grid-template-columns: 1fr; gap: 26px; }
+.shot.establishing .side { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 40px; align-items: start; }
+.shot.establishing .side h3, .shot.establishing .side .sub { grid-column: 1; }
+.shot.establishing .side .card { grid-column: 2; grid-row: 1 / span 2; }
+.shot .card .row.begin { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); }
+.frame { background: var(--sheet); border: 2px solid var(--ink); border-radius: 5px; padding: 10px; box-shadow: 7px 7px 0 rgba(35, 48, 42, .13); position: relative; }
+.slug { display: flex; justify-content: space-between; gap: 10px; align-items: center; font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 2px 4px 9px; }
+.slug .no { background: var(--ink); color: var(--sheet); padding: 2px 8px; border-radius: 3px; }
+.slug .loc { color: var(--ink-soft); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+.slug .clock { color: var(--green); }
+.stage { position: relative; border: 1.5px solid var(--ink); border-radius: 3px; overflow: hidden; aspect-ratio: 16 / 9; background: var(--sky); }
+.stage img { width: 100%; height: 100%; object-fit: cover; }
+.stage .move { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.move path { fill: none; stroke: #fff; stroke-width: .45; stroke-dasharray: 1.4 1.1; stroke-linecap: round; filter: drop-shadow(0 0 .3px rgba(0,0,0,.6)); }
+.move text { font: 700 2.1px var(--fb); fill: #fff; letter-spacing: .25px; paint-order: stroke; stroke: rgba(35, 48, 42, .65); stroke-width: .45px; }
+.note { font-family: var(--fd); font-style: italic; font-size: 1.02rem; color: var(--ink-soft); padding: 9px 4px 2px; margin: 0; }
+.stamp { position: absolute; top: 46px; right: 20px; z-index: 6; font-family: var(--fd); font-weight: 800; font-size: 1.25rem; letter-spacing: .08em; text-transform: uppercase; color: var(--green); border: 3px solid var(--green); padding: 2px 12px; border-radius: 6px; background: rgba(251, 248, 240, .9); transform: rotate(-8deg) scale(1.6); opacity: 0; transition: opacity .25s ease, transform .35s cubic-bezier(.2, 1.6, .4, 1); pointer-events: none; }
+.shot.done .stamp { opacity: 1; transform: rotate(-8deg) scale(1); }
+
+/* hotspots on the frame */
+.hot { position: absolute; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 4px; background: none; border: 0; padding: 0; cursor: pointer; z-index: 4; }
+.hot .dot { width: 44px; height: 44px; border-radius: 50%; border: 3px solid #fff; background: rgba(201, 149, 26, .35); box-shadow: 0 0 0 2px rgba(35, 48, 42, .55); position: relative; transition: transform .12s ease, background .2s; }
+.hot .dot::after { content: ""; position: absolute; inset: -9px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, .85); animation: ping 1.8s ease-out infinite; }
+.hot .tag { font-size: .76rem; font-weight: 700; color: var(--ink); background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 999px; padding: 1px 9px; white-space: nowrap; }
+.hot:hover .dot, .hot:focus-visible .dot { transform: scale(1.1); background: rgba(201, 149, 26, .6); }
+.hot:active .dot { transform: scale(.9); }
+.hot.cool .dot { background: rgba(35, 48, 42, .35); }
+.hot.cool .dot::after { animation: none; opacity: 0; }
+.hot.cool .tag { opacity: .7; }
+.hot[disabled] { cursor: default; }
+@keyframes ping { 0% { transform: scale(.7); opacity: .9; } 100% { transform: scale(1.35); opacity: 0; } }
+.pop { position: absolute; z-index: 8; font-weight: 800; font-size: .95rem; color: var(--ink); background: var(--sun-tint); border: 1.5px solid var(--ink); border-radius: 999px; padding: 1px 10px; pointer-events: none; transform: translate(-50%, -100%); animation: rise 1.1s ease-out forwards; white-space: nowrap; }
+@keyframes rise { 0% { opacity: 0; margin-top: 4px; } 15% { opacity: 1; } 100% { opacity: 0; margin-top: -42px; } }
+
+/* side notes */
+.side h3 { margin-bottom: 8px; }
+.side .sub { color: var(--ink-soft); margin-bottom: 14px; }
+.goalchips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; padding: 0; list-style: none; }
+.goalchips li { font-size: .8rem; font-weight: 700; padding: 3px 10px 3px 8px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--sheet); color: var(--ink-soft); display: flex; align-items: center; gap: 6px; }
+.goalchips li::before { content: ""; width: 10px; height: 10px; border-radius: 50%; border: 2px solid currentColor; }
+.goalchips li.ok { border-color: var(--green); color: var(--green-deep); background: var(--green-tint); }
+.goalchips li.ok::before { background: var(--green); border-color: var(--green); }
+.card { background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 10px; padding: 14px 16px; }
+.card + .card { margin-top: 10px; }
+.fine { font-size: .84rem; color: var(--muted); margin: 10px 0 0; }
+.row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.sw { width: 14px; height: 14px; border-radius: 4px; border: 1.5px solid rgba(35, 48, 42, .55); display: inline-block; flex: none; }
+
+/* planters */
+.pots { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.pot { background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 10px; padding: 12px; }
+.pot b { display: block; font-size: .95rem; }
+.pot small { display: block; color: var(--muted); font-size: .8rem; min-height: 1.3em; }
+.bar { height: 8px; border-radius: 99px; background: #e6dcc6; overflow: hidden; margin: 8px 0 10px; border: 1px solid rgba(35, 48, 42, .25); }
+.bar > i { display: block; height: 100%; width: 0; background: var(--green); border-radius: 99px; transition: width .3s linear; }
+
+/* recipes */
+.recipes { display: grid; gap: 8px; }
+.recipe { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: center; background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 10px; padding: 10px 12px; }
+.recipe b { display: flex; align-items: center; gap: 8px; }
+.recipe .needs { grid-column: 1; display: flex; gap: 10px; flex-wrap: wrap; font-size: .82rem; color: var(--ink-soft); }
+.recipe .needs span.short { color: var(--clay); font-weight: 700; }
+.recipe .needs span.have { color: var(--green-deep); font-weight: 700; }
+.recipe .btn { grid-row: 1 / span 2; grid-column: 2; }
+.recipe.ready { border-color: var(--green); box-shadow: inset 4px 0 0 var(--green); }
+
+/* villagers */
+.people { display: grid; gap: 10px; }
+.person { display: grid; grid-template-columns: 42px 1fr; gap: 12px; align-items: start; text-align: left; background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 10px; padding: 11px 13px; cursor: pointer; }
+.person .face { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-family: var(--fd); font-weight: 800; font-size: 1.2rem; border: 2px solid var(--ink); }
+.person b { display: block; }
+.person span { font-size: .88rem; color: var(--ink-soft); }
+.person[aria-pressed="true"] { box-shadow: 3px 3px 0 var(--ink); }
+.sell { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.sell button { display: inline-flex; gap: 6px; align-items: center; font-size: .84rem; font-weight: 700; border: 1.5px solid var(--ink); border-radius: 999px; padding: 4px 11px; background: #fff; cursor: pointer; }
+.sell button:hover { background: var(--sun-tint); }
+.sell .none { font-size: .86rem; color: var(--muted); }
+
+/* projects */
+.projects { display: grid; gap: 10px; }
+.proj { background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 10px; padding: 12px 14px; }
+.proj header { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.proj header b { font-family: var(--fd); font-size: 1.12rem; }
+.proj p { font-size: .86rem; color: var(--ink-soft); margin: 4px 0 8px; }
+.proj .needs { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 6px 12px; font-size: .8rem; }
+.proj .needs div { display: grid; gap: 3px; }
+.proj .needs .bar { margin: 0; height: 6px; }
+.proj.locked { opacity: .7; background: repeating-linear-gradient(-45deg, var(--sheet), var(--sheet) 8px, #f1eadb 8px, #f1eadb 16px); }
+.proj.finished { border-color: var(--green); box-shadow: inset 4px 0 0 var(--green); }
+
+/* energy */
+.energy .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; margin-bottom: 12px; }
+.stepper { display: flex; align-items: center; justify-content: space-between; gap: 6px; background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 10px; padding: 6px 6px 6px 12px; font-size: .86rem; font-weight: 600; }
+.stepper button { width: 32px; height: 32px; border-radius: 8px; border: 1.5px solid var(--ink); background: #fff; font-weight: 800; cursor: pointer; }
+.stepper output { min-width: 1.4em; text-align: center; font-weight: 800; }
+.chart { width: 100%; height: auto; display: block; background: var(--night); border: 1.5px solid var(--ink); border-radius: 10px; }
+.readout { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+.readout div { background: var(--sheet); border: 1.5px solid var(--line); border-radius: 10px; padding: 8px 10px; }
+.readout b { display: block; font-family: var(--fd); font-size: 1.3rem; }
+.readout span { font-size: .76rem; color: var(--muted); font-weight: 600; }
+.verdict { margin-top: 10px; font-weight: 700; padding: 10px 12px; border-radius: 10px; border: 1.5px solid var(--ink); }
+.verdict.good { background: var(--green-tint); }
+.verdict.bad { background: #f6dfd6; }
+.range { width: 100%; accent-color: var(--green); }
+
+/* lang toggle */
+.seg { display: inline-flex; border: 2px solid var(--ink); border-radius: 999px; overflow: hidden; }
+.seg button { border: 0; background: var(--sheet); padding: 6px 14px; font-weight: 700; cursor: pointer; font-size: .9rem; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--sheet); }
+.quote { font-family: var(--fd); font-size: 1.3rem; line-height: 1.3; margin: 14px 0 6px; }
+.quote small { display: block; font-family: var(--fb); font-size: .82rem; color: var(--muted); margin-top: 4px; }
+
+.goalchips li .gn { font-size: .66rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin-right: 7px; padding: 1px 6px; border-radius: 4px; background: var(--paper); color: var(--ink-soft); }
+.goalchips li.ok .gn { background: var(--green); color: var(--sheet); }
+.goalchips li.chip-pop { animation: chippop .6s ease; }
+@keyframes chippop { 35% { transform: scale(1.08); box-shadow: 0 0 0 4px var(--green-tint); } }
+.cutnote { font-size: .82rem; color: var(--muted); margin: 8px 0 0; }
+.cutnote b { color: var(--ink-soft); }
+/* HUD: docked in the sticky header, takes the nav's place while you play */
+.hud { display: none; flex: 1; min-width: 0; align-items: center; gap: 12px; margin-left: 8px; padding: 4px 6px 4px 4px; border-radius: 14px; transition: background .25s; }
+.hud.show { display: flex; }
+.top.playing nav { display: none; }
+.hud .sun { width: 38px; height: 38px; flex: none; }
+.hud .goal { min-width: 0; flex: 1; }
+.hud .goal small { display: block; font-size: .66rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--green); line-height: 1.3; }
+.hud .goal b { display: block; font-size: .92rem; line-height: 1.25; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hud .pips { display: flex; gap: 3px; margin-top: 4px; }
+.hud .pips i { width: 14px; height: 4px; border-radius: 3px; background: #e2d7bf; }
+.hud .pips i.ok { background: var(--green); }
+.hud .right { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.inv { display: flex; gap: 5px; max-width: 300px; overflow-x: auto; scrollbar-width: none; }
+.inv::-webkit-scrollbar { display: none; }
+.chip { display: inline-flex; align-items: center; gap: 5px; font-size: .78rem; font-weight: 700; padding: 3px 8px; border-radius: 999px; background: #fff; border: 1.5px solid var(--line); white-space: nowrap; }
+.chip.bump { animation: bump .45s ease; }
+@keyframes bump { 40% { transform: scale(1.18); border-color: var(--sun); } }
+.credits { font-weight: 800; font-size: .84rem; background: var(--sun-tint); border: 1.5px solid var(--ink); border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+.hud .go { min-height: 34px; padding: 4px 12px; font-size: .84rem; }
+.hud.flash { background: var(--green-tint); }
+.hud.flash .goal small { color: var(--green-deep); }
+.hud.flash .goal b { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; font-size: .84rem; }
+.hud.flash .pips { display: none; }
+.toast { position: fixed; left: 50%; bottom: 112px; transform: translate(-50%, 20px); opacity: 0; z-index: 70; background: var(--ink); color: var(--sheet); padding: 9px 16px; border-radius: 12px; font-weight: 600; font-size: .92rem; transition: opacity .25s, transform .25s; pointer-events: none; max-width: calc(100% - 30px); text-align: center; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* wrap-up */
+.wrapup { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+.slate { background: var(--ink); color: var(--sheet); border: 2px solid var(--ink); border-radius: 12px; box-shadow: 6px 6px 0 rgba(35, 48, 42, .25); overflow: hidden; }
+.slate .clap { height: 30px; background: repeating-linear-gradient(-55deg, var(--sheet) 0 22px, var(--ink) 22px 44px); border-bottom: 2px solid var(--sheet); transform-origin: left bottom; }
+.slate.snap .clap { animation: clap .5s ease; }
+@keyframes clap { 30% { transform: rotate(-9deg); } 60% { transform: rotate(0); } }
+.slate dl { display: grid; grid-template-columns: repeat(2, 1fr); margin: 0; }
+.slate dl div { padding: 12px 16px; border-right: 1px solid rgba(243, 236, 220, .25); border-bottom: 1px solid rgba(243, 236, 220, .25); }
+.slate dl div:nth-child(2n) { border-right: 0; }
+.slate dl div.wide { grid-column: 1 / -1; border-right: 0; }
+.slate dt { font-size: .68rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #c9d9a8; }
+.slate dd { margin: 2px 0 0; font-family: var(--fd); font-size: 1.7rem; line-height: 1.1; }
+.slate dd small { font-family: var(--fb); font-size: .8rem; color: rgba(243, 236, 220, .75); margin-left: 6px; }
+.slate .wide dd { font-size: 1.15rem; }
+.reset { background: none; border: 0; text-decoration: underline; color: var(--muted); cursor: pointer; font-size: .86rem; padding: 0; }
+
+/* call sheet */
+.callsheet { background: var(--sheet); border: 2px solid var(--ink); border-radius: 6px; box-shadow: 8px 8px 0 rgba(35, 48, 42, .12); margin-top: 32px; }
+.callsheet .head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 12px 18px; border-bottom: 2px solid var(--ink); font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+.callsheet dl { margin: 0; display: grid; grid-template-columns: 170px 1fr; }
+.callsheet dt, .callsheet dd { margin: 0; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+.callsheet dt { font-weight: 800; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--green); border-right: 1px solid var(--line); }
+.callsheet dd { color: var(--ink); }
+.callsheet dl > :nth-last-child(-n+2) { border-bottom: 0; }
+
+/* hood */
+.hood-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px; }
+.layers { list-style: none; margin: 0; padding: 0; border-left: 3px solid var(--ink); }
+.layers li { padding: 0 0 18px 20px; position: relative; }
+.layers li::before { content: ""; position: absolute; left: -9px; top: 6px; width: 15px; height: 15px; border-radius: 50%; background: var(--sheet); border: 3px solid var(--ink); }
+.layers b { display: block; font-family: var(--fd); font-size: 1.2rem; }
+.layers span { color: var(--ink-soft); font-size: .95rem; }
+.formula { background: var(--night); color: #e9efe6; border-radius: 10px; padding: 18px 20px; font-family: ui-monospace, Consolas, monospace; font-size: .88rem; line-height: 1.7; overflow-x: auto; border: 2px solid var(--ink); }
+.formula .c { color: #9fb77a; }
+
+/* faq */
+.faq { margin-top: 26px; display: grid; gap: 10px; max-width: 820px; }
+.faq details { background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 10px; padding: 0 18px; }
+.faq summary { cursor: pointer; font-weight: 700; padding: 15px 0; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--fd); font-size: 1.4rem; line-height: 1; }
+.faq details[open] summary::after { content: "-"; }
+.faq details p { color: var(--ink-soft); }
+
+/* related */
+.related { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 26px; }
+.related a { display: block; text-decoration: none; background: var(--sheet); border: 1.5px solid var(--ink); border-radius: 10px; padding: 16px 18px; transition: transform .15s ease; }
+.related a:hover { transform: translateY(-3px); }
+.related b { font-family: var(--fd); font-size: 1.2rem; display: block; }
+.related span { font-size: .9rem; color: var(--ink-soft); }
+
+/* final */
+.final { background: var(--night); color: #eef2ea; }
+.final .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.final h2 { color: #fff; }
+.final p { color: #c9d3cb; }
+.final img { border: 2px solid #0e1519; border-radius: 6px; }
+.final .btn { box-shadow: 3px 3px 0 #0e1519; border-color: #0e1519; }
+.final .btn.ghost { background: #eef2ea; }
+.final .textlinks a { color: #cfe0c0; }
+footer { padding: 26px 0 30px; font-size: .88rem; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+footer nav { display: flex; gap: 16px; flex-wrap: wrap; }
+
+@media (max-width: 960px) {
+  .hero .wrap, .story-intro, .shot, .wrapup, .hood-grid, .final .wrap { grid-template-columns: 1fr; }
+  .shot:nth-of-type(even) .frame { order: 0; }
+  .shot.establishing .side { display: block; }
+  .related { grid-template-columns: 1fr; }
+  .top nav { display: none; }
+  .top .btn { margin-left: auto; }
+  .top.playing > .wrap > .btn { display: none; }
+}
+@media (max-width: 560px) {
+  .wrap { padding: 0 14px; }
+  .block { padding: 60px 0; }
+  .thumbs { gap: 5px; }
+  .thumb:not(.lead) span { font-size: .6rem; }
+  .hot .dot { width: 38px; height: 38px; }
+  .hot .tag { font-size: .7rem; }
+  .pots, .energy .controls { grid-template-columns: 1fr; }
+  .readout { grid-template-columns: 1fr 1fr; }
+  .callsheet dl { grid-template-columns: 1fr; }
+  .callsheet dt { border-right: 0; border-bottom: 0; padding-bottom: 0; }
+  .top.playing .wrap { height: auto; min-height: 60px; padding-top: 6px; padding-bottom: 6px; }
+  .top.playing .brand, .top.playing > .wrap > .btn { display: none; }
+  .hud { flex-wrap: wrap; gap: 6px 10px; margin-left: 0; }
+  .hud .sun { width: 34px; height: 34px; }
+  .hud .goal { flex: 1 1 calc(100% - 44px); }
+  .hud .right { flex: 1 1 100%; }
+  .inv { max-width: none; flex: 1; }
+  .slug .loc { display: none; }
+  .toast { bottom: 150px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Teduh, back to top"><i>T</i>Teduh</a>
+    <div class="hud" id="hud" aria-label="Goal and bag">
+      <svg class="sun" id="sunIcon" viewBox="0 0 44 44" aria-hidden="true"></svg>
+      <div class="goal" aria-live="polite">
+        <small id="goalNo">Goal 1 of 25</small>
+        <b id="goalText">Chop a tree for wood</b>
+        <div class="pips" id="pips"></div>
+      </div>
+      <div class="right">
+        <div class="inv" id="inv" aria-label="Bag"></div>
+        <span class="credits" id="credits">30 cr</span>
+        <button class="btn small go" type="button" id="goBtn">Go</button>
+      </div>
+    </div>
+    <nav aria-label="Page sections">
+      <a href="#story">Storyboard</a>
+      <a href="#cast">Full game</a>
+      <a href="#hood">How it's built</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn" href="https://juw12.github.io/teduh/">Play free</a>
+  </div>
+</header>
+
+<main id="main">
+<section class="block hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="kicker">A storyboard you can play</p>
+      <h1>A calm sky village you build with <em>sun and wind.</em></h1>
+      <p class="lede">Teduh is a free, cozy solarpunk life sim that runs in any browser, on phone or desktop, and keeps working offline. No account, no shop. Below is one day on the islands, told in eight shots, and you can play its first goals right on this page.</p>
+      <div class="cta">
+        <a class="btn" href="#shot-1">Play day one here</a>
+        <a class="btn ghost" href="https://juw12.github.io/teduh/">Try it live, full game</a>
+      </div>
+      <div class="textlinks">
+        <a href="https://github.com/juw12/teduh#readme">Read the README</a>
+        <a href="https://github.com/juw12/teduh">View source</a>
+      </div>
+      <ul class="facts" style="margin-top:22px">
+        <li>Browser and phone</li>
+        <li>Works offline</li>
+        <li>English and Bahasa Indonesia</li>
+        <li>Co-op with a room code</li>
+        <li>MIT licence</li>
+      </ul>
+    </div>
+    <div class="sheet" aria-label="Storyboard contact sheet">
+      <div class="sheet-head"><b>A day on Teduh</b><span>8 shots, 07:12 to 21:30</span></div>
+      <div class="thumbs" id="thumbs"></div>
+      <p class="sheet-foot">Every frame is a real render from the game. Tap any shot to jump to it.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block story" id="story" aria-labelledby="story-title">
+  <div class="wrap">
+    <div class="story-intro">
+      <div>
+        <p class="kicker">The storyboard</p>
+        <h2 id="story-title">One day, eight shots, eleven goals.</h2>
+      </div>
+      <p>The goal card at the bottom of the screen works like the one in the game. Tap the marked spots in each frame to gather, plant, craft and trade. Recipes, yields, prices and goal rewards are the game's own numbers; only the waiting is sped up. Your progress is saved in this browser.</p>
+    </div>
+
+    <!-- SHOT 1 -->
+    <article class="shot establishing" id="shot-1" data-shot="1">
+      <div class="frame">
+        <div class="slug"><span class="no">Shot 01</span><span class="loc">Ext. Home Isle, wide</span><span class="clock">07:12 Morning</span></div>
+        <div class="stage">
+          <img src="g1.jpg" alt="Morning over Home Isle: a floating island with a red-roofed house, planters, lamp posts and a round pond, with two more islands behind" width="1200" height="675">
+          <svg class="move" viewBox="0 0 100 56.25" aria-hidden="true"><path d="M8 50 Q 30 30 52 26"/><text x="10" y="54">SLOW CRANE DOWN</text></svg>
+        </div>
+        <p class="note">Wide on the island in the first clear light. Hold, let the clouds drift, then find the traveller by the bench.</p>
+      </div>
+      <div class="side">
+        <h3>You wake on Home Isle.</h3>
+        <p class="sub">A small house, two empty planters, a workbench and a pond. You start with 4 basil seeds, 2 wood and 30 credits. The first day is always clear, so you learn in sunshine.</p>
+        <div class="card">
+          <div class="row" style="justify-content:space-between">
+            <b>Play in</b>
+            <div class="seg" role="group" aria-label="Language for goals">
+              <button type="button" data-lang="en" aria-pressed="true">English</button>
+              <button type="button" data-lang="id" aria-pressed="false">Bahasa Indonesia</button>
+            </div>
+          </div>
+          <p class="quote" id="firstGoal">Chop a tree for wood<small>Goal 1 of 25, the same words the game uses</small></p>
+          <div class="row begin">
+            <button class="btn" type="button" id="begin">Start the day</button>
+            <span class="fine" style="margin:0">Cuts to shot 02, the big tree.</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- SHOT 2 -->
+    <article class="shot" id="shot-2" data-shot="2">
+      <div class="frame">
+        <span class="stamp" aria-hidden="true">Done</span>
+        <div class="slug"><span class="no">Shot 02</span><span class="loc">Ext. Home Isle, the big tree</span><span class="clock">07:45 Morning</span></div>
+        <div class="stage" data-stage="2">
+          <img src="g2.jpg" alt="Close on a large low-poly tree with a pale ring around its trunk, a traveller beside it and a round bush to the right" width="1200" height="675" loading="lazy">
+          <svg class="move" viewBox="0 0 100 56.25" aria-hidden="true"><path d="M90 8 L 62 20"/><text x="66" y="6">PUSH IN</text></svg>
+          <button class="hot" type="button" data-node="tree" style="left:41%;top:44%"><span class="dot"></span><span class="tag">Chop tree</span></button>
+          <button class="hot" type="button" data-node="bush" style="left:79%;top:62%"><span class="dot"></span><span class="tag">Pick fiber</span></button>
+        </div>
+        <p class="note">Push in on the tree. The ring on the grass is the guide beacon pointing at the current goal.</p>
+      </div>
+      <div class="side">
+        <h3>Gather what the island gives.</h3>
+        <p class="sub">Trees give 2 to 3 wood, and sometimes a basil seed. Bushes give 2 to 3 plant fiber. Both grow back, so nothing runs out.</p>
+        <ul class="goalchips" data-goals="q_wood q_fiber"></ul>
+        <p class="fine">Regrowth is faster on this page than in the game, where a tree takes 90 seconds.</p>
+      </div>
+    </article>
+
+    <!-- SHOT 3 -->
+    <article class="shot" id="shot-3" data-shot="3">
+      <div class="frame">
+        <span class="stamp" aria-hidden="true">Done</span>
+        <div class="slug"><span class="no">Shot 03</span><span class="loc">Ext. Home Isle, planters by the pond</span><span class="clock">09:10 Morning</span></div>
+        <div class="stage" data-stage="3">
+          <img src="g3.jpg" alt="Two wooden planters with leafy basil in the foreground, the traveller standing behind them next to the pond and the house" width="1200" height="675" loading="lazy">
+          <svg class="move" viewBox="0 0 100 56.25" aria-hidden="true"><path d="M20 10 Q 26 28 36 40"/><text x="8" y="8">TILT DOWN</text></svg>
+          <button class="hot" type="button" data-pot="0" style="left:48%;top:80%"><span class="dot"></span><span class="tag">Planter 1</span></button>
+          <button class="hot" type="button" data-pot="1" style="left:67%;top:66%"><span class="dot"></span><span class="tag">Planter 2</span></button>
+        </div>
+        <p class="note">Tilt down to the planters. Hold on the leaves for a beat once they fill out.</p>
+      </div>
+      <div class="side">
+        <h3>Plant, water, wait a little.</h3>
+        <p class="sub">Basil needs one seed and a splash of water. In the game it grows in 60 seconds of play; here it takes 6. Each harvest gives 2 to 3 basil.</p>
+        <ul class="goalchips" data-goals="q_plant q_water q_harvest"></ul>
+        <p class="cutnote"><b>Cross-cut:</b> goal 8 lands on this frame because the basil grows while you work on goals 5 to 7. Come back to harvest.</p>
+        <div class="pots" id="pots"></div>
+      </div>
+    </article>
+
+    <!-- SHOT 4 -->
+    <article class="shot" id="shot-4" data-shot="4">
+      <div class="frame">
+        <span class="stamp" aria-hidden="true">Done</span>
+        <div class="slug"><span class="no">Shot 04</span><span class="loc">Ext. Home Isle, by the old bridge</span><span class="clock">10:30 Late morning</span></div>
+        <div class="stage" data-stage="4">
+          <img src="g4.jpg" alt="A pile of rusty scrap metal near a wooden bridge leading off the island, with a yellow signpost and the traveller nearby" width="1200" height="675" loading="lazy">
+          <svg class="move" viewBox="0 0 100 56.25" aria-hidden="true"><path d="M40 52 L 70 46"/><text x="40" y="55">TRACK RIGHT</text></svg>
+          <button class="hot" type="button" data-node="scrap" style="left:66%;top:72%"><span class="dot"></span><span class="tag">Salvage scrap</span></button>
+          <button class="hot" type="button" data-node="rock" style="left:69%;top:27%"><span class="dot"></span><span class="tag">Break rock</span></button>
+        </div>
+        <p class="note">Track right along the path to the scrap pile. The bridge to Market Isle waits behind it.</p>
+      </div>
+      <div class="side">
+        <h3>Salvage, do not mine.</h3>
+        <p class="sub">The islands are built from what was left behind. Scrap piles give 1 to 2 scrap metal, rocks give 2 to 3 stone. A solar panel needs both.</p>
+        <ul class="goalchips" data-goals="q_scrap"></ul>
+      </div>
+    </article>
+
+    <!-- SHOT 5 -->
+    <article class="shot" id="shot-5" data-shot="5">
+      <div class="frame">
+        <span class="stamp" aria-hidden="true">Done</span>
+        <div class="slug"><span class="no">Shot 05</span><span class="loc">Ext. Home Isle, the workbench</span><span class="clock">12:00 Noon</span></div>
+        <div class="stage" data-stage="5">
+          <img src="g5.jpg" alt="The traveller at a wooden workbench at noon, with a wind turbine, planters and the bridge to Market Isle in the background" width="1200" height="675" loading="lazy">
+          <svg class="move" viewBox="0 0 100 56.25" aria-hidden="true"><path d="M30 6 Q 40 18 44 26"/><text x="18" y="5">DOLLY IN</text></svg>
+          <button class="hot" type="button" data-scroll="recipes" style="left:45%;top:46%"><span class="dot"></span><span class="tag">Workbench</span></button>
+        </div>
+        <p class="note">Noon, shadows short. Dolly in to the bench; the turbine turns behind.</p>
+      </div>
+      <div class="side">
+        <h3>Make parts, then power.</h3>
+        <p class="sub">The same recipes as the game. Copper wire comes from scrap, and a solar panel is wire, scrap and one stone.</p>
+        <ul class="goalchips" data-goals="q_wire q_solar"></ul>
+        <div class="recipes" id="recipes"></div>
+        <p class="fine" id="placeNote">Place a crafted solar panel to finish the goal. It then charges the battery in shot 08.</p>
+      </div>
+    </article>
+
+    <!-- SHOT 6 -->
+    <article class="shot" id="shot-6" data-shot="6">
+      <div class="frame">
+        <span class="stamp" aria-hidden="true">Done</span>
+        <div class="slug"><span class="no">Shot 06</span><span class="loc">Ext. Market Isle, Sari's stall</span><span class="clock">14:20 Afternoon</span></div>
+        <div class="stage" data-stage="6">
+          <img src="g6.jpg" alt="Market Isle: a stall with a yellow awning run by Sari, a friend named Rani, Lin and Bayu standing nearby, and the bridge back to Home Isle" width="1200" height="675" loading="lazy">
+          <svg class="move" viewBox="0 0 100 56.25" aria-hidden="true"><path d="M86 50 Q 70 40 52 34"/><text x="70" y="55">FOLLOW</text></svg>
+          <button class="hot" type="button" data-cross="1" style="left:80%;top:84%"><span class="dot"></span><span class="tag">Cross bridge</span></button>
+          <button class="hot" type="button" data-npc="sari" style="left:37%;top:60%"><span class="dot"></span><span class="tag">Sari</span></button>
+          <button class="hot" type="button" data-npc="bayu" style="left:61%;top:36%"><span class="dot"></span><span class="tag">Bayu</span></button>
+          <button class="hot" type="button" data-npc="lin" style="left:22%;top:40%"><span class="dot"></span><span class="tag">Lin</span></button>
+        </div>
+        <p class="note">Follow the traveller over the bridge. Rani is a friend who joined with a room code.</p>
+      </div>
+      <div class="side">
+        <h3>Market Isle.</h3>
+        <p class="sub">Three villagers live here. Sari buys anything at fixed prices, so there is no rush.</p>
+        <ul class="goalchips" data-goals="q_market q_sell"></ul>
+        <div class="people" id="people"></div>
+      </div>
+    </article>
+
+    <!-- SHOT 7 -->
+    <article class="shot" id="shot-7" data-shot="7">
+      <div class="frame">
+        <span class="stamp" aria-hidden="true">Done</span>
+        <div class="slug"><span class="no">Shot 07</span><span class="loc">Ext. Home Isle, the broken sky bridge</span><span class="clock">17:50 Dusk</span></div>
+        <div class="stage" data-stage="7">
+          <img src="g7.jpg" alt="At dusk a golden beam of light marks the broken sky bridge site at the island edge, with the traveller standing near a crafting spot" width="1200" height="675" loading="lazy">
+          <svg class="move" viewBox="0 0 100 56.25" aria-hidden="true"><path d="M62 4 L 62 34"/><text x="64" y="8">TILT UP THE BEAM</text></svg>
+          <button class="hot" type="button" data-scroll="projects" style="left:61%;top:70%"><span class="dot"></span><span class="tag">Bridge site</span></button>
+        </div>
+        <p class="note">Dusk. Tilt up the beam: the bridge to Grove Isle is a job for everyone.</p>
+      </div>
+      <div class="side">
+        <h3>Build it together.</h3>
+        <p class="sub">Community projects take materials from you and from friends in your room. Finish one and a new island opens.</p>
+        <ul class="goalchips" data-goals="q_project"></ul>
+        <p class="cutnote"><b>Skipped on this page:</b> goal 11, villager orders, needs the full game.</p>
+        <div class="projects" id="projects"></div>
+      </div>
+    </article>
+
+    <!-- SHOT 8 -->
+    <article class="shot finale energy" id="shot-8" data-shot="8">
+      <div class="frame">
+        <div class="slug"><span class="no">Shot 08</span><span class="loc">Ext. Home Isle, night</span><span class="clock" id="clock8">21:30 Night</span></div>
+        <div class="stage">
+          <img src="g8.jpg" alt="Home Isle at night under a deep blue sky, lamp posts glowing warm yellow around the house and the dark pond" width="1200" height="675" loading="lazy">
+          <svg class="move" viewBox="0 0 100 56.25" aria-hidden="true"><path d="M50 4 Q 70 12 78 30"/><text x="52" y="5">SLOW PULL BACK</text></svg>
+        </div>
+        <p class="note">Pull back slowly. The lamps run on what the island stored during the day.</p>
+      </div>
+      <div class="side">
+        <h3>Will the lamps last the night?</h3>
+        <p class="sub">The real energy rules: a panel makes up to 0.06 energy per second in full sun and nothing at night, a turbine makes 0.035 day and night, a lamp uses 0.004 after dark. Storage is 20, plus 40 per battery.</p>
+        <div class="controls">
+          <div class="stepper"><span>Solar panels</span><span class="row" style="gap:4px"><button type="button" data-step="solar" data-d="-1" aria-label="Fewer solar panels">-</button><output id="o-solar">1</output><button type="button" data-step="solar" data-d="1" aria-label="More solar panels">+</button></span></div>
+          <div class="stepper"><span>Turbines</span><span class="row" style="gap:4px"><button type="button" data-step="turbine" data-d="-1" aria-label="Fewer turbines">-</button><output id="o-turbine">0</output><button type="button" data-step="turbine" data-d="1" aria-label="More turbines">+</button></span></div>
+          <div class="stepper"><span>Batteries</span><span class="row" style="gap:4px"><button type="button" data-step="battery" data-d="-1" aria-label="Fewer batteries">-</button><output id="o-battery">0</output><button type="button" data-step="battery" data-d="1" aria-label="More batteries">+</button></span></div>
+          <div class="stepper"><span>Lamps</span><span class="row" style="gap:4px"><button type="button" data-step="lamp" data-d="-1" aria-label="Fewer lamps">-</button><output id="o-lamp">4</output><button type="button" data-step="lamp" data-d="1" aria-label="More lamps">+</button></span></div>
+        </div>
+        <canvas class="chart" id="chart" width="640" height="250" role="img" aria-label="Chart of stored energy across one day on Teduh"></canvas>
+        <label class="fine" for="tod" style="display:block;margin-top:8px">Scrub the clock</label>
+        <input class="range" id="tod" type="range" min="0" max="1439" step="5" value="1290">
+        <div class="readout">
+          <div><b id="r-light">0%</b><span>Daylight</span></div>
+          <div><b id="r-rate">0</b><span>Energy per minute</span></div>
+          <div><b id="r-store">0</b><span>Stored now</span></div>
+        </div>
+        <div class="verdict" id="verdict" aria-live="polite">Working it out.</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="block wrap-sec" id="wrap" aria-labelledby="wrap-title">
+  <div class="wrap wrapup">
+    <div>
+      <p class="kicker">That's a wrap</p>
+      <h2 id="wrap-title">Day one, in the can.</h2>
+      <p class="lede" id="wrapText">Finish the goals in the storyboard and your tally lands here. The game picks up at goal 11 with villager orders, then fishing, cooking and three more islands.</p>
+      <div class="cta" style="display:flex;flex-wrap:wrap;gap:14px;margin:22px 0 12px">
+        <a class="btn" href="https://juw12.github.io/teduh/">Continue in the game</a>
+        <a class="btn ghost" href="#shot-1">Back to shot 01</a>
+      </div>
+      <button class="reset" type="button" id="reset">Start this page over</button>
+    </div>
+    <div class="slate" id="stats" aria-label="Wrap report"></div>
+  </div>
+</section>
+
+<section class="block cast" id="cast" aria-labelledby="cast-title">
+  <div class="wrap">
+    <p class="kicker">Beyond day one</p>
+    <h2 id="cast-title">The call sheet for the full game.</h2>
+    <p class="lede">Teduh (Indonesian for "sheltered, calm") is a cozy life sim on floating islands above the clouds. Here is everything the storyboard left out.</p>
+    <div class="callsheet">
+      <div class="head"><span>Production: Teduh</span><span>Runs in the browser, offline after first visit</span></div>
+      <dl>
+        <dt>Locations</dt>
+        <dd>Four islands. Home Isle and Market Isle are open from the start. Grove Isle opens when the sky bridge is mended, Reef Isle when the reef dock is built.</dd>
+        <dt>Cast</dt>
+        <dd>Sari runs the stall and sells seeds and hats. Bayu is the engineer who keeps the islands on sun and wind. Lin fishes and cooks. Villagers post orders every morning, and friends join you with a room code.</dd>
+        <dt>Crops</dt>
+        <dd>Basil, tomatoes, sunflowers and sky berries, each with its own growing time and yield.</dd>
+        <dt>Water</dt>
+        <dd>Fish your own pond, the reef pool where the rare glass ray swims, or far ponds with fish of their own. Cook meals on a solar cookstove for helpful boosts.</dd>
+        <dt>Weather</dt>
+        <dd>A full day takes 10 minutes of play. Rainy days cut solar to 40 percent and push turbines to 150 percent, so a mixed island copes best.</dd>
+        <dt>Clean skies</dt>
+        <dd>Eight smog heaps sit on the islands. Clearing one recycles it into scrap, stone and fiber, and the haze over the sky thins as you go. A fully cleaned island bursts into flowers, and the hen, goat and turtle you free from the smog move in and leave a small gift every morning.</dd>
+        <dt>Far Skies</dt>
+        <dd>Build the skyway to open 40 more islands in 8 biomes, from autumn woods to frost and mangrove. Together they hold 64 crops, 30 fish, more than 1,000 dishes, 123 animals to rescue and 33 villagers.</dd>
+        <dt>Goals</dt>
+        <dd>25 guided goals, from chopping the first tree to lighting the old lighthouse so every island glows at night.</dd>
+        <dt>Talking</dt>
+        <dd>Co-op chat uses preset phrases, so there is nothing to moderate. Play in English or Bahasa Indonesia.</dd>
+        <dt>Not included</dt>
+        <dd>No account, no shop, no ads, no timers that punish you for being away.</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="block hood" id="hood" aria-labelledby="hood-title">
+  <div class="wrap">
+    <p class="kicker">Under the hood</p>
+    <h2 id="hood-title">How it's built.</h2>
+    <div class="hood-grid">
+      <ol class="layers">
+        <li><b>Plain JavaScript modules</b><span>No build step and no runtime dependencies from the network.</span></li>
+        <li><b>three.js r160, bundled</b><span>The whole world is built from primitives in code, which keeps it light enough for phones.</span></li>
+        <li><b>Service worker and local saves</b><span>After the first visit the game, its fonts and its pictures work offline. Your island is saved on your device.</span></li>
+        <li><b>Opt-in co-op over WebRTC</b><span>Trystero connects players through public Nostr relays. Playing together is opt-in.</span></li>
+        <li><b>Tested in a real browser</b><span>A Playwright suite with 86 tests, plus scripts that re-render the guide pictures and these storyboard frames from the game itself.</span></li>
+      </ol>
+      <div>
+        <p>The energy chart in shot 08 runs the same rule the game uses for daylight and power:</p>
+        <pre class="formula" aria-label="Energy formula"><span class="c">// time of day t runs 0 to 1</span>
+daylight(t) = clamp(sin((t - 0.25) * 2 pi) * 1.5, 0, 1)
+night       = daylight(t) &lt; 0.08
+
+<span class="c">// energy per second</span>
+rate = panels   * 0.06  * daylight(t)
+     + turbines * 0.035
+     - lamps    * 0.004 (only at night)
+
+capacity = 20 + 40 * batteries</pre>
+        <p class="fine">MIT licence. three.js and Trystero are MIT; Fraunces and Figtree are SIL OFL 1.1.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block faqsec" id="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <p class="kicker">Questions</p>
+    <h2 id="faq-title">Before you go up.</h2>
+    <div class="faq">
+      <details open><summary>What do I need to play?</summary><p>A modern browser on a phone, tablet or computer. Open the link and play; there is nothing to install. You can add it to your home screen and it keeps working offline after the first visit.</p></details>
+      <details><summary>Is it really free?</summary><p>Yes. There is no account, no shop and no ads. The source is public on GitHub under the MIT licence.</p></details>
+      <details><summary>Where does my data go?</summary><p>Your island is saved in your own browser. Playing together is opt-in: when you share a room code, the game connects you to friends directly over WebRTC.</p></details>
+      <details><summary>Is the page progress the same as the game?</summary><p>No. This page keeps its own small save so you can try the first goals. The game starts you fresh on Home Isle with the same goals, recipes and rewards.</p></details>
+      <details><summary>Is it finished?</summary><p>It is live and still changing. The README always has the current state.</p></details>
+      <details><summary>Who made it?</summary><p>Juwen Lie, an R&amp;D mechanical engineer in Batam, Indonesia, as an independent personal project.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="block more" id="more" aria-labelledby="more-title">
+  <div class="wrap">
+    <p class="kicker">Keep exploring</p>
+    <h2 id="more-title">More from the same workbench.</h2>
+    <div class="related">
+      <a href="../townsquare-3d/"><b>Townsquare 3D</b><span>Claim land, run crops and workshops, and trade at a market that follows supply and demand.</span></a>
+      <a href="../glow/"><b>Glow</b><span>Four AI apps on one free account, in 4 languages.</span></a>
+      <a href="../batam-uncle-says/"><b>Batam Uncle Says</b><span>Plan a day around your ferry times, check a price before you pay, and know the rules at both terminals.</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="block final" id="play" aria-labelledby="play-title">
+  <div class="wrap">
+    <div>
+      <p class="kicker" style="color:#c9d9a8">Roll camera</p>
+      <h2 id="play-title">Build your sky village.</h2>
+      <p>A calm sky village you build with sun and wind. Free, offline, and ready in your browser.</p>
+      <div class="cta" style="display:flex;flex-wrap:wrap;gap:14px;margin:22px 0 16px">
+        <a class="btn" href="https://juw12.github.io/teduh/">Try it live</a>
+        <a class="btn ghost" href="https://github.com/juw12/teduh#readme">Read the README</a>
+      </div>
+      <div class="textlinks"><a href="https://github.com/juw12/teduh">View source</a></div>
+    </div>
+    <img src="shot.jpg" alt="The Teduh title screen over the floating islands" width="1200" height="675" loading="lazy">
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Teduh, made by <a href="https://juwenlie.pages.dev/">Juwen Lie</a>. An independent personal project. No employer endorsement implied.</span>
+    <nav aria-label="Footer">
+      <a href="https://github.com/juw12/teduh#readme">README</a>
+      <a href="https://github.com/juw12/teduh">Source</a>
+      <a href="https://juw12.github.io/p/">All projects</a>
+      <a href="https://github.com/juw12">GitHub profile</a>
+    </nav>
+  </div>
+</footer>
+
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  'use strict';
+  // ---- real game data (teduh/js/data.js) ----
+  const ITEMS = {
+    wood: { en: 'Wood', id: 'Kayu', sell: 2, color: '#9b6a3f' },
+    stone: { en: 'Stone', id: 'Batu', sell: 2, color: '#8c9196' },
+    scrap: { en: 'Scrap metal', id: 'Besi bekas', sell: 3, color: '#b0643c' },
+    fiber: { en: 'Plant fiber', id: 'Serat tanaman', sell: 1, color: '#a8b85c' },
+    plank: { en: 'Plank', id: 'Papan', sell: 6, color: '#c08a52' },
+    rope: { en: 'Rope', id: 'Tali', sell: 5, color: '#c9b27a' },
+    wire: { en: 'Copper wire', id: 'Kawat tembaga', sell: 8, color: '#c7793a' },
+    seed_basil: { en: 'Basil seeds', id: 'Benih kemangi', sell: 1, color: '#6f8f3a' },
+    seed_tomato: { en: 'Tomato seeds', id: 'Benih tomat', sell: 2, color: '#b8452f' },
+    basil: { en: 'Basil', id: 'Kemangi', sell: 7, color: '#4f8a2e' },
+    solar: { en: 'Solar panel', id: 'Panel surya', sell: 30, color: '#2c5470' },
+    planter: { en: 'Planter', id: 'Pot tanam', sell: 10, color: '#8a5a33' },
+  };
+  const NODES = {
+    tree: { item: 'wood', amount: [2, 3], respawn: 90, extra: { item: 'seed_basil', chance: 0.12 } },
+    bush: { item: 'fiber', amount: [2, 3], respawn: 60 },
+    rock: { item: 'stone', amount: [2, 3], respawn: 110 },
+    scrap: { item: 'scrap', amount: [1, 2], respawn: 130 },
+  };
+  const RESPAWN_SPEEDUP = 40; // page only
+  const GROW_MS = 6000; // basil: 60 s in game, 10x faster here
+  const RECIPES = [
+    { id: 'plank', in: { wood: 2 }, out: 'plank' },
+    { id: 'rope', in: { fiber: 3 }, out: 'rope' },
+    { id: 'wire', in: { scrap: 2 }, out: 'wire' },
+    { id: 'solar', in: { wire: 2, scrap: 2, stone: 1 }, out: 'solar' },
+    { id: 'planter', in: { plank: 2, stone: 1 }, out: 'planter' },
+  ];
+  const GOALS = [
+    { id: 'q_wood', n: 1, shot: 2, reward: { credits: 10 }, en: 'Chop a tree for wood', idn: 'Tebang pohon untuk kayu' },
+    { id: 'q_fiber', n: 2, shot: 2, reward: { credits: 10 }, en: 'Gather plant fiber from a bush', idn: 'Kumpulkan serat dari semak' },
+    { id: 'q_plant', n: 3, shot: 3, reward: { items: { seed_tomato: 2 } }, en: 'Plant basil in a planter', idn: 'Tanam kemangi di pot tanam' },
+    { id: 'q_water', n: 4, shot: 3, reward: { credits: 10 }, en: 'Water the planter so it grows', idn: 'Siram pot agar tanaman tumbuh' },
+    { id: 'q_scrap', n: 5, shot: 4, reward: { credits: 10 }, en: 'Salvage scrap metal', idn: 'Ambil besi bekas' },
+    { id: 'q_wire', n: 6, shot: 5, reward: { items: { scrap: 2 } }, en: 'Craft copper wire at the workbench', idn: 'Buat kawat tembaga di meja kerja' },
+    { id: 'q_solar', n: 7, shot: 5, reward: { credits: 25 }, en: 'Build and place a solar panel', idn: 'Buat dan pasang panel surya' },
+    { id: 'q_harvest', n: 8, shot: 3, reward: { credits: 15 }, en: 'Harvest your first crop', idn: 'Panen tanaman pertama' },
+    { id: 'q_market', n: 9, shot: 6, reward: { credits: 10 }, en: 'Cross the bridge to Market Isle', idn: 'Seberangi jembatan ke Pulau Pasar' },
+    { id: 'q_sell', n: 10, shot: 6, reward: { credits: 10 }, en: "Sell something at Sari's stall", idn: 'Jual sesuatu di kios Sari' },
+    { id: 'q_project', n: 12, shot: 7, reward: { credits: 15 }, en: 'Give materials to a community project', idn: 'Sumbang bahan untuk proyek warga' },
+  ];
+  const PROJECTS = [
+    { id: 'bridge', need: { plank: 10, stone: 15, rope: 6 }, reward: 120, en: 'Mend the sky bridge', body: 'Rebuild the rope bridge to Grove Isle: berries, tall trees and a quiet glade.' },
+    { id: 'tower', need: { scrap: 15, wire: 8, plank: 6 }, reward: 150, en: 'Restore the wind tower', body: 'Bayu can teach you to build wind turbines once the old tower spins again.' },
+    { id: 'dock', need: { plank: 16, stone: 12, rope: 8, scrap: 6 }, reward: 180, after: 'bridge', en: 'Build the reef dock', body: 'A walkway to Reef Isle, where the rare glass ray swims in the sky pool.' },
+    { id: 'lighthouse', locked: true, en: 'Light the lighthouse', body: 'Power the old lighthouse with clean energy so every island glows at night. Needs 2 solar panels, a battery, 3 lamps and 6 wire, after the dock and the tower. That one is for the game.' },
+  ];
+  const NPCS = [
+    { id: 'sari', name: 'Sari', color: '#c0583a', role: 'Runs the market stall. Buys anything, sells seeds and hats.' },
+    { id: 'bayu', name: 'Bayu', color: '#2f6e6a', role: 'Engineer. Keeps the islands running on sun and wind.' },
+    { id: 'lin', name: 'Lin', color: '#3b5d8c', role: 'Fisher and cook. Knows every pool between the clouds.' },
+  ];
+  const ENERGY = { base: 20, battery: 40, solar: 0.06, turbine: 0.035, lamp: 0.004, day: 600, start: 6 };
+  const SHOT_CLOCK = { 1: 432, 2: 465, 3: 550, 4: 630, 5: 720, 6: 860, 7: 1070, 8: 1290 };
+
+  // ---- state ----
+  const KEY = 'teduh-storyboard-v1';
+  const fresh = () => ({
+    inv: { seed_basil: 4, wood: 2 }, credits: 30, done: {}, lang: 'en',
+    pots: [{ s: 'empty' }, { s: 'empty' }], solarPlaced: 0, proj: {},
+    stats: { gathered: 0, crafted: 0, earned: 0, harvested: 0 },
+    energy: { solar: 1, turbine: 0, battery: 0, lamp: 4 },
+  });
+  let S;
+  try {
+    S = Object.assign(fresh(), JSON.parse(localStorage.getItem(KEY) || '{}'));
+  } catch (err) {
+    S = fresh();
+  }
+  const save = () => {
+    try {
+      localStorage.setItem(KEY, JSON.stringify(S));
+    } catch (err) {
+      /* storage may be blocked; the page still works for this visit */
+    }
+  };
+  const cool = {};
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  const name = (item) => (ITEMS[item] ? (S.lang === 'id' ? ITEMS[item].id : ITEMS[item].en) : item);
+  const rnd = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
+  const have = (item) => S.inv[item] || 0;
+  const add = (item, n) => {
+    S.inv[item] = have(item) + n;
+    if (S.inv[item] <= 0) {
+      delete S.inv[item];
+    }
+  };
+  const fmtClock = (mins) => {
+    const m = ((Math.round(mins) % 1440) + 1440) % 1440;
+    return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
+  };
+  const daylight = (t) => Math.max(0, Math.min(1, Math.sin((t - 0.25) * Math.PI * 2) * 1.5));
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---- toast and pop ----
+  let toastTimer = 0;
+  let flashing = false;
+  function toast(msg) {
+    // messages live inside the goal card, so nothing floats over the page
+    flashing = true;
+    $('#hud').classList.add('flash');
+    $('#goalNo').textContent = S.lang === 'id' ? 'Catatan' : 'Note';
+    $('#goalText').textContent = msg;
+    $('#goalText').title = msg;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      flashing = false;
+      $('#hud').classList.remove('flash');
+      renderHud();
+    }, 2600);
+  }
+  function pop(anchor, text) {
+    const stage = anchor.closest('.stage');
+    if (!stage) {
+      return;
+    }
+    const el = document.createElement('span');
+    el.className = 'pop';
+    el.textContent = text;
+    el.style.left = anchor.style.left;
+    el.style.top = 'calc(' + anchor.style.top + ' - 18px)';
+    stage.appendChild(el);
+    setTimeout(() => el.remove(), 1200);
+  }
+
+  // ---- goals ----
+  function complete(id) {
+    if (S.done[id]) {
+      return;
+    }
+    const goal = GOALS.find((g) => g.id === id);
+    if (!goal) {
+      return;
+    }
+    S.done[id] = Date.now();
+    const parts = [];
+    if (goal.reward.credits) {
+      S.credits += goal.reward.credits;
+      S.stats.earned += goal.reward.credits;
+      parts.push('+' + goal.reward.credits + ' credits');
+    }
+    Object.entries(goal.reward.items || {}).forEach(([item, n]) => {
+      add(item, n);
+      parts.push('+' + n + ' ' + name(item).toLowerCase());
+    });
+    toast((S.lang === 'id' ? 'Tujuan selesai: ' : 'Goal done: ') + (S.lang === 'id' ? goal.idn : goal.en) + '. ' + parts.join(', '));
+  }
+  const currentGoal = () => GOALS.find((g) => !S.done[g.id]);
+
+  // ---- HUD ----
+  function drawSun(mins) {
+    const t = mins / 1440;
+    const light = daylight(t);
+    const angle = (t - 0.25) * Math.PI * 2;
+    const x = 22 - Math.cos(angle) * 15;
+    const y = 30 - Math.sin(angle) * 15;
+    const night = light < 0.08;
+    const sky = night ? '#1c2830' : light < 0.5 ? '#e9c98f' : '#d7e9ef';
+    $('#sunIcon').innerHTML =
+      '<rect x="1" y="1" width="42" height="42" rx="11" fill="' + sky + '" stroke="#23302a" stroke-width="2"/>' +
+      '<rect x="2" y="30" width="40" height="12" rx="0" fill="' + (night ? '#2d3d33' : '#9fb77a') + '"/>' +
+      '<line x1="2" y1="30" x2="42" y2="30" stroke="#23302a" stroke-width="1.5"/>' +
+      (night
+        ? '<circle cx="' + (44 - x) + '" cy="' + Math.min(26, 60 - y) + '" r="5" fill="#f3ecdc"/><circle cx="' + (46 - x) + '" cy="' + (Math.min(26, 60 - y) - 2) + '" r="4.2" fill="#1c2830"/>'
+        : '<circle cx="' + x + '" cy="' + Math.min(27, y) + '" r="5.5" fill="#c9951a" stroke="#23302a" stroke-width="1.5"/>');
+  }
+  let hudMins = SHOT_CLOCK[1];
+  function renderHud(bumpItem) {
+    const goal = currentGoal();
+    const keepFlash = flashing;
+    const doneCount = GOALS.filter((g) => S.done[g.id]).length;
+    if (keepFlash) {
+      // leave the note on screen until it times out
+    } else if (goal) {
+      $('#goalNo').textContent = (S.lang === 'id' ? 'Tujuan ' : 'Goal ') + goal.n + (S.lang === 'id' ? ' dari 25' : ' of 25') + '  ' + fmtClock(hudMins);
+      $('#goalText').textContent = S.lang === 'id' ? goal.idn : goal.en;
+      $('#goBtn').textContent = S.lang === 'id' ? 'Ke sana' : 'Go';
+      $('#goBtn').dataset.target = 'shot-' + goal.shot;
+    } else {
+      $('#goalNo').textContent = (S.lang === 'id' ? 'Hari pertama selesai  ' : 'Day one done  ') + fmtClock(hudMins);
+      $('#goalText').textContent = S.lang === 'id' ? 'Berikutnya: tujuan 11 di game' : 'Next: goal 11, in the game';
+      $('#goBtn').textContent = S.lang === 'id' ? 'Main' : 'Play';
+      $('#goBtn').dataset.target = 'game';
+    }
+    $('#pips').innerHTML = GOALS.map((g) => '<i class="' + (S.done[g.id] ? 'ok' : '') + '" title="' + g.en + '"></i>').join('');
+    $('#pips').setAttribute('aria-label', doneCount + ' of ' + GOALS.length + ' page goals done');
+    const items = Object.keys(S.inv).filter((k) => S.inv[k] > 0);
+    $('#inv').innerHTML = items.length
+      ? items.map((k) => '<span class="chip' + (k === bumpItem ? ' bump' : '') + '" title="' + name(k) + '"><i class="sw" style="background:' + ITEMS[k].color + '"></i>' + S.inv[k] + ' ' + name(k).toLowerCase() + '</span>').join('')
+      : '<span class="chip">' + (S.lang === 'id' ? 'Tas kosong' : 'Bag is empty') + '</span>';
+    $('#credits').textContent = S.credits + ' cr';
+    drawSun(hudMins);
+  }
+  $('#goBtn').addEventListener('click', (e) => {
+    const target = e.currentTarget.dataset.target;
+    if (target === 'game') {
+      window.location.href = 'https://juw12.github.io/teduh/';
+      return;
+    }
+    const el = document.getElementById(target);
+    if (el) {
+      el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+    }
+  });
+
+  // ---- render everything that depends on state ----
+  const chipSeen = {};
+  function renderGoalChips() {
+    $$('.goalchips').forEach((ul) => {
+      ul.innerHTML = ul.dataset.goals.split(' ').map((id) => {
+        const g = GOALS.find((x) => x.id === id);
+        const fresh = S.done[id] && chipSeen[id] === false;
+        chipSeen[id] = !!S.done[id];
+        const label = (S.lang === 'id' ? 'Tujuan ' : 'Goal ') + g.n;
+        return '<li class="' + (S.done[id] ? 'ok' : '') + (fresh && !reduced ? ' chip-pop' : '') + '"><span class="gn">' + label + '</span>' + (S.lang === 'id' ? g.idn : g.en) + '</li>';
+      }).join('');
+    });
+    $$('.shot').forEach((shot) => {
+      const ul = $('.goalchips', shot);
+      const ids = ul ? ul.dataset.goals.split(' ') : [];
+      shot.classList.toggle('done', ids.length > 0 && ids.every((id) => S.done[id]));
+    });
+    $$('.thumb').forEach((btn) => {
+      const shot = document.getElementById('shot-' + btn.dataset.n);
+      btn.classList.toggle('done', !!(shot && shot.classList.contains('done')));
+    });
+  }
+
+  function renderPots() {
+    const now = Date.now();
+    $('#pots').innerHTML = S.pots.map((p, i) => {
+      let label = 'Empty';
+      let hint = have('seed_basil') ? 'Ready for a seed' : 'No basil seeds left';
+      let action = 'Plant basil';
+      let pct = 0;
+      let disabled = !have('seed_basil');
+      if (p.s === 'dry') {
+        label = 'Planted';
+        hint = 'Needs water to grow';
+        action = 'Water';
+        disabled = false;
+      } else if (p.s === 'growing') {
+        pct = Math.min(100, ((now - p.t) / GROW_MS) * 100);
+        label = 'Growing';
+        hint = Math.max(0, Math.ceil((GROW_MS - (now - p.t)) / 1000)) + ' s to go';
+        action = 'Growing';
+        disabled = true;
+      } else if (p.s === 'ripe') {
+        pct = 100;
+        label = 'Basil is ready';
+        hint = '2 to 3 basil';
+        action = 'Harvest';
+        disabled = false;
+      }
+      return '<div class="pot"><b>Planter ' + (i + 1) + ': ' + label + '</b><small>' + hint + '</small><div class="bar"><i style="width:' + pct + '%"></i></div>' +
+        '<button class="btn small" type="button" data-potbtn="' + i + '"' + (disabled ? ' disabled' : '') + '>' + action + '</button></div>';
+    }).join('');
+    $$('[data-pot]').forEach((hot) => {
+      const p = S.pots[+hot.dataset.pot];
+      const tag = $('.tag', hot);
+      const words = { empty: 'Plant', dry: 'Water', growing: 'Growing', ripe: 'Harvest' };
+      tag.textContent = p ? words[p.s] : '';
+      hot.classList.toggle('cool', !p || p.s === 'growing' || (p.s === 'empty' && !have('seed_basil')));
+    });
+  }
+  function potAction(i, anchor) {
+    const p = S.pots[i];
+    if (!p) {
+      return;
+    }
+    if (p.s === 'empty') {
+      if (!have('seed_basil')) {
+        toast('No basil seeds. Trees sometimes drop one.');
+        return;
+      }
+      add('seed_basil', -1);
+      p.s = 'dry';
+      complete('q_plant');
+      if (anchor) {
+        pop(anchor, 'Planted');
+      }
+    } else if (p.s === 'dry') {
+      p.s = 'growing';
+      p.t = Date.now();
+      complete('q_water');
+      if (anchor) {
+        pop(anchor, 'Watered');
+      }
+    } else if (p.s === 'ripe') {
+      const n = rnd(2, 3);
+      add('basil', n);
+      S.stats.harvested += n;
+      p.s = 'empty';
+      delete p.t;
+      complete('q_harvest');
+      if (anchor) {
+        pop(anchor, '+' + n + ' basil');
+      }
+      update('basil');
+      return;
+    } else {
+      return;
+    }
+    update();
+  }
+  $('#pots').addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-potbtn]');
+    if (btn) {
+      const i = +btn.dataset.potbtn;
+      potAction(i, $('[data-pot="' + Math.min(i, 1) + '"]'));
+    }
+  });
+  $$('[data-pot]').forEach((hot) => hot.addEventListener('click', () => potAction(+hot.dataset.pot, hot)));
+  setInterval(() => {
+    let changed = false;
+    S.pots.forEach((p) => {
+      if (p.s === 'growing' && Date.now() - p.t >= GROW_MS) {
+        p.s = 'ripe';
+        changed = true;
+      }
+    });
+    if (changed) {
+      toast('Basil is ready to harvest in shot 03.');
+      update();
+    } else if (S.pots.some((p) => p.s === 'growing')) {
+      renderPots();
+    }
+  }, 500);
+
+  // ---- gathering ----
+  $$('[data-node]').forEach((hot) => {
+    hot.addEventListener('click', () => {
+      const id = hot.dataset.node;
+      const node = NODES[id];
+      if (cool[id] && cool[id] > Date.now()) {
+        pop(hot, 'Growing back');
+        return;
+      }
+      const n = rnd(node.amount[0], node.amount[1]);
+      add(node.item, n);
+      S.stats.gathered += n;
+      let text = '+' + n + ' ' + name(node.item).toLowerCase();
+      if (node.extra && Math.random() < node.extra.chance) {
+        add(node.extra.item, 1);
+        text += ', +1 seed';
+      }
+      pop(hot, text);
+      if (id === 'tree') {
+        complete('q_wood');
+      } else if (id === 'bush') {
+        complete('q_fiber');
+      } else if (id === 'scrap') {
+        complete('q_scrap');
+      }
+      const ms = (node.respawn * 1000) / RESPAWN_SPEEDUP;
+      cool[id] = Date.now() + ms;
+      hot.classList.add('cool');
+      setTimeout(() => hot.classList.remove('cool'), ms);
+      update(node.item);
+    });
+  });
+
+  // ---- crafting ----
+  function renderRecipes() {
+    $('#recipes').innerHTML = RECIPES.map((r) => {
+      const ok = Object.entries(r.in).every(([k, n]) => have(k) >= n);
+      const needs = Object.entries(r.in).map(([k, n]) => '<span class="' + (have(k) >= n ? 'have' : 'short') + '">' + Math.min(have(k), n) + '/' + n + ' ' + name(k).toLowerCase() + '</span>').join('');
+      return '<div class="recipe' + (ok ? ' ready' : '') + '"><b><i class="sw" style="background:' + ITEMS[r.out].color + '"></i>' + name(r.out) + '</b><div class="needs">' + needs + '</div>' +
+        '<button class="btn small" type="button" data-craft="' + r.id + '"' + (ok ? '' : ' disabled') + '>Craft</button></div>';
+    }).join('');
+    const place = [];
+    if (have('solar')) {
+      place.push('<button class="btn small" type="button" data-place="solar">Place solar panel (' + have('solar') + ')</button>');
+    }
+    if (have('planter') && S.pots.length < 4) {
+      place.push('<button class="btn small ghost" type="button" data-place="planter">Place planter</button>');
+    }
+    $('#placeNote').innerHTML = place.length
+      ? '<span class="row">' + place.join('') + '</span>'
+      : (S.solarPlaced ? S.solarPlaced + ' solar panel' + (S.solarPlaced > 1 ? 's' : '') + ' on the roof, feeding the chart in shot 08.' : 'Place a crafted solar panel to finish the goal. It then charges the battery in shot 08.');
+  }
+  $('#recipes').addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-craft]');
+    if (!btn) {
+      return;
+    }
+    const r = RECIPES.find((x) => x.id === btn.dataset.craft);
+    if (!Object.entries(r.in).every(([k, n]) => have(k) >= n)) {
+      return;
+    }
+    Object.entries(r.in).forEach(([k, n]) => add(k, -n));
+    add(r.out, 1);
+    S.stats.crafted += 1;
+    if (r.id === 'wire') {
+      complete('q_wire');
+    }
+    toast('Crafted 1 ' + name(r.out).toLowerCase() + '.');
+    update(r.out);
+  });
+  $('#placeNote').addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-place]');
+    if (!btn) {
+      return;
+    }
+    if (btn.dataset.place === 'solar' && have('solar')) {
+      add('solar', -1);
+      S.solarPlaced += 1;
+      S.energy.solar = Math.max(S.energy.solar, S.solarPlaced);
+      complete('q_solar');
+    } else if (btn.dataset.place === 'planter' && have('planter') && S.pots.length < 4) {
+      add('planter', -1);
+      S.pots.push({ s: 'empty' });
+      toast('New planter placed in shot 03.');
+    }
+    update();
+  });
+  $$('[data-scroll]').forEach((hot) => hot.addEventListener('click', () => {
+    const el = document.getElementById(hot.dataset.scroll);
+    el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
+    const first = el.querySelector('button:not([disabled])');
+    if (first) {
+      first.focus({ preventScroll: true });
+    }
+  }));
+
+  // ---- market ----
+  let talking = 'sari';
+  function renderPeople() {
+    $('#people').innerHTML = NPCS.map((p) => {
+      let extra = '';
+      if (p.id === 'sari' && talking === 'sari') {
+        const items = Object.keys(S.inv).filter((k) => S.inv[k] > 0);
+        extra = S.done.q_market
+          ? '<div class="sell">' + (items.length ? items.map((k) => '<button type="button" data-sell="' + k + '"><i class="sw" style="background:' + ITEMS[k].color + '"></i>Sell ' + name(k).toLowerCase() + ', ' + ITEMS[k].sell + ' cr</button>').join('') : '<span class="none">Nothing in the bag to sell yet.</span>') + '</div>'
+          : '<div class="sell"><span class="none">Cross the bridge in the frame first.</span></div>';
+      }
+      return '<div class="person" role="button" tabindex="0" data-talk="' + p.id + '" aria-pressed="' + (talking === p.id) + '"><span class="face" style="background:' + p.color + '">' + p.name[0] + '</span><div><b>' + p.name + '</b><span>' + p.role + '</span>' + extra + '</div></div>';
+    }).join('');
+  }
+  $('#people').addEventListener('click', (e) => {
+    const sell = e.target.closest('[data-sell]');
+    if (sell) {
+      const k = sell.dataset.sell;
+      if (have(k)) {
+        add(k, -1);
+        S.credits += ITEMS[k].sell;
+        S.stats.earned += ITEMS[k].sell;
+        complete('q_sell');
+        update();
+      }
+      return;
+    }
+    const who = e.target.closest('[data-talk]');
+    if (who) {
+      talking = who.dataset.talk;
+      renderPeople();
+    }
+  });
+  $('#people').addEventListener('keydown', (e) => {
+    const who = e.target.closest('[data-talk]');
+    if (who && (e.key === 'Enter' || e.key === ' ') && e.target === who) {
+      e.preventDefault();
+      talking = who.dataset.talk;
+      renderPeople();
+      const again = $('[data-talk="' + talking + '"]');
+      if (again) {
+        again.focus();
+      }
+    }
+  });
+  $$('[data-npc]').forEach((hot) => hot.addEventListener('click', () => {
+    talking = hot.dataset.npc;
+    const npc = NPCS.find((n) => n.id === talking);
+    pop(hot, npc.name);
+    renderPeople();
+  }));
+  $('[data-cross]').addEventListener('click', (e) => {
+    complete('q_market');
+    pop(e.currentTarget, 'Market Isle');
+    update();
+  });
+
+  // ---- community projects ----
+  function projDone(p) {
+    const given = S.proj[p.id] || {};
+    return p.need && Object.entries(p.need).every(([k, n]) => (given[k] || 0) >= n);
+  }
+  function renderProjects() {
+    $('#projects').innerHTML = PROJECTS.map((p) => {
+      if (p.locked) {
+        return '<div class="proj locked"><header><b>' + p.en + '</b><span class="fine" style="margin:0">In the game</span></header><p>' + p.body + '</p></div>';
+      }
+      const waiting = p.after && !projDone(PROJECTS.find((x) => x.id === p.after));
+      const given = S.proj[p.id] || {};
+      const done = projDone(p);
+      const canGive = !waiting && !done && Object.entries(p.need).some(([k, n]) => have(k) > 0 && (given[k] || 0) < n);
+      const bars = Object.entries(p.need).map(([k, n]) => {
+        const g = Math.min(n, given[k] || 0);
+        return '<div><span>' + g + '/' + n + ' ' + name(k).toLowerCase() + '</span><span class="bar"><i style="width:' + (g / n) * 100 + '%"></i></span></div>';
+      }).join('');
+      const status = done ? '<span class="fine" style="margin:0;color:#234638;font-weight:700">Finished</span>'
+        : waiting ? '<span class="fine" style="margin:0">After the bridge</span>'
+        : '<button class="btn small" type="button" data-give="' + p.id + '"' + (canGive ? '' : ' disabled') + '>Give</button>';
+      return '<div class="proj' + (done ? ' finished' : '') + (waiting ? ' locked' : '') + '"><header><b>' + p.en + '</b>' + status + '</header><p>' + p.body + '</p><div class="needs">' + bars + '</div></div>';
+    }).join('');
+  }
+  $('#projects').addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-give]');
+    if (!btn) {
+      return;
+    }
+    const p = PROJECTS.find((x) => x.id === btn.dataset.give);
+    const given = S.proj[p.id] || (S.proj[p.id] = {});
+    let total = 0;
+    Object.entries(p.need).forEach(([k, n]) => {
+      const amount = Math.min(have(k), n - (given[k] || 0));
+      if (amount > 0) {
+        given[k] = (given[k] || 0) + amount;
+        add(k, -amount);
+        total += amount;
+      }
+    });
+    if (total) {
+      complete('q_project');
+      if (projDone(p)) {
+        S.credits += p.reward;
+        S.stats.earned += p.reward;
+        toast(p.en + ': finished. +' + p.reward + ' credits. ' + (p.id === 'bridge' ? 'Grove Isle is open in the game.' : p.id === 'tower' ? 'Bayu can teach turbines now.' : 'Reef Isle is open in the game.'));
+      } else if (!flashing) {
+        toast('Gave ' + total + ' item' + (total > 1 ? 's' : '') + ' to ' + p.en.toLowerCase() + '.');
+      }
+      update();
+    }
+  });
+
+  // ---- energy chart ----
+  const chart = $('#chart');
+  const ctx = chart.getContext('2d');
+  function simulate() {
+    const e = S.energy;
+    const cap = ENERGY.base + e.battery * ENERGY.battery;
+    // start at 07:12 (game start time), with the starting 6 energy, run 2 days and plot the second
+    let stored = Math.min(cap, ENERGY.start);
+    const series = new Array(1440).fill(0);
+    let darkAt = -1;
+    const steps = ENERGY.day * 2;
+    for (let i = 0; i < steps; i += 1) {
+      const t = (0.3 + i / ENERGY.day) % 1;
+      const light = daylight(t);
+      const night = light < 0.08;
+      const rate = e.solar * ENERGY.solar * light + e.turbine * ENERGY.turbine - (night ? e.lamp * ENERGY.lamp : 0);
+      stored = Math.max(0, Math.min(cap, stored + rate));
+      if (i >= ENERGY.day) {
+        const minute = Math.floor(t * 1440);
+        for (let m = minute; m < minute + 3 && m < 1440; m += 1) {
+          series[m] = stored;
+        }
+        if (night && e.lamp > 0 && stored <= 0 && darkAt < 0) {
+          darkAt = minute;
+        }
+      }
+    }
+    return { series, cap, darkAt };
+  }
+  function drawChart() {
+    const W = chart.width;
+    const H = chart.height;
+    const pad = { l: 34, r: 10, t: 12, b: 24 };
+    const sim = simulate();
+    const mins = +$('#tod').value;
+    ctx.clearRect(0, 0, W, H);
+    for (let x = 0; x < W - pad.l - pad.r; x += 2) {
+      const t = x / (W - pad.l - pad.r);
+      const light = daylight(t);
+      const r = Math.round(28 + light * (215 - 28));
+      const g = Math.round(40 + light * (233 - 40));
+      const b = Math.round(48 + light * (239 - 48));
+      ctx.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
+      ctx.fillRect(pad.l + x, pad.t, 2, H - pad.t - pad.b);
+    }
+    ctx.strokeStyle = 'rgba(35,48,42,.35)';
+    ctx.fillStyle = '#c9d3cb';
+    ctx.font = '600 11px Figtree, sans-serif';
+    for (let h = 0; h <= 24; h += 6) {
+      const x = pad.l + (h / 24) * (W - pad.l - pad.r);
+      ctx.fillText(String(h).padStart(2, '0') + ':00', Math.min(W - 38, Math.max(0, x - 14)), H - 7);
+    }
+    ctx.fillText(String(sim.cap), 4, pad.t + 9);
+    ctx.fillText('0', 14, H - pad.b);
+    ctx.beginPath();
+    sim.series.forEach((v, m) => {
+      const x = pad.l + (m / 1439) * (W - pad.l - pad.r);
+      const y = H - pad.b - (v / sim.cap) * (H - pad.t - pad.b);
+      if (m === 0) {
+        ctx.moveTo(x, y);
+      } else {
+        ctx.lineTo(x, y);
+      }
+    });
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = '#c9951a';
+    ctx.stroke();
+    const cx = pad.l + (mins / 1439) * (W - pad.l - pad.r);
+    ctx.strokeStyle = '#f8f3e8';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.moveTo(cx, pad.t);
+    ctx.lineTo(cx, H - pad.b);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    const t = mins / 1440;
+    const light = daylight(t);
+    const night = light < 0.08;
+    const e = S.energy;
+    const rate = (e.solar * ENERGY.solar * light + e.turbine * ENERGY.turbine - (night ? e.lamp * ENERGY.lamp : 0)) * 60;
+    const stored = sim.series[Math.min(1439, mins)];
+    $('#r-light').textContent = Math.round(light * 100) + '%';
+    $('#r-rate').textContent = (rate >= 0 ? '+' : '') + rate.toFixed(2);
+    $('#r-store').textContent = stored.toFixed(1) + ' / ' + sim.cap;
+    $('#clock8').textContent = fmtClock(mins) + (night ? ' Night' : light < 0.6 ? (mins < 720 ? ' Morning' : ' Evening') : ' Day');
+    const v = $('#verdict');
+    if (!e.lamp) {
+      v.className = 'verdict';
+      v.textContent = 'No lamps, so the island just stores energy for cooking and sprinklers.';
+    } else if (sim.darkAt >= 0) {
+      v.className = 'verdict bad';
+      v.textContent = 'The lamps go dark at ' + fmtClock(sim.darkAt) + '. Add a panel, a turbine or a battery.';
+    } else {
+      v.className = 'verdict good';
+      v.textContent = 'The lamps stay lit all night with ' + sim.series[Math.floor(0.26 * 1440)].toFixed(1) + ' energy left at dawn.';
+    }
+    ['solar', 'turbine', 'battery', 'lamp'].forEach((k) => {
+      $('#o-' + k).textContent = e[k];
+    });
+  }
+  const LIMITS = { solar: [0, 4], turbine: [0, 2], battery: [0, 2], lamp: [0, 8] };
+  $$('[data-step]').forEach((btn) => btn.addEventListener('click', () => {
+    const k = btn.dataset.step;
+    S.energy[k] = Math.max(LIMITS[k][0], Math.min(LIMITS[k][1], S.energy[k] + +btn.dataset.d));
+    save();
+    drawChart();
+  }));
+  $('#tod').addEventListener('input', drawChart);
+
+  // ---- language ----
+  function setLang(lang) {
+    S.lang = lang;
+    $$('[data-lang]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+    const g = GOALS[0];
+    $('#firstGoal').innerHTML = (lang === 'id' ? g.idn : g.en) + '<small>' + (lang === 'id' ? 'Tujuan 1 dari 25, kata yang sama dengan di game' : 'Goal 1 of 25, the same words the game uses') + '</small>';
+    update();
+  }
+  $$('[data-lang]').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.lang)));
+  $('#begin').addEventListener('click', () => {
+    document.getElementById('shot-2').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+    setPlaying(true);
+  });
+
+  // ---- wrap-up ----
+  function renderWrap() {
+    const done = GOALS.filter((g) => S.done[g.id]).length;
+    const allDone = done === GOALS.length;
+    const rows = [
+      ['Production', 'Teduh, day one on Home Isle', '', 'wide'],
+      ['Take', allDone ? 'Print it' : 'Rolling', '', ''],
+      ['Goals', done + '/' + GOALS.length, 'on this page', ''],
+      ['Gathered', S.stats.gathered, 'materials', ''],
+      ['Crafted', S.stats.crafted, 'things', ''],
+      ['Pocket', S.credits, 'credits', 'wide'],
+    ];
+    const slate = $('#stats');
+    const wasDone = slate.dataset.done === '1';
+    slate.innerHTML = '<div class="clap" aria-hidden="true"></div><dl>' + rows.map(([label, value, note, cls]) =>
+      '<div class="' + cls + '"><dt>' + label + '</dt><dd>' + value + (note ? '<small>' + note + '</small>' : '') + '</dd></div>'
+    ).join('') + '</dl>';
+    slate.dataset.done = allDone ? '1' : '0';
+    if (allDone && !wasDone && !reduced) {
+      slate.classList.remove('snap');
+      void slate.offsetWidth;
+      slate.classList.add('snap');
+    }
+    $('#wrapText').textContent = done === GOALS.length
+      ? 'Every goal on this page is done. In the game you would be at goal 11 now: villager orders, then fishing, cooking, the wind tower and three more islands.'
+      : done
+        ? 'You have ' + done + ' of ' + GOALS.length + ' goals done. Keep going in the frames above, or carry on in the game, where the next goals bring villager orders, fishing and cooking.'
+        : 'Finish the goals in the storyboard and your tally lands here. The game picks up at goal 11 with villager orders, then fishing, cooking and three more islands.';
+  }
+  $('#reset').addEventListener('click', () => {
+    S = fresh();
+    save();
+    setLang('en');
+    toast('Fresh start. Back to morning on Home Isle.');
+  });
+
+  // ---- contact sheet ----
+  const shotNames = ['Morning', 'Tree', 'Planters', 'Scrap', 'Craft', 'Market', 'Bridge', 'Night'];
+  $('#thumbs').innerHTML = shotNames.map((n, i) => {
+    const lead = i === 0;
+    const label = lead ? '<span><b>Shot 01, morning</b>Tap to start the day</span><em class="go">Play day one</em>' : '<span>' + String(i + 1).padStart(2, '0') + ' ' + n + '</span>';
+    return '<button class="thumb' + (lead ? ' lead' : '') + '" type="button" data-n="' + (lead ? 2 : i + 1) + '" aria-label="' + (lead ? 'Start playing at shot 2' : 'Go to shot ' + (i + 1) + ', ' + n) + '"><img src="g' + (i + 1) + '.jpg" alt="Shot ' + (i + 1) + ': ' + n + '" width="1200" height="675">' + label + '</button>';
+  }).join('');
+  $$('.thumb').forEach((b) => b.addEventListener('click', () => {
+    setPlaying(true);
+    document.getElementById('shot-' + b.dataset.n).scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+  }));
+
+  // ---- scroll: show HUD, move the clock ----
+  const hud = $('#hud');
+  function setPlaying(on) {
+    hud.classList.toggle('show', on);
+    $('.top').classList.toggle('playing', on);
+  }
+  const inPlay = new Set();
+  const playWatch = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.isIntersecting) {
+        inPlay.add(en.target.id);
+      } else {
+        inPlay.delete(en.target.id);
+      }
+    });
+    setPlaying(inPlay.size > 0);
+  }, { threshold: 0, rootMargin: '-35% 0px -35% 0px' });
+  playWatch.observe($('#story'));
+  playWatch.observe($('#wrap'));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.isIntersecting) {
+        hudMins = SHOT_CLOCK[en.target.dataset.shot] || hudMins;
+        renderHud();
+      }
+    });
+  }, { threshold: 0.35 });
+  $$('.shot').forEach((s) => io.observe(s));
+
+  function update(bumpItem) {
+    save();
+    renderHud(bumpItem);
+    renderGoalChips();
+    renderPots();
+    renderRecipes();
+    renderPeople();
+    renderProjects();
+    renderWrap();
+    drawChart();
+  }
+  setLang(S.lang === 'id' ? 'id' : 'en');
+})();
+</script>
+</body>
+</html>

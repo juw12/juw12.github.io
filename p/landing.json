@@ -69,16 +69,6 @@
   "landing": "https://juw12.github.io/p/datum-cad/",
   "readme": "https://github.com/juw12/projects/tree/main/apps/me-rd-toolkit/photo2cad#readme"
  },
- "https://github.com/juw12/explicit-maccormack-method": {
-  "name": "Explicit MacCormack Method",
-  "landing": "https://juw12.github.io/p/maccormack/",
-  "readme": "https://github.com/juw12/Explicit-Maccormack-Method#readme"
- },
- "https://github.com/juw12/upwind-differencing-scheme": {
-  "name": "Upwind Differencing Scheme",
-  "landing": "https://juw12.github.io/p/upwind/",
-  "readme": "https://github.com/juw12/Upwind-Differencing-Scheme#readme"
- },
  "https://github.com/juw12/projects/tree/main/apps/sync": {
   "name": "Sync",
   "landing": "https://juw12.github.io/p/sync/",
@@ -159,10 +149,10 @@
   "landing": "https://juw12.github.io/p/pushlab/",
   "readme": "https://github.com/juw12/projects/tree/main/apps/pushlab#readme"
  },
- "https://github.com/juw12/morning-paper-web": {
-  "name": "The Morning Paper",
-  "landing": "https://juw12.github.io/p/morning-paper/",
-  "readme": "https://github.com/juw12/morning-paper-web#readme"
+ "https://github.com/juw12/morrow": {
+  "name": "Morrow",
+  "landing": "https://juw12.github.io/p/morrow/",
+  "readme": "https://github.com/juw12/morrow#readme"
  },
  "https://github.com/juw12/steward": {
   "name": "Steward",
@@ -239,10 +229,10 @@
   "landing": "https://juw12.github.io/p/outlook-archiver/",
   "readme": "https://github.com/juw12/projects/tree/main/apps/outlook-archiver#readme"
  },
- "https://github.com/juw12/loop-zero": {
+ "https://github.com/juw12/handoff": {
   "name": "Handoff",
   "landing": "https://juw12.github.io/p/handoff/",
-  "readme": "https://github.com/juw12/loop-zero#readme"
+  "readme": "https://github.com/juw12/handoff#readme"
  },
  "https://github.com/juw12/projects/tree/add/etsy-prompts-product/apps/building/etsy-prompts-product": {
   "name": "150 ChatGPT Prompts for Etsy Sellers",
@@ -304,6 +294,16 @@
   "landing": "https://juw12.github.io/p/millennium-digest/",
   "readme": "https://github.com/juw12/millennium-digest#readme"
  },
+ "https://github.com/juw12/nongkrong": {
+  "name": "Nongkrong",
+  "landing": "https://juw12.github.io/p/nongkrong/",
+  "readme": "https://github.com/juw12/nongkrong#readme"
+ },
+ "https://github.com/juw12/founder-studio": {
+  "name": "Founder Studio",
+  "landing": "https://juw12.github.io/p/founder-studio/",
+  "readme": "https://github.com/juw12/founder-studio#readme"
+ },
  "https://github.com/juw12/precedent": {
   "name": "precedent",
   "landing": "https://juw12.github.io/p/precedent/",
@@ -313,5 +313,100 @@
   "name": "Meetline",
   "landing": "https://juw12.github.io/p/meetline/",
   "readme": "https://github.com/juw12/meetline#readme"
+ },
+ "https://github.com/juw12/teduh": {
+  "name": "Teduh",
+  "landing": "https://juw12.github.io/p/teduh/",
+  "readme": "https://github.com/juw12/teduh#readme"
+ },
+ "https://github.com/juw12/trunnion-topopt": {
+  "name": "Trunnion TopOpt",
+  "landing": "https://juw12.github.io/p/trunnion-topopt/",
+  "readme": "https://github.com/juw12/trunnion-topopt#readme"
+ },
+ "https://github.com/juw12/bilas": {
+  "name": "Bilas",
+  "landing": "https://juw12.github.io/p/bilas/",
+  "readme": "https://github.com/juw12/bilas#readme"
+ },
+ "https://github.com/juw12/riak": {
+  "name": "Riak",
+  "landing": "https://juw12.github.io/p/riak/",
+  "readme": "https://github.com/juw12/riak#readme"
+ },
+ "https://github.com/juw12/lahap": {
+  "name": "Lahap",
+  "landing": "https://juw12.github.io/p/lahap/",
+  "readme": "https://github.com/juw12/lahap#readme"
+ },
+ "https://github.com/juw12/hoki": {
+  "name": "Hoki",
+  "landing": "https://juw12.github.io/p/hoki/",
+  "readme": "https://github.com/juw12/hoki#readme"
+ },
+ "https://github.com/juw12/pocketdex": {
+  "name": "PocketDex",
+  "landing": "https://juw12.github.io/p/pocketdex/",
+  "readme": "https://github.com/juw12/pocketdex#readme"
+ },
+ "https://github.com/juw12/mise": {
+  "name": "Mise",
+  "landing": "https://juw12.github.io/p/mise/",
+  "readme": "https://github.com/juw12/mise#readme"
+ },
+ "https://github.com/juw12/skills": {
+  "name": "Skills",
+  "landing": "https://juw12.github.io/p/skills/",
+  "readme": "https://github.com/juw12/skills#readme"
+ },
+ "https://github.com/juw12/projects/tree/main/apps/together": {
+  "name": "Together",
+  "landing": "https://juw12.github.io/p/together/",
+  "readme": "https://github.com/juw12/projects/tree/main/apps/together#readme"
+ },
+ "https://github.com/juw12/cfd-wave-schemes": {
+  "name": "CFD Wave Schemes",
+  "landing": "https://juw12.github.io/p/cfd-wave-schemes/",
+  "readme": "https://github.com/juw12/cfd-wave-schemes#readme"
+ },
+ "https://github.com/juw12/hexbane": {
+  "name": "Hexbane",
+  "landing": "https://juw12.github.io/p/hexbane/",
+  "readme": "https://github.com/juw12/hexbane#readme"
+ },
+ "https://github.com/juw12/reda": {
+  "name": "Reda",
+  "landing": "https://juw12.github.io/p/reda/",
+  "readme": "https://github.com/juw12/reda#readme"
+ },
+ "https://github.com/juw12/ruang": {
+  "name": "Ruang",
+  "landing": "https://juw12.github.io/p/ruang/",
+  "readme": "https://github.com/juw12/ruang#readme"
+ },
+ "https://github.com/juw12/jepret": {
+  "name": "Jepret",
+  "landing": "https://juw12.github.io/p/jepret/",
+  "readme": "https://github.com/juw12/jepret#readme"
+ },
+ "https://github.com/juw12/inti": {
+  "name": "Inti",
+  "landing": "https://juw12.github.io/p/inti/",
+  "readme": "https://github.com/juw12/inti#readme"
+ },
+ "https://github.com/juw12/mlbb-blame": {
+  "name": "Who Threw?",
+  "landing": "https://juw12.github.io/p/mlbb-blame/",
+  "readme": "https://github.com/juw12/mlbb-blame#readme"
+ },
+ "https://github.com/juw12/kilat": {
+  "name": "Kilat",
+  "landing": "https://juw12.github.io/p/kilat/",
+  "readme": "https://github.com/juw12/kilat#readme"
+ },
+ "https://github.com/juw12/cpu-eco-toggle": {
+  "name": "CPU Eco Toggle",
+  "landing": "https://juw12.github.io/p/cpu-eco-toggle/",
+  "readme": "https://github.com/juw12/cpu-eco-toggle#readme"
  }
 }

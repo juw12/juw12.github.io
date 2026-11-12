@@ -1,26 +1,26 @@
 <!doctype html>
-<html lang="en" class="k-app t-calm dna h-editorial bg-lines c-outline hd-italic">
+<html lang="en" class="k-game t-calm dna h-center bg-waves c-pill hd-italic">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Morning Paper: Your morning news, curated.</title>
-<meta name="description" content="Markets, AI and chips, robotics, space and tech in one morning paper: stories merged across outlets, an AI brief and a stock desk.">
-<meta property="og:title" content="The Morning Paper: Your morning news, curated.">
-<meta property="og:description" content="Markets, AI and chips, robotics, space and tech in one morning paper: stories merged across outlets, an AI brief and a stock desk.">
+<title>Riak: A cozy aquarium that lives in your browser</title>
+<meta name="description" content="Look after a living tank a few minutes a day: real water care, fishing in nine places, plants, corals and a field journal. Free, offline, no account.">
+<meta property="og:title" content="Riak: A cozy aquarium that lives in your browser">
+<meta property="og:description" content="Look after a living tank a few minutes a day: real water care, fishing in nine places, plants, corals and a field journal. Free, offline, no account.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://juw12.github.io/p/morning-paper/">
-<meta property="og:image" content="https://juw12.github.io/p/morning-paper/shot.jpg">
+<meta property="og:url" content="https://juw12.github.io/p/riak/">
+<meta property="og:image" content="https://juw12.github.io/p/riak/shot.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://juw12.github.io/p/morning-paper/">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "The Morning Paper", "description": "Markets, AI and chips, robotics, space and tech in one morning paper: stories merged across outlets, an AI brief and a stock desk.", "url": "https://juw12.github.io/p/morning-paper/", "applicationCategory": "DeveloperApplication", "operatingSystem": "Web, Installable PWA", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "author": {"@type": "Person", "name": "Juwen Lie", "url": "https://juwenlie.pages.dev/"}, "codeRepository": "https://github.com/juw12/morning-paper-web", "license": "https://spdx.org/licenses/MIT.html", "image": "https://juw12.github.io/p/morning-paper/shot.jpg"}</script>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%23b45309'/><text x='32' y='44' font-size='34' font-family='Arial' font-weight='700' text-anchor='middle' fill='white'>T</text></svg>">
+<link rel="canonical" href="https://juw12.github.io/p/riak/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Riak", "description": "Look after a living tank a few minutes a day: real water care, fishing in nine places, plants, corals and a field journal. Free, offline, no account.", "url": "https://juw12.github.io/p/riak/", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "author": {"@type": "Person", "name": "Juwen Lie", "url": "https://juwenlie.pages.dev/"}, "image": "https://juw12.github.io/p/riak/shot.jpg", "codeRepository": "https://github.com/juw12/riak"}</script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%231f5f4a'/><text x='32' y='44' font-size='34' font-family='Arial' font-weight='700' text-anchor='middle' fill='white'>R</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --accent: #b4232c; --accent-soft: #f8e6e7; --accent-ink: #7f1d1d;
+  --accent: #2f8a68; --accent-soft: #e0e9e6; --accent-ink: #174738;
   --paper: #fffaf3; --ink: #1f2330; --muted: #5d6273; --line: #ece4d6; --card: #fff; --dark: #1f2330;
 }
 
@@ -381,6 +381,63 @@ html.t-arcade .frame .bar { border-bottom-color: var(--accent); }
 html.t-arcade .shot { border-color: color-mix(in srgb, var(--accent) 70%, #000); box-shadow: 0 24px 60px -24px color-mix(in srgb, var(--accent) 65%, transparent); }
 html.t-arcade .band { box-shadow: 0 0 80px -10px color-mix(in srgb, var(--accent) 60%, transparent); }
 
+/* neo: dark glass, red-to-teal gradient edges (NFT-gallery feel). No purple. */
+html.t-neo { --paper: #07090d; --ink: #eef2f6; --muted: #a3adbb; --line: #1c2430; --card: #0d1219; --dark: #05070a;
+  --neo1: #ff4d5e; --neo2: #00d9c0; --neo-edge: linear-gradient(135deg, var(--neo1), var(--neo2)); color-scheme: dark; }
+html.t-neo body { background-color: var(--paper);
+  background-image: radial-gradient(48rem 30rem at 12% -6%, rgba(255,77,94,.20), transparent 70%),
+    radial-gradient(44rem 28rem at 95% 8%, rgba(0,217,192,.16), transparent 70%),
+    linear-gradient(rgba(238,242,246,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(238,242,246,.045) 1px, transparent 1px);
+  background-size: auto, auto, 44px 44px, 44px 44px; background-attachment: fixed, fixed, scroll, scroll; }
+html.t-neo header.top { background: rgba(7,9,13,.72); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid rgba(238,242,246,.08); }
+html.t-neo .logo { background: var(--neo-edge); color: #05070a; box-shadow: none; }
+html.t-neo.dna .hero h1 { letter-spacing: -0.02em; line-height: 1.08; }
+html.t-neo.dna .hero h1 .hl { color: transparent; -webkit-text-stroke: 0; background: var(--neo-edge); -webkit-background-clip: text; background-clip: text; }
+html.t-neo .hero h1 .hl svg { display: none; }
+html.t-neo .kicker, html.t-neo .idea .tag { font: 600 13px "JetBrains Mono", monospace; letter-spacing: .06em; color: var(--neo2); }
+html.t-neo .kicker.light { color: var(--neo2); }
+html.t-neo.dna :is(.idea, .cell, .steps li, .checks li, .faq details, .stat, .dev, .rel, .limits li, .hood-card) {
+  border: 1px solid transparent; border-radius: 18px; box-shadow: 0 24px 60px -36px rgba(0,0,0,.9);
+  background: linear-gradient(var(--card), var(--card)) padding-box, linear-gradient(135deg, rgba(255,77,94,.55), rgba(0,217,192,.45)) border-box; }
+html.t-neo.dna :is(.idea.dark, .cell.dark) { background: linear-gradient(#0a0e14, #0a0e14) padding-box, var(--neo-edge) border-box; }
+html.t-neo.dna .cell.accent { background: linear-gradient(135deg, #c8192f, #0a7f73); border-color: transparent; box-shadow: none; }
+html.t-neo .cell::before { background: var(--neo-edge); height: 3px; border-radius: 2px; }
+html.t-neo :is(.idea p, .cell p, .idea.dark p, .cell.dark p) { color: var(--muted); }
+html.t-neo .btn { border-radius: 12px; border-color: rgba(238,242,246,.22); }
+html.t-neo .btn.primary { background: linear-gradient(135deg, #d91f3a, #a3122a); border-color: transparent; color: #fff;
+  box-shadow: 0 0 0 1px rgba(255,77,94,.4), 0 14px 34px -12px rgba(255,77,94,.65); }
+html.t-neo .btn.primary:hover { box-shadow: 0 0 0 1px rgba(0,217,192,.55), 0 18px 40px -12px rgba(0,217,192,.5); }
+html.t-neo .btn.small { box-shadow: none; }
+html.t-neo.dna .frame { border: 1px solid transparent; border-radius: 20px;
+  background: linear-gradient(var(--card), var(--card)) padding-box, var(--neo-edge) border-box;
+  box-shadow: 0 0 0 6px rgba(255,77,94,.06), 0 60px 120px -40px rgba(0,217,192,.35); }
+html.t-neo .frame .bar { background: #0a0e14; border-bottom: 1px solid var(--line); font-family: "JetBrains Mono", monospace; font-weight: 500; color: var(--muted); }
+html.t-neo .frame .bar i { border-color: rgba(238,242,246,.25); }
+html.t-neo .frame .bar i:first-child { background: var(--neo1); }
+html.t-neo .shot { border: 1px solid var(--line); border-radius: 14px; box-shadow: none; }
+html.t-neo .sticker { background: rgba(13,18,25,.8); color: var(--ink); border: 1px solid rgba(0,217,192,.45); border-radius: 999px;
+  font: 600 12px "JetBrains Mono", monospace; box-shadow: none; }
+html.t-neo .sticker.s1 { background: rgba(255,77,94,.14); color: #ffd5d9; border-color: rgba(255,77,94,.5); }
+html.t-neo .steps .num { background: var(--neo-edge); color: #05070a; border: 0; box-shadow: none; font-family: "JetBrains Mono", monospace; }
+html.t-neo .steps li::after { background: linear-gradient(90deg, var(--neo1), var(--neo2)); }
+html.t-neo .why-grid { border-top: 1px solid rgba(238,242,246,.1); }
+html.t-neo .band { background: linear-gradient(#0a0e14, #0a0e14) padding-box, var(--neo-edge) border-box; border: 1px solid transparent;
+  border-radius: 24px; color: var(--ink); box-shadow: 0 0 90px -20px rgba(255,77,94,.35); }
+html.t-neo .band p { color: var(--muted); opacity: 1; }
+html.t-neo .band .btn.primary { background: linear-gradient(135deg, #d91f3a, #a3122a); color: #fff; border-color: transparent; }
+html.t-neo .band .btn.ghost { color: var(--ink); border-color: rgba(0,217,192,.5); }
+html.t-neo :is(.status, .chip, .pill) { background: rgba(0,217,192,.12); color: #bff6ee; border-color: rgba(0,217,192,.35); }
+html.t-neo .art .o { stroke: var(--ink); }
+html.t-neo .art .s { fill: rgba(0,217,192,.14); }
+html.t-neo .art .a { fill: var(--neo1); }
+html.t-neo .art .ao { stroke: var(--neo2); }
+html.t-neo footer a:hover { color: var(--neo2); }
+@media (prefers-reduced-motion: no-preference) {
+  html.t-neo.dna :is(.idea, .cell, .rel) { transition: transform .2s ease, box-shadow .2s ease; }
+  html.t-neo.dna :is(.idea, .cell, .rel):hover { transform: translateY(-3px); box-shadow: 0 30px 70px -34px rgba(0,217,192,.45); }
+}
+
 @media (max-width: 980px) {
   .hero.split { grid-template-columns: 1fr; text-align: center; gap: 36px; }
   .hero.split .cta, .hero.split .stats { justify-content: center; }
@@ -513,7 +570,7 @@ html.hd-outline section.block > h2 { position: relative; }
   .hero.poster .frame { transform: none; }
 }
 
-html.dna.dna.dna { --fd: "Playfair Display", var(--fd-fallback); --fdw: 900; --fd-fallback: system-ui, sans-serif; }
+html.dna.dna.dna { --fd: "Lora", var(--fd-fallback); --fdw: 700; --fd-fallback: system-ui, sans-serif; }
 </style>
 <script>document.documentElement.classList.add("js")</script>
 </head>
@@ -521,87 +578,101 @@ html.dna.dna.dna { --fd: "Playfair Display", var(--fd-fallback); --fdw: 900; --f
 <a class="skip" href="#main">Skip to content</a>
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#top"><span class="logo" aria-hidden="true">T</span>The Morning Paper</a>
-    <nav class="links" aria-label="On this page"><a href="#how">How it works</a><a href="#features">Features</a><a href="#hood">Built with</a><a href="#faq">FAQ</a></nav>
-    <div class="view-switch" title="Pick how you want to read about The Morning Paper">
-      <a class="on" href="https://juw12.github.io/p/morning-paper/" aria-current="page">Landing page</a>
-      <a href="https://github.com/juw12/morning-paper-web#readme">README</a>
+    <a class="brand" href="#top"><span class="logo" aria-hidden="true">R</span>Riak</a>
+    <nav class="links" aria-label="On this page"><a href="#how">How it works</a><a href="#features">Features</a><a href="#run">Run it</a><a href="#hood">Built with</a></nav>
+    <div class="view-switch" title="Pick how you want to read about Riak">
+      <a class="on" href="https://juw12.github.io/p/riak/" aria-current="page">Landing page</a>
+      <a href="https://github.com/juw12/riak#readme">README</a>
     </div>
-    <a class="btn primary small" href="https://juw12.github.io/morning-paper-web/">▶ Try it live</a>
+    <a class="btn primary small" href="https://juw12.github.io/riak/">Try it live</a>
   </div>
 </header>
 
 <main id="main">
-  <section class="hero wrap editorial" id="top">
+  <section class="hero wrap" id="top">
     
-    <div class="hero-top"><div class="hero-copy">
-      <span class="pill"><span class="dot"></span>Web · Installable PWA<span class="status">in progress</span></span>
-      <h1>Your morning <span class="hl">news, curated<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 14 C 40 4, 80 4, 110 11 S 170 18, 198 7" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg></span>.</h1>
-      <p class="sub">Markets, AI and chips, robotics, space and tech in one morning paper: stories merged across outlets, an AI brief and a stock desk.</p>
-      <div class="cta"><a class="btn primary" href="https://juw12.github.io/morning-paper-web/">▶ Try it live</a><a class="btn " href="https://github.com/juw12/morning-paper-web#readme">Read the README</a><a class="btn " href="https://github.com/juw12/morning-paper-web">View source</a></div>
-      <div class="meta">Web · Installable PWA · open source (MIT) · free</div>
+    <div class="hero-copy">
+      <span class="art" aria-hidden="true"><svg viewBox="0 0 200 200" role="presentation" focusable="false"><rect class="s o" x="20" y="160" width="160" height="12" rx="3"/><rect class="p o" x="28" y="48" width="144" height="112" rx="8"/><path class="ao" d="M30 72 Q65 64 100 72 T170 72" style="stroke-width:4"/><path class="s o" d="M30 142 Q100 128 170 142 V158 H30 Z"/><path class="ao" d="M52 142 Q44 114 56 90 M62 142 Q70 118 62 100 M152 142 Q158 122 150 108" style="stroke-width:4"/><path class="a o" d="M86 106 Q108 86 130 106 Q108 126 86 106 Z"/><path class="a o" d="M130 106 L148 94 L148 118 Z"/><circle class="p o" cx="100" cy="102" r="4"/><circle class="o" cx="140" cy="84" r="4"/><circle class="o" cx="148" cy="62" r="3"/></svg></span><span class="pill"><span class="dot"></span>Web app · PWA<span class="status">live</span></span>
+      <h1>A <span class="hl">cozy aquarium<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 14 C 40 4, 80 4, 110 11 S 170 18, 198 7" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg></span> that lives in your browser</h1>
+      <p class="sub">Look after a living glass tank a few minutes a day: real water care, flick-to-cast fishing in nine places, a greenhouse, corals and a field journal. Free, offline, no account.</p>
+      <div class="cta"><a class="btn primary" href="https://juw12.github.io/riak/">Try it live</a><a class="btn " href="https://github.com/juw12/riak#readme">Read the README</a><a class="btn " href="https://github.com/juw12/riak">View source</a></div>
+      <div class="meta">Web app · PWA</div>
     </div>
-    <span class="art" aria-hidden="true"><svg viewBox="0 0 200 200" role="presentation" focusable="false"><line class="ao" x1="184.0" y1="150.0" x2="200.0" y2="150.0"/><line class="ao" x1="171.2" y1="176.6" x2="181.2" y2="189.1"/><line class="ao" x1="142.4" y1="183.1" x2="138.9" y2="198.7"/><line class="ao" x1="119.4" y1="164.8" x2="105.0" y2="171.7"/><line class="ao" x1="119.4" y1="135.2" x2="105.0" y2="128.3"/><line class="ao" x1="142.4" y1="116.9" x2="138.9" y2="101.3"/><line class="ao" x1="171.2" y1="123.4" x2="181.2" y2="110.9"/><circle class="a" cx="150" cy="150" r="26"/><path class="s o" d="M24 36 H140 V150 Q140 168 122 168 H40 Q24 168 24 152 Z"/><rect class="a" x="38" y="50" width="88" height="16" rx="3"/><path class="o" d="M38 82 H126 M38 100 H80 M38 118 H80 M38 136 H80 M92 100 H126 M92 118 H126" style="stroke-width:4"/></svg></span></div>
+    
     
     <figure class="frame reveal" id="showcase">
-      <div class="bar"><i></i><i></i><i></i><span>the-morning-paper · live</span><em>live demo</em></div>
-      <img src="shot.jpg" alt="The Morning Paper screenshot" width="1280" height="800" fetchpriority="high">
+      <div class="bar"><i></i><i></i><i></i><span>riak · live demo</span><em>live demo</em></div>
+      <img src="shot.jpg" alt="Riak screenshot" width="1280" height="800" fetchpriority="high">
     </figure>
-    <div class="stats reveal" style="--n:2"><div class="stat"><b>2</b><span>platforms: Web, Installable PWA</span></div><div class="stat"><b>MIT</b><span>open source licence, free to use</span></div></div>
+    <div class="stats reveal" style="--n:2"><div class="stat"><b>2</b><span>platforms: Web app, PWA</span></div><div class="stat"><b>MIT</b><span>open source licence</span></div></div>
   </section>
 
   <section class="block wrap why reveal" id="why">
     <div class="why-grid">
-      <div><div class="kicker">Why it exists</div><h2>The morning&#x27;s tech news, already read for you.</h2></div>
-      <div><p class="lead">A morning newspaper for markets, AI and chips, robotics, space and tech.</p></div>
+      <div><div class="kicker">Why it exists</div><h2>A tank that is alive, not a screensaver.</h2></div>
+      <div><p class="lead">Riak is a calm aquarium you look after a few minutes a day.</p><p class="lead-2">It runs in any browser, installs as an app and keeps working offline.</p></div>
     </div>
-  </section>
-  <section class="block alt wrap reveal" id="ideas">
-    <div class="kicker">In short</div>
-    <h2>Today&#x27;s edition.</h2>
-    <div class="grid3"><article class="idea dark"><span class="tag">01</span><h3>Curated every morning</h3><p>Hundreds of headlines from many outlets boiled down to the stories that matter, with multi-source coverage merged.</p></article><article class="idea"><span class="tag">02</span><h3>Brief and why it matters</h3><p>An AI summary up top and a short &#x27;why it matters&#x27; line on every story.</p></article><article class="idea"><span class="tag">03</span><h3>Stock desk</h3><p>Forward P/E, quality and valuation scores for big US tech and Indonesian blue chips. Not financial advice.</p></article></div>
-  </section>
-  <section class="block wrap reveal" id="how">
-    <div class="kicker">How it works</div>
-    <h2>From zero to useful.</h2>
-    <ol class="steps n4"><li><span class="num">1</span><p>This repo only hosts the published page.</p></li><li><span class="num">2</span><p>Sign-in and storage use a free Supabase project.</p></li><li><span class="num">3</span><p>Live prices come from a small Supabase edge function, so the page never needs your own API keys.</p></li><li><span class="num">4</span><p>.github/workflows/keepalive.yml pings the backend daily so the free project never pauses.</p></li></ol>
   </section>
   <section class="block alt wrap reveal" id="features">
     <div class="kicker">What's inside</div>
-    <h2>Sections in this paper.</h2>
-    <div class="bento"><article class="cell wide dark"><h3>Curated news</h3><p>Refreshed through the day, with stories you already saw in earlier editions skipped.</p></article><article class="cell"><h3>The Brief on top</h3><p>Five things to know, written by a local model when one is running; otherwise the top headlines, so the paper always builds.</p></article><article class="cell"><h3>Merged coverage</h3><p>When several outlets report the same story it appears once, ranked higher, with the other outlets one tap away.</p></article><article class="cell accent"><h3>Stock desk</h3><p>Forward P/E, quality and valuation scores, and live prices with intraday charts, for big US tech and Indonesian blue chips.</p></article><article class="cell"><h3>Price alerts</h3><p>Above/below, support breaks and SMA-200 crosses.</p></article><article class="cell"><h3>Installable</h3><p>Add it to your home screen and it behaves like an app.</p></article></div>
+    <h2>Around your tank.</h2>
+    <div class="bento"><article class="cell wide dark"><h3>Real water care</h3><p>Fish waste becomes ammonia, then nitrite, then nitrate. Test kits, water changes and filters keep the cycle healthy.</p></article><article class="cell"><h3>Flick fishing</h3><p>Flick up on the water to cast, flick again to strike, then crank the reel while you watch line tension against the fish&#x27;s strength. Set the drag, or use phone motion to cast.</p></article><article class="cell"><h3>Nine places, 47 species</h3><p>Pond, rice paddy, stream, mangrove, blackwater, lagoon, glacier lake, open ocean and harbour, each drawn with its own scenery, weather and time of day. Every one of the 47 species has its own drawn body and fins.</p></article><article class="cell accent"><h3>Tackle, tournaments, quests</h3><p>Five baits and five lures, tournaments against CPU anglers, 12 fishing quests and a catch album with trophy cards.</p></article><article class="cell"><h3>Scape and breed</h3><p>16 aquatic plants, 8 hardscape pieces, 3 substrates and 3 tank sizes. Happy adult pairs have fry, and colours mix from both parents.</p></article><article class="cell wide"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;align-items:center"><div><h3>Koi pond to unwind</h3><p>Nine koi varieties drift among lily pads. Tap for ripples, hold to feed, drag to lead the school or tap a koi to meet it. A live soundscape of stream, bamboo fountain, chimes, crickets and rain has its own level for each layer, with day, dusk and night moods, a sleep timer and a full-screen calm mode.</p></div><img src="pond.jpg" alt="Riak koi pond: koi swimming among lily pads in a stone-edged pond" loading="lazy" width="1200" height="606" style="display:block;width:100%;height:auto;border-radius:4px"></div></article><article class="cell"><h3>Greenhouse and reef lab</h3><p>Sow from the seed shelf, water trays and harvest cuttings or houseplants, with rare variegated sports. Frag and cross corals into named strains.</p></article><article class="cell"><h3>Daily care and orders</h3><p>A short care list each day with a streak, plus daily fish, cutting and houseplant orders that pay shells.</p></article><article class="cell wide"><h3>Field journal</h3><p>A numbered field guide with Latin names for every species you find, true-shape silhouettes and hints for the rest, plus plants, coral strains and 18 milestones.</p></article></div>
   </section>
-  <section class="block wrap reveal" id="hood">
+  <section class="block wrap reveal" id="how">
+    <div class="kicker">How it works</div>
+    <h2>Your first ten minutes</h2>
+    <ol class="steps n4"><li><span class="num">1</span><h3>Name your tank</h3><p>Open the app, pick a language and name your first tank.</p></li><li><span class="num">2</span><h3>Feed and test</h3><p>Feed the starter fish and run a water test to see the cycle.</p></li><li><span class="num">3</span><h3>Flick to cast</h3><p>Fish the lily pond: flick up on the water to cast, strike when the float dips, then crank the catch in.</p></li><li><span class="num">4</span><h3>Plant a seedling</h3><p>Pick something from the seed shelf in the greenhouse and come back when it is ready to harvest.</p></li></ol>
+  </section>
+  <section class="block alt wrap reveal" id="run">
+    <div class="quick">
+      <div class="quick-copy">
+        <div class="kicker left">Run it yourself</div>
+        <h2 class="left">Run it yourself</h2>
+        <p class="qs-note">From the README’s “Run it locally” section. Full options, requirements and troubleshooting are there too.</p><a class="go" href="https://github.com/juw12/riak#readme">Open the README <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="term" role="region" aria-label="Terminal commands">
+        <div class="term-bar"><i></i><i></i><i></i><span>shell</span>
+          <button class="copy" type="button" data-copy="python -m http.server 8000"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 8V6a2 2 0 00-2-2H6a2 2 0 00-2 2v8a2 2 0 002 2h2" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>Copy</span></button></div>
+        <pre><code><span class="p">$</span> python -m http.server 8000</code></pre>
+      </div>
+    </div>
+  </section>
+  <section class="block wrap reveal" id="today">
+    <div class="kicker">Working today</div>
+    <h2>Free, and it stays that way.</h2>
+    <ul class="checks"><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i><span>Free, no account, no ads</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i><span>Works offline after the first visit</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i><span>Installs as an app on phone or desktop</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i><span>English and Bahasa Indonesia</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i><span>Saves in your browser only</span></li><li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i><span>Share a read-only link to your tank</span></li></ul>
+  </section>
+  <section class="block alt wrap reveal" id="hood">
     <div class="kicker">Under the hood</div>
     <h2>How it's built.</h2>
     <div class="hood"><div class="hood-card">
-        <h3>Built with</h3><div class="sg"><span>Language</span><div class="chips"><b class=chip>HTML/CSS</b></div></div><div class="sg"><span>Platform</span><div class="chips"><b class=chip>PWA</b></div></div><p class="repo-line">8 files in the repo · 67 commits since Nov 2026 · last updated 7 Nov 2026.</p>
-        <a class="go" href="https://github.com/juw12/morning-paper-web">Browse the code <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div><div class="hood-card"><h3>Recently shipped</h3><ol class="log"><li><time datetime="2026-11-07">7 Nov 2026</time><p>Edition 2026-11-07 15:43</p></li><li><time datetime="2026-11-06">6 Nov 2026</time><p>Edition 2026-11-06 14:00</p></li><li><time datetime="2026-11-06">6 Nov 2026</time><p>Edition 2026-11-06 13:30</p></li><li><time datetime="2026-11-06">6 Nov 2026</time><p>Edition 2026-11-06 13:00</p></li><li><time datetime="2026-11-06">6 Nov 2026</time><p>Edition 2026-11-06 12:30</p></li></ol><a class="go" href="https://github.com/juw12/morning-paper-web/commits/main">Full history on GitHub <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div>
+        <h3>Built with</h3><div class="sg"><span>Language</span><div class="chips"><b class=chip>JavaScript</b><b class=chip>HTML/CSS</b></div></div><div class="sg"><span>Platform</span><div class="chips"><b class=chip>PWA</b><b class=chip>Offline service worker</b></div></div><div class="sg"><span>Testing</span><div class="chips"><b class=chip>Automated tests</b></div></div><div class="sg"><span>UI</span><div class="chips"><b class=chip>Multi-language UI</b></div></div><p class="repo-line">130 files in the repo · last updated 8 Nov 2026.</p>
+        <a class="go" href="https://github.com/juw12/riak">Browse the code <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div><div class="hood-card"><h3>Recently shipped</h3><ol class="log"><li><time datetime="2026-11-08">8 Nov 2026</time><p>V1.2.1: hone pass - readable toggles, garden bench, field-guide journal</p></li><li><time datetime="2026-11-08">8 Nov 2026</time><p>Flick fishing: cast by swipe, crank reel, tension vs fish strength, tackle, tournaments, quests, album, challenge links</p></li><li><time datetime="2026-11-08">8 Nov 2026</time><p>Cozy aquarium PWA (tank care, fishing, greenhouse, reef lab, journal, focus)</p></li></ol><a class="go" href="https://github.com/juw12/riak/commits/main">Full history on GitHub <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div>
   </section>
-  <section class="block alt wrap reveal" id="faq">
+  <section class="block wrap reveal" id="faq">
     <div class="kicker">Questions</div>
     <h2>Good questions.</h2>
-    <div class="faq"><details open><summary>What does it run on?</summary><p>Web, Installable PWA. You can try it in the browser with nothing to install.</p></details><details><summary>Where do I start?</summary><p>This repo only hosts the published page. A private generator builds `index.html` every morning (and every 30 minutes during the day) and pushes it here; GitHub Pages serves it.</p></details><details><summary>Is it finished?</summary><p>Not yet: it&#x27;s marked “in progress” and still changing. The README always has the current state.</p></details><details><summary>Is it free?</summary><p>Yes. The source is public on GitHub under the MIT licence.</p></details><details><summary>Who made it?</summary><p>Juwen Lie, an R&amp;D mechanical engineer in Batam, Indonesia, as an independent personal project.</p></details></div>
+    <div class="faq"><details open><summary>What does it run on?</summary><p>Web app, PWA. You can try it in the browser with nothing to install.</p></details><details><summary>How do I get it running?</summary><p>The commands in the “Run it locally” box above come straight from the README. Paste them into a terminal; the README covers options and troubleshooting.</p></details><details><summary>Where does my data go?</summary><p>Everything stays in your browser (localStorage).</p></details><details><summary>Is it finished?</summary><p>Not yet: it&#x27;s marked “live” and still changing. The README always has the current state.</p></details><details><summary>Is it free?</summary><p>The source is public on GitHub under the MIT licence.</p></details><details><summary>Who made it?</summary><p>Juwen Lie, an R&amp;D mechanical engineer in Batam, Indonesia, as an independent personal project.</p></details></div>
   </section>
-  <section class="block wrap reveal" id="more">
+  <section class="block alt wrap reveal" id="more">
     <div class="kicker">Keep exploring</div>
     <h2>More from the same workbench.</h2>
-    <div class="related"><a class="rel" href="../pushlab/"><img src="../pushlab/shot.jpg" alt="" loading="lazy"><div><b>Push Lab</b><span>Beacon is a self-hosted push server, and Tether puts your Android phone in the browser with QA flows.</span></div></a><a class="rel" href="../steward/"><img src="../steward/shot.jpg" alt="" loading="lazy"><div><b>Steward</b><span>A drop-in governance layer that detects off-task use, deflects curious drift and blocks hostile injection.</span></div></a><a class="rel" href="../jeda/"><img src="../jeda/shot.jpg" alt="" loading="lazy"><div><b>Jeda</b><span>A virtual place of stillness and a living library of teachings, rituals and holy days.</span></div></a></div>
+    <div class="related"><a class="rel" href="../teduh/"><img src="../teduh/shot.jpg" alt="" loading="lazy"><div><b>Teduh</b><span>A free, cozy solarpunk life sim that runs in any browser, on phone or desktop, and keeps working offline.</span></div></a><a class="rel" href="../glow/"><img src="../glow/shot.jpg" alt="" loading="lazy"><div><b>Glow</b><span>Four AI apps on one free account, in 4 languages.</span></div></a><a class="rel" href="../jeda/"><img src="../jeda/shot.jpg" alt="" loading="lazy"><div><b>Jeda</b><span>A virtual place of stillness and a living library of teachings, rituals and holy days.</span></div></a></div>
   </section>
 
   <div class="wrap">
-    <section class="band reveal" aria-label="Get The Morning Paper">
-      <h2>Read today&#x27;s paper.</h2>
-      <p>Your morning news, curated.</p>
-      <div class="cta"><a class="btn primary" href="https://juw12.github.io/morning-paper-web/">▶ Try it live</a><a class="btn ghost" href="https://github.com/juw12/morning-paper-web#readme">Read the README</a><a class="btn ghost" href="https://github.com/juw12/morning-paper-web">View source</a></div>
+    <section class="band reveal" aria-label="Get Riak">
+      <h2>Fill the tank. Breathe out.</h2>
+      <p>A cozy aquarium that lives in your browser</p>
+      <div class="cta"><a class="btn primary" href="https://juw12.github.io/riak/">Try it live</a><a class="btn ghost" href="https://github.com/juw12/riak#readme">Read the README</a><a class="btn ghost" href="https://github.com/juw12/riak">View source</a></div>
     </section>
   </div>
 </main>
 
 <footer class="wrap">
-  <div>The Morning Paper · made by <a href="https://juwenlie.pages.dev/">Juwen Lie</a></div>
-  <div class="foot-links"><a href="https://github.com/juw12/morning-paper-web#readme">README</a> · <a href="https://github.com/juw12/morning-paper-web">Source</a> · <a href="https://juw12.github.io/p/">All projects</a> · <a href="https://github.com/juw12">GitHub profile</a></div>
+  <div>Riak · made by <a href="https://juwenlie.pages.dev/">Juwen Lie</a></div>
+  <div class="foot-links"><a href="https://github.com/juw12/riak#readme">README</a> · <a href="https://github.com/juw12/riak">Source</a> · <a href="https://juw12.github.io/p/">All projects</a> · <a href="https://github.com/juw12">GitHub profile</a></div>
   <div class="foot-note"><small>An independent personal project. No employer endorsement implied.</small></div>
 </footer>
 <script>
