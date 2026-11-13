@@ -194,7 +194,7 @@ html.k-game .go { color: var(--accent); }
 .devices { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
 .dev { background: var(--card); border: 1.5px solid var(--line); border-top: 5px solid var(--accent); border-radius: 16px; padding: 18px 18px 20px; }
 .dev b { font-family: var(--fd); font-size: 18px; display: block; margin-bottom: 6px; }
-.dev p { margin: 0; color: var(--muted); font-size: 14.5px; }
+.dev p { margin: 0; color: var(--muted); font-size: 14.5px; overflow-wrap: anywhere; }
 .center { text-align: center; margin-top: 26px; }
 .faq { max-width: 780px; margin: 0 auto; }
 .faq details { background: var(--card); border: 1.5px solid var(--line); border-radius: 16px; padding: 18px 22px; margin-bottom: 12px; }
@@ -222,6 +222,7 @@ html.k-game .faq summary::after { color: var(--accent); }
 .band .btn.ghost { background: transparent; color: #fff; }
 
 footer { padding: 46px 0 60px; text-align: center; color: var(--muted); font-size: 14px; }
+footer.wrap { padding-top: 46px; padding-bottom: 60px; }
 footer a { text-decoration: none; }
 footer a:hover { color: var(--ink); text-decoration: underline; }
 .foot-links, .foot-note { margin-top: 10px; }
@@ -641,7 +642,7 @@ html.dna.dna.dna { --fd: "Cormorant Garamond", var(--fd-fallback); --fdw: 700; -
     <div class="kicker">Under the hood</div>
     <h2>How it's built.</h2>
     <div class="hood"><div class="hood-card">
-        <h3>Built with</h3><div class="sg"><span>Language</span><div class="chips"><b class=chip>JavaScript</b><b class=chip>PowerShell</b><b class=chip>HTML/CSS</b></div></div><div class="sg"><span>Platform</span><div class="chips"><b class=chip>PWA</b><b class=chip>Offline service worker</b></div></div><div class="sg"><span>UI</span><div class="chips"><b class=chip>Multi-language UI</b></div></div><p class="repo-line">97 files in the repo · 45 commits since Nov 2026 · last updated 10 Nov 2026.</p>
+        <h3>Built with</h3><div class="sg"><span>Language</span><div class="chips"><b class=chip>JavaScript</b><b class=chip>PowerShell</b><b class=chip>HTML/CSS</b></div></div><div class="sg"><span>Platform</span><div class="chips"><b class=chip>PWA</b><b class=chip>Offline service worker</b></div></div><div class="sg"><span>UI</span><div class="chips"><b class=chip>Multi-language UI</b></div></div><p class="repo-line">98 files in the repo · 48 commits since Nov 2026 · last updated 13 Nov 2026.</p>
         <a class="go" href="https://github.com/juw12/jeda">Browse the code <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div><div class="hood-card"><h3>Recently shipped</h3><ol class="log"><li><time datetime="2026-11-09">9 Nov 2026</time><p>V1.7.16: readable accent ink - accent-coloured text (links, active tab, chips, step labels, Kamus letters, chat links) now uses a darkened/lightened…</p></li><li><time datetime="2026-11-09">9 Nov 2026</time><p>V1.7.14: Rumah opens at eye level under the eaves (camera ~2.65 m, below the 2.88 m beam) instead of over the roof, which at night read as a dark…</p></li><li><time datetime="2026-11-09">9 Nov 2026</time><p>V1.7.13: roll back the v1.7.12 one-row phone top (council had rejected it 2-0-3, crammed) and its oversized pause label; keep selected chips/open…</p></li><li><time datetime="2026-11-09">9 Nov 2026</time><p>V1.7.12: one-row phone top (place switch shares the top bar, pause mark, search in the ⋯ menu), selected chips and open menu on the shared glass…</p></li><li><time datetime="2026-11-09">9 Nov 2026</time><p>V1.7.11: kedai opens at eye level under the eaves; ribbed roof, light ceiling and eave string lights</p></li></ol><a class="go" href="https://github.com/juw12/jeda/commits/main">Full history on GitHub <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div>
   </section>
