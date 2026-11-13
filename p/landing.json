@@ -413,5 +413,20 @@
   "name": "tolstack",
   "landing": "https://juw12.github.io/p/tolstack/",
   "readme": "https://github.com/juw12/tolstack#readme"
+ },
+ "https://github.com/juw12/scentvec": {
+  "name": "scentvec",
+  "landing": "https://juw12.github.io/p/scentvec/",
+  "readme": "https://github.com/juw12/scentvec#readme"
+ },
+ "https://github.com/juw12/state-of-mcp-servers": {
+  "name": "The State of MCP Servers",
+  "landing": "https://juw12.github.io/p/state-of-mcp-servers/",
+  "readme": "https://github.com/juw12/state-of-mcp-servers#readme"
+ },
+ "https://github.com/juw12/bits-and-tickers": {
+  "name": "Bits & Tickers",
+  "landing": "https://juw12.github.io/p/bits-and-tickers/",
+  "readme": "https://github.com/juw12/bits-and-tickers#readme"
  }
 }
