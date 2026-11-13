@@ -194,7 +194,7 @@ html.k-game .go { color: var(--accent); }
 .devices { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
 .dev { background: var(--card); border: 1.5px solid var(--line); border-top: 5px solid var(--accent); border-radius: 16px; padding: 18px 18px 20px; }
 .dev b { font-family: var(--fd); font-size: 18px; display: block; margin-bottom: 6px; }
-.dev p { margin: 0; color: var(--muted); font-size: 14.5px; }
+.dev p { margin: 0; color: var(--muted); font-size: 14.5px; overflow-wrap: anywhere; }
 .center { text-align: center; margin-top: 26px; }
 .faq { max-width: 780px; margin: 0 auto; }
 .faq details { background: var(--card); border: 1.5px solid var(--line); border-radius: 16px; padding: 18px 22px; margin-bottom: 12px; }
@@ -222,6 +222,7 @@ html.k-game .faq summary::after { color: var(--accent); }
 .band .btn.ghost { background: transparent; color: #fff; }
 
 footer { padding: 46px 0 60px; text-align: center; color: var(--muted); font-size: 14px; }
+footer.wrap { padding-top: 46px; padding-bottom: 60px; }
 footer a { text-decoration: none; }
 footer a:hover { color: var(--ink); text-decoration: underline; }
 .foot-links, .foot-note { margin-top: 10px; }
@@ -380,6 +381,63 @@ html.t-arcade .frame { max-width: 1080px; border: 2px solid var(--accent); box-s
 html.t-arcade .frame .bar { border-bottom-color: var(--accent); }
 html.t-arcade .shot { border-color: color-mix(in srgb, var(--accent) 70%, #000); box-shadow: 0 24px 60px -24px color-mix(in srgb, var(--accent) 65%, transparent); }
 html.t-arcade .band { box-shadow: 0 0 80px -10px color-mix(in srgb, var(--accent) 60%, transparent); }
+
+/* neo: dark glass, red-to-teal gradient edges (NFT-gallery feel). No purple. */
+html.t-neo { --paper: #07090d; --ink: #eef2f6; --muted: #a3adbb; --line: #1c2430; --card: #0d1219; --dark: #05070a;
+  --neo1: #ff4d5e; --neo2: #00d9c0; --neo-edge: linear-gradient(135deg, var(--neo1), var(--neo2)); color-scheme: dark; }
+html.t-neo body { background-color: var(--paper);
+  background-image: radial-gradient(48rem 30rem at 12% -6%, rgba(255,77,94,.20), transparent 70%),
+    radial-gradient(44rem 28rem at 95% 8%, rgba(0,217,192,.16), transparent 70%),
+    linear-gradient(rgba(238,242,246,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(238,242,246,.045) 1px, transparent 1px);
+  background-size: auto, auto, 44px 44px, 44px 44px; background-attachment: fixed, fixed, scroll, scroll; }
+html.t-neo header.top { background: rgba(7,9,13,.72); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid rgba(238,242,246,.08); }
+html.t-neo .logo { background: var(--neo-edge); color: #05070a; box-shadow: none; }
+html.t-neo.dna .hero h1 { letter-spacing: -0.02em; line-height: 1.08; }
+html.t-neo.dna .hero h1 .hl { color: transparent; -webkit-text-stroke: 0; background: var(--neo-edge); -webkit-background-clip: text; background-clip: text; }
+html.t-neo .hero h1 .hl svg { display: none; }
+html.t-neo .kicker, html.t-neo .idea .tag { font: 600 13px "JetBrains Mono", monospace; letter-spacing: .06em; color: var(--neo2); }
+html.t-neo .kicker.light { color: var(--neo2); }
+html.t-neo.dna :is(.idea, .cell, .steps li, .checks li, .faq details, .stat, .dev, .rel, .limits li, .hood-card) {
+  border: 1px solid transparent; border-radius: 18px; box-shadow: 0 24px 60px -36px rgba(0,0,0,.9);
+  background: linear-gradient(var(--card), var(--card)) padding-box, linear-gradient(135deg, rgba(255,77,94,.55), rgba(0,217,192,.45)) border-box; }
+html.t-neo.dna :is(.idea.dark, .cell.dark) { background: linear-gradient(#0a0e14, #0a0e14) padding-box, var(--neo-edge) border-box; }
+html.t-neo.dna .cell.accent { background: linear-gradient(135deg, #c8192f, #0a7f73); border-color: transparent; box-shadow: none; }
+html.t-neo .cell::before { background: var(--neo-edge); height: 3px; border-radius: 2px; }
+html.t-neo :is(.idea p, .cell p, .idea.dark p, .cell.dark p) { color: var(--muted); }
+html.t-neo .btn { border-radius: 12px; border-color: rgba(238,242,246,.22); }
+html.t-neo .btn.primary { background: linear-gradient(135deg, #d91f3a, #a3122a); border-color: transparent; color: #fff;
+  box-shadow: 0 0 0 1px rgba(255,77,94,.4), 0 14px 34px -12px rgba(255,77,94,.65); }
+html.t-neo .btn.primary:hover { box-shadow: 0 0 0 1px rgba(0,217,192,.55), 0 18px 40px -12px rgba(0,217,192,.5); }
+html.t-neo .btn.small { box-shadow: none; }
+html.t-neo.dna .frame { border: 1px solid transparent; border-radius: 20px;
+  background: linear-gradient(var(--card), var(--card)) padding-box, var(--neo-edge) border-box;
+  box-shadow: 0 0 0 6px rgba(255,77,94,.06), 0 60px 120px -40px rgba(0,217,192,.35); }
+html.t-neo .frame .bar { background: #0a0e14; border-bottom: 1px solid var(--line); font-family: "JetBrains Mono", monospace; font-weight: 500; color: var(--muted); }
+html.t-neo .frame .bar i { border-color: rgba(238,242,246,.25); }
+html.t-neo .frame .bar i:first-child { background: var(--neo1); }
+html.t-neo .shot { border: 1px solid var(--line); border-radius: 14px; box-shadow: none; }
+html.t-neo .sticker { background: rgba(13,18,25,.8); color: var(--ink); border: 1px solid rgba(0,217,192,.45); border-radius: 999px;
+  font: 600 12px "JetBrains Mono", monospace; box-shadow: none; }
+html.t-neo .sticker.s1 { background: rgba(255,77,94,.14); color: #ffd5d9; border-color: rgba(255,77,94,.5); }
+html.t-neo .steps .num { background: var(--neo-edge); color: #05070a; border: 0; box-shadow: none; font-family: "JetBrains Mono", monospace; }
+html.t-neo .steps li::after { background: linear-gradient(90deg, var(--neo1), var(--neo2)); }
+html.t-neo .why-grid { border-top: 1px solid rgba(238,242,246,.1); }
+html.t-neo .band { background: linear-gradient(#0a0e14, #0a0e14) padding-box, var(--neo-edge) border-box; border: 1px solid transparent;
+  border-radius: 24px; color: var(--ink); box-shadow: 0 0 90px -20px rgba(255,77,94,.35); }
+html.t-neo .band p { color: var(--muted); opacity: 1; }
+html.t-neo .band .btn.primary { background: linear-gradient(135deg, #d91f3a, #a3122a); color: #fff; border-color: transparent; }
+html.t-neo .band .btn.ghost { color: var(--ink); border-color: rgba(0,217,192,.5); }
+html.t-neo :is(.status, .chip, .pill) { background: rgba(0,217,192,.12); color: #bff6ee; border-color: rgba(0,217,192,.35); }
+html.t-neo .art .o { stroke: var(--ink); }
+html.t-neo .art .s { fill: rgba(0,217,192,.14); }
+html.t-neo .art .a { fill: var(--neo1); }
+html.t-neo .art .ao { stroke: var(--neo2); }
+html.t-neo footer a:hover { color: var(--neo2); }
+@media (prefers-reduced-motion: no-preference) {
+  html.t-neo.dna :is(.idea, .cell, .rel) { transition: transform .2s ease, box-shadow .2s ease; }
+  html.t-neo.dna :is(.idea, .cell, .rel):hover { transform: translateY(-3px); box-shadow: 0 30px 70px -34px rgba(0,217,192,.45); }
+}
 
 @media (max-width: 980px) {
   .hero.split { grid-template-columns: 1fr; text-align: center; gap: 36px; }
@@ -599,10 +657,10 @@ python server.py --open (also opens the browser)"><svg viewBox="0 0 24 24" aria-
   <section class="block wrap reveal" id="hood">
     <div class="kicker">Under the hood</div>
     <h2>How it's built.</h2>
-    <div class="hood solo"><div class="hood-card">
-        <h3>Built with</h3><div class="sg"><span>Language</span><div class="chips"><b class=chip>Python</b><b class=chip>JavaScript</b><b class=chip>HTML/CSS</b></div></div><div class="sg"><span>Testing</span><div class="chips"><b class=chip>Automated tests</b></div></div><div class="sg"><span>UI</span><div class="chips"><b class=chip>Multi-language UI</b></div></div><p class="repo-line">9 files in the repo · last updated 5 Nov 2026.</p>
+    <div class="hood"><div class="hood-card">
+        <h3>Built with</h3><div class="sg"><span>Language</span><div class="chips"><b class=chip>JavaScript</b><b class=chip>Python</b><b class=chip>HTML/CSS</b></div></div><div class="sg"><span>Testing</span><div class="chips"><b class=chip>Automated tests</b></div></div><div class="sg"><span>UI</span><div class="chips"><b class=chip>Multi-language UI</b></div></div><p class="repo-line">13 files in the repo · last updated 13 Nov 2026.</p>
         <a class="go" href="https://github.com/juw12/projects/tree/main/apps/kinibuka">Browse the code <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div></div>
+      </div><div class="hood-card"><h3>Recently shipped</h3><ol class="log"><li><time datetime="2026-11-13">13 Nov 2026</time><p>Built-in admin/admin login, seller WhatsApp number verification, anti-spam limits, online.bat finds portable cloudflared</p></li><li><time datetime="2026-11-13">13 Nov 2026</time><p>Seller accounts with passwords, admin approval with market slots and end dates, online.bat (Cloudflare tunnel)</p></li><li><time datetime="2026-11-13">13 Nov 2026</time><p>KiniBuka 3D: stall menus, bazaar tents, unlimited street</p></li><li><time datetime="2026-11-13">13 Nov 2026</time><p>Walkable 3D market view in Explore (like Jeda)</p></li><li><time datetime="2026-11-05">5 Nov 2026</time><p>Pips, kinibuka: add tests (updater install/zip-slip/checksum, shop+tama rules, full kinibuka API flow); pips updater requires a checksum; kinibuka…</p></li></ol><a class="go" href="https://github.com/juw12/projects/commits/main/apps/kinibuka">Full history on GitHub <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div>
   </section>
   <section class="block alt wrap reveal" id="faq">
     <div class="kicker">Questions</div>
