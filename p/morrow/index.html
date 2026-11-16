@@ -195,7 +195,7 @@ html.k-game .go { color: var(--accent); }
 .devices { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
 .dev { background: var(--card); border: 1.5px solid var(--line); border-top: 5px solid var(--accent); border-radius: 16px; padding: 18px 18px 20px; }
 .dev b { font-family: var(--fd); font-size: 18px; display: block; margin-bottom: 6px; }
-.dev p { margin: 0; color: var(--muted); font-size: 14.5px; }
+.dev p { margin: 0; color: var(--muted); font-size: 14.5px; overflow-wrap: anywhere; }
 .center { text-align: center; margin-top: 26px; }
 .faq { max-width: 780px; margin: 0 auto; }
 .faq details { background: var(--card); border: 1.5px solid var(--line); border-radius: 16px; padding: 18px 22px; margin-bottom: 12px; }
@@ -223,6 +223,7 @@ html.k-game .faq summary::after { color: var(--accent); }
 .band .btn.ghost { background: transparent; color: #fff; }
 
 footer { padding: 46px 0 60px; text-align: center; color: var(--muted); font-size: 14px; }
+footer.wrap { padding-top: 46px; padding-bottom: 60px; }
 footer a { text-decoration: none; }
 footer a:hover { color: var(--ink); text-decoration: underline; }
 .foot-links, .foot-note { margin-top: 10px; }
@@ -611,7 +612,7 @@ html.dna.dna.dna { --fd: "Krona One", var(--fd-fallback); --fdw: 400; --fd-fallb
   <section class="block wrap why reveal" id="why">
     <div class="why-grid">
       <div><div class="kicker">Why it exists</div><h2>The morning&#x27;s tech news, already read for you.</h2></div>
-      <div><p class="lead">Morrow (formerly The Morning Paper) is a morning newspaper for markets, AI and chips, robotics, space and tech.</p></div>
+      <div><p class="lead">Morrow (formerly The Morning Paper) is a morning newspaper for markets, AI and chips, robotics, space and tech.</p><p class="lead-2">Morrow Brief is its daily digest, with every story shown beside the outlets that reported it, and a Telegram bot, @Morrow_brief_bot, answers /today and /find from the same digest.</p></div>
     </div>
   </section>
   <section class="block alt wrap reveal" id="ideas">
@@ -633,9 +634,9 @@ html.dna.dna.dna { --fd: "Krona One", var(--fd-fallback); --fdw: 400; --fd-fallb
     <div class="kicker">Under the hood</div>
     <h2>How it's built.</h2>
     <div class="hood"><div class="hood-card">
-        <h3>Built with</h3><div class="sg"><span>Language</span><div class="chips"><b class=chip>HTML/CSS</b></div></div><div class="sg"><span>Platform</span><div class="chips"><b class=chip>PWA</b></div></div><p class="repo-line">8 files in the repo · 67 commits since Nov 2026 · last updated 7 Nov 2026.</p>
+        <h3>Built with</h3><div class="sg"><span>Language</span><div class="chips"><b class=chip>HTML/CSS</b><b class=chip>Python</b></div></div><div class="sg"><span>Platform</span><div class="chips"><b class=chip>PWA</b></div></div><div class="sg"><span>Testing</span><div class="chips"><b class=chip>Automated tests</b></div></div><p class="repo-line">14 files in the repo · 154 commits since Nov 2026 · last updated 14 Nov 2026.</p>
         <a class="go" href="https://github.com/juw12/morrow">Browse the code <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div><div class="hood-card"><h3>Recently shipped</h3><ol class="log"><li><time datetime="2026-11-07">7 Nov 2026</time><p>Edition 2026-11-07 15:43</p></li><li><time datetime="2026-11-06">6 Nov 2026</time><p>Edition 2026-11-06 14:00</p></li><li><time datetime="2026-11-06">6 Nov 2026</time><p>Edition 2026-11-06 13:30</p></li><li><time datetime="2026-11-06">6 Nov 2026</time><p>Edition 2026-11-06 13:00</p></li><li><time datetime="2026-11-06">6 Nov 2026</time><p>Edition 2026-11-06 12:30</p></li></ol><a class="go" href="https://github.com/juw12/morrow/commits/main">Full history on GitHub <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div>
+      </div><div class="hood-card"><h3>Recently shipped</h3><ol class="log"><li><time datetime="2026-11-14">14 Nov 2026</time><p>Edition 2026-11-14 10:01</p></li><li><time datetime="2026-11-14">14 Nov 2026</time><p>Edition 2026-11-14 09:15</p></li><li><time datetime="2026-11-14">14 Nov 2026</time><p>Edition 2026-11-14 08:30</p></li><li><time datetime="2026-11-14">14 Nov 2026</time><p>Edition 2026-11-14 08:02</p></li><li><time datetime="2026-11-14">14 Nov 2026</time><p>Edition 2026-11-14 07:30</p></li></ol><a class="go" href="https://github.com/juw12/morrow/commits/main">Full history on GitHub <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div>
   </section>
   <section class="block alt wrap reveal" id="faq">
     <div class="kicker">Questions</div>
