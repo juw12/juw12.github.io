@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://juw12.github.io/projects/glow/sitemap.xml
+Sitemap: https://juw12.github.io/bits-and-tickers/sitemap.xml
