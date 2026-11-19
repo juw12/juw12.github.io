@@ -478,5 +478,10 @@
   "name": "Spry",
   "landing": "https://juw12.github.io/p/spry/",
   "readme": "https://github.com/juw12/spry#readme"
+ },
+ "https://github.com/juw12/vector-relay": {
+  "name": "Vector Relay",
+  "landing": "https://juw12.github.io/p/vector-relay/",
+  "readme": "https://github.com/juw12/vector-relay#readme"
  }
 }
