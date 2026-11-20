@@ -498,5 +498,10 @@
   "name": "Neon Coast",
   "landing": "https://juw12.github.io/p/neon-coast/",
   "readme": "https://github.com/juw12/neon-coast#readme"
+ },
+ "https://github.com/juw12/juw12.github.io/tree/main/p/pocket-meter": {
+  "name": "Pocket Meter",
+  "landing": "https://juw12.github.io/p/pocket-meter/",
+  "readme": "https://github.com/juw12/juw12.github.io/tree/main/p/pocket-meter"
  }
 }

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Try a fictional 30-day earnings scenario. Adjust offers and conversion rates to see the expected result, chance of any sale and best-case ceiling."><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'"><link rel="icon" href="data:,"><title>Pocket Meter · public scenario demo</title>
+<style>
+:root{color-scheme:dark;--bg:#0f1412;--panel:#171d1a;--ink:#e6ece8;--soft:#a6b5ac;--rule:#324338;--green:#58d880}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,sans-serif}main{max-width:960px;margin:auto;padding:clamp(14px,4vw,44px)}header,.between{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}header{padding-bottom:16px;border-bottom:1px solid var(--rule)}small,.label{font:12px/1.55 ui-monospace,Consolas,monospace;color:var(--soft)}.label{letter-spacing:.08em;text-transform:uppercase}a{color:var(--green)}h1{font-size:clamp(36px,6vw,64px);letter-spacing:-.055em;line-height:1.05;margin:28px 0 5px}h2{font-size:22px;margin:0}p{color:var(--soft);margin:8px 0 18px}section{margin:22px 0}.desk{border-top:3px solid var(--green);padding:20px;background:var(--panel);border-radius:8px}.value{font-size:clamp(32px,6vw,55px);line-height:1.2;font-weight:650;letter-spacing:-.04em;display:block;font-variant-numeric:tabular-nums}.stats,.streams{display:grid;grid-template-columns:1fr 1fr;gap:16px}.stats{padding-top:16px;border-top:1px solid var(--rule);margin-top:16px}.stats strong{display:block;font-size:24px}.stream{border:1px solid var(--rule);border-radius:8px;padding:16px}.stream h3{margin:4px 0 2px}.stream p{font-size:14px;margin:0 0 12px}.field{display:grid;grid-template-columns:1fr 90px;align-items:center;gap:10px;margin:9px 0}input,button{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--rule);border-radius:5px;padding:6px 10px;max-width:100%}input[type=range]{width:100%;accent-color:var(--green);padding:0}button{cursor:pointer}button:hover{border-color:var(--green)}:focus-visible{outline:2px solid var(--green);outline-offset:2px}progress{width:100%;height:12px;accent-color:var(--green)}.result{padding-top:8px;border-top:1px solid var(--rule);display:block;color:var(--green)}details{border-top:1px solid var(--rule);padding:13px 0}summary{cursor:pointer}footer{color:var(--soft);font-size:14px;margin-top:16px}@media(max-width:590px){.streams{grid-template-columns:1fr}.desk{padding:16px}.stats{gap:8px}.stats strong{font-size:20px}}
+</style></head><body><main><header><b>Juwen Lie / Tools</b><span class="label">Public demo · fictional inputs</span></header><h1>Pocket Meter</h1><p>What could two paid pilots earn in 30 days? Change the assumptions and watch the meter. These are example offers, not prices, sales or personal earnings.</p>
+<section class="desk" aria-label="Scenario results"><span class="label">Expected net earnings · 30 days</span><output class="value" id="expected" aria-live="polite">Rp30.000</output><progress id="meter" value="30000" max="400000" aria-label="Expected net earnings relative to the scenario ceiling"></progress><div class="between"><small>Rp0</small><small>All offers sell: <b id="cap">Rp400.000</b></small></div><div class="stats"><div><small>Chance of at least one sale</small><strong id="chance">51.5%</strong></div><div><small>Chance of no sale</small><strong id="none">48.5%</strong></div></div></section>
+<section><div class="between"><h2>Where the estimate comes from</h2><button id="reset" type="button">Reset example</button></div><p>Offers are distinct prospects. A sale earns the stated amount after direct costs; a missed sale earns zero.</p>
+<div class="streams"><article class="stream"><span class="label">01 / Report</span><h3>Lelet</h3><p>Multi-line internet report · Rp20.000 net per sale</p><label class="field">Prospects offered<input id="n0" type="number" min="0" max="1000" step="1" value="10" required></label><label for="p0">Assumed sale rate <b id="rate0">5%</b></label><input type="range" id="p0" min="0" max="100" step="1" value="5"><small class="result" id="line0">Rp10.000 expected · Rp200.000 ceiling</small></article>
+<article class="stream"><span class="label">02 / Setup</span><h3>ReachPilot</h3><p>Hosted setup pilot · Rp100.000 net per sale</p><label class="field">Prospects offered<input id="n1" type="number" min="0" max="1000" step="1" value="2" required></label><label for="p1">Assumed sale rate <b id="rate1">10%</b></label><input type="range" id="p1" min="0" max="100" step="1" value="10"><small class="result" id="line1">Rp20.000 expected · Rp200.000 ceiling</small></article></div></section>
+<details><summary>What the numbers mean</summary><p>The expectation is an average across repetitions of these assumptions, not a payout. The ceiling assumes every available prospect buys. The example assumes independent buying decisions, no loss on a missed sale and no shared prospects; overlapping audiences or fixed costs can make the result too optimistic.</p></details><details><summary>Public demo versus the private meter</summary><p>This page uses two fictional scenarios. It does not connect to a ledger, trading account or payment service. The private tool separately tracks settled earnings, refunds and observed outcomes; none of that data is used here. Edits to this example disappear on reload.</p></details><footer>Version 1.0 · interactive public example · <a href="https://github.com/juw12">GitHub profile</a></footer><noscript><p>JavaScript is off. The default example is shown; editing requires JavaScript.</p></noscript></main>
+<script>
+'use strict';
+const byId = id => document.getElementById(id);
+const money = value => 'Rp' + Math.round(value).toLocaleString('id-ID');
+const percent = value => (value * 100).toFixed(1) + '%';
+function calculate() {
+  let expected = 0, ceiling = 0, noSale = 1, valid = true;
+  for (const [i, net] of [20000, 100000].entries()) {
+    const field = byId('n'+i), n = field.valueAsNumber, rate = Number(byId('p'+i).value) / 100;
+    byId('rate'+i).textContent = Math.round(rate*100)+'%';
+    if (!field.validity.valid || !Number.isInteger(n)) {
+      valid = false;
+      byId('line'+i).textContent = 'Enter a whole number from 0 to 1,000.';
+      continue;
+    }
+    const max = n * net, average = max * rate;
+    byId('line'+i).textContent = money(average) + ' expected · ' + money(max) + ' ceiling';
+    expected += average;
+    ceiling += max;
+    noSale *= Math.pow(1-rate, n);
+  }
+  byId('expected').textContent = valid ? money(expected) : 'Check inputs';
+  byId('cap').textContent = valid ? money(ceiling) : '—';
+  byId('chance').textContent = valid ? percent(1-noSale) : '—';
+  byId('none').textContent = valid ? percent(noSale) : '—';
+  byId('meter').max = ceiling || 1;
+  byId('meter').value = valid ? expected : 0;
+}
+for (const field of document.querySelectorAll('input')) field.addEventListener('input', calculate);
+byId('reset').addEventListener('click', () => {
+  for (const field of document.querySelectorAll('input')) field.value = field.defaultValue;
+  calculate();
+});
+calculate();
+</script></body></html>
