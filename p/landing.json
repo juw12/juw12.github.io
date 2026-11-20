@@ -483,5 +483,10 @@
   "name": "Vector Relay",
   "landing": "https://juw12.github.io/p/vector-relay/",
   "readme": "https://github.com/juw12/vector-relay#readme"
+ },
+ "https://github.com/juw12/themes": {
+  "name": "Themes",
+  "landing": "https://juw12.github.io/p/themes/",
+  "readme": "https://github.com/juw12/themes#readme"
  }
 }
